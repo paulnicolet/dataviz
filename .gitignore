@@ -2,6 +2,7 @@
 logs
 *.log
 
+# Mac
 .DS_Store
 
 # Runtime data
@@ -30,3 +31,7 @@ node_modules
 
 # Data
 climate-change-earth-surface-temperature-data
+
+# Jupyter
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
