@@ -32,15 +32,54 @@ d3.json(WORLD_TOPOJSON_PATH, (error, world) => {
 function buildTemperatures(data, svg) {
 	let temperatures = data[0]['1900-01-01'];
 
-	svg.append('g')
-		.attr('id', 'temperatures')
-		.selectAll('circle')
-		.data(temperatures)
-		.enter()
-			.append('circle')
+	let tempValues = temperatures.map(t => t.AverageTemperature);
+	let minTemp = Math.min(...tempValues);
+	let maxTemp = Math.max(...tempValues);
+
+	let colorScale = d3.scaleLinear().domain([minTemp, maxTemp])
+				      .interpolate(d3.interpolateHcl)
+				      .range([d3.rgb(149, 184, 252, 0.5), d3.rgb(252, 18, 27, 0.5)]);
+
+	let newTemp = svg.append('g')
+					.attr('id', 'temperatures')
+					.selectAll('g .temperature-group')
+					.data(temperatures)
+					.enter()
+						.append('g')
+						.attr('class', 'temperature-group');
+
+	newTemp.append('circle')
 			.attr('cx', d => projection([d.Longitude, d.Latitude])[0])
 			.attr('cy', d => projection([d.Longitude, d.Latitude])[1])
-			.attr('r', 2);
+			.attr('r', 7)
+			.attr('fill', d => colorScale(d.AverageTemperature))
+			.on('mouseover', function(d, i) {
+				let circle = d3.select(this);
+				let parent = d3.select(this.parentNode);
+
+				circle.transition()
+						.duration('300')
+						.attr('r', 20);
+
+				parent.append('text')
+						.attr('x', circle.attr('cx'))
+						.attr('y', circle.attr('cy'))
+						.attr('fill', 'black')
+						.attr('font-family', 'Inconsolata')
+						.attr('font-size', 20)
+						.text(`${d.City}: ${d.AverageTemperature.toFixed(1)}°`);
+
+			})
+			.on('mouseout', function(d, i) {
+				let circle = d3.select(this);
+				let parent = d3.select(this.parentNode);
+
+				circle.transition()
+						.duration('300')
+						.attr('r', 7);
+
+				parent.selectAll('text').transition().duration('50').remove();
+			})
 }
 
 function buildTopology(topology, svg) {
