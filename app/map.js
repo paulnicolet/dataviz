@@ -3,95 +3,118 @@ import * as topojson from 'topojson';
 
 require('./map.scss');
 
-const WIDTH = 900;
-const HEIGHT = 600;
-const WORLD_TOPOJSON_PATH = 'https://unpkg.com/world-atlas@1/world/110m.json';
-const DATA_PATH = 'http://localhost:8001/temp_city_1900-01-01_.json';
+// Circle constants
+const SMALL_CIRCLE = 7;
+const LARGE_CIRCLE = 20;
+const CIRCLE_ANIM_DURATION = '300';
 
-// Define containers
-let svg = d3.select('#map').append('svg')
-			.attr('width', WIDTH)
-			.attr('height', HEIGHT);
+// Color constants
+const COLD_COLOR = d3.rgb(149, 184, 252, 0.5);
+const HOT_COLOR = d3.rgb(252, 18, 27, 0.5);
 
-// Define projection and path
-let projection = d3.geoNaturalEarth1();
-let path = d3.geoPath(projection);
+class TemeraturesMap {
+	constructor(id, data, topology, outerWidth, outerHeight) {
+		this.id = id;
+		this.data = data;
+		this.topology = topology;
+		this.width = outerWidth;
+		this.height = outerHeight;
 
-// Load topology
-d3.json(WORLD_TOPOJSON_PATH, (error, world) => {
-	if (error) window.alert('Could not load topology');
-	buildTopology(world, svg);
+		// Define container
+		this.svg = d3.select(`#${this.id}`).append('svg')
+						.attr('width', this.width)
+						.attr('height', this.height);
 
-	// Load temperatures
-	d3.json(DATA_PATH, (error, data) => {
-		if (error) window.alert('Could not load temperatures');
-		buildTemperatures(data, svg);
-	});
-});
+		// Define projection and path
+		this.projection = d3.geoNaturalEarth1();
+		this.path = d3.geoPath(this.projection);
 
-function buildTemperatures(data, svg) {
-	let temperatures = data[0]['1900-01-01'];
+		// Render elements
+		this.renderTopology();
+		this.renderTemperatures();
+	}
 
-	let tempValues = temperatures.map(t => t.AverageTemperature);
-	let minTemp = Math.min(...tempValues);
-	let maxTemp = Math.max(...tempValues);
+	renderTemperatures() {
+		let temperatures = this.data[0]['1900-01-01'];
 
-	let colorScale = d3.scaleLinear().domain([minTemp, maxTemp])
-				      .interpolate(d3.interpolateHcl)
-				      .range([d3.rgb(149, 184, 252, 0.5), d3.rgb(252, 18, 27, 0.5)]);
+		let tempValues = temperatures.map(t => t.AverageTemperature);
+		let minTemp = Math.min(...tempValues);
+		let maxTemp = Math.max(...tempValues);
 
-	let newTemp = svg.append('g')
-					.attr('id', 'temperatures')
-					.selectAll('g .temperature-group')
-					.data(temperatures)
-					.enter()
-						.append('g')
-						.attr('class', 'temperature-group');
+		let colorScale = d3.scaleLinear().domain([minTemp, maxTemp])
+						      .interpolate(d3.interpolateHcl)
+						      .range([COLD_COLOR, HOT_COLOR]);
 
-	newTemp.append('circle')
-			.attr('cx', d => projection([d.Longitude, d.Latitude])[0])
-			.attr('cy', d => projection([d.Longitude, d.Latitude])[1])
-			.attr('r', 7)
-			.attr('fill', d => colorScale(d.AverageTemperature))
-			.on('mouseover', function(d, i) {
-				let circle = d3.select(this);
-				let parent = d3.select(this.parentNode);
+		let newCircle = this.svg.append('g')
+							.attr('id', 'temperatures')
+							.selectAll('g .temperature-group')
+							.data(temperatures)
+							.enter()
+							.append('g')
+							.attr('class', 'temperature-group')
+							.append('circle')
+							.attr('cx', d => this.projection([d.Longitude, d.Latitude])[0])
+							.attr('cy', d => this.projection([d.Longitude, d.Latitude])[1])
+							.attr('r', SMALL_CIRCLE)
+							.attr('fill', d => colorScale(d.AverageTemperature));
 
-				circle.transition()
-						.duration('300')
-						.attr('r', 20);
+		this.animateCircle(newCircle);
 
-				parent.append('text')
-						.attr('x', circle.attr('cx'))
-						.attr('y', circle.attr('cy'))
-						.attr('fill', 'black')
-						.attr('font-family', 'Inconsolata')
-						.attr('font-size', 20)
-						.attr('transform', `translate(0, ${-20})`)
-						.text(`${d.City}: ${d.AverageTemperature.toFixed(1)}°`);
+	}
 
-			})
-			.on('mouseout', function(d, i) {
-				let circle = d3.select(this);
-				let parent = d3.select(this.parentNode);
+	animateCircle(circle) {
+		circle.on('mouseover', function(d, i) {
+			let circle = d3.select(this);
+			let parent = d3.select(this.parentNode);
 
-				circle.transition()
-						.duration('300')
-						.attr('r', 7);
+			circle.transition()
+					.duration(CIRCLE_ANIM_DURATION)
+					.attr('r', LARGE_CIRCLE);
 
-				parent.selectAll('text').transition().duration('50').remove();
-			})
+			parent.append('text')
+					.attr('x', circle.attr('cx'))
+					.attr('y', circle.attr('cy'))
+					.attr('fill', 'black')
+					.attr('font-family', 'Inconsolata')
+					.attr('font-size', LARGE_CIRCLE)
+					.attr('transform', `translate(0, ${-LARGE_CIRCLE})`)
+					.text(`${d.City}: ${d.AverageTemperature.toFixed(1)}°`);
+
+		})
+		.on('mouseout', function(d, i) {
+			let circle = d3.select(this);
+			let parent = d3.select(this.parentNode);
+
+			circle.transition()
+					.duration(CIRCLE_ANIM_DURATION)
+					.attr('r', SMALL_CIRCLE);
+
+			parent.selectAll('text').remove();
+		});
+	}
+
+	renderTopology() {
+		let countries = topojson.feature(this.topology, this.topology.objects.countries).features;
+
+		this.svg.append('g')
+				.attr('id', 'topology')
+				.selectAll('path')
+				.data(countries)
+				.enter()
+					.append('path')
+					.attr('d', this.path)
+					.attr('class', 'country');
+	}
 }
 
-function buildTopology(topology, svg) {
-	let countries = topojson.feature(topology, topology.objects.countries).features;
+export default function(id, dataPath, topoPath, width, height) {
+	d3.json(topoPath, (error, world) => {
+		if (error) window.alert('Could not load topology');
 
-	svg.append('g')
-		.attr('id', 'topology')
-		.selectAll('path')
-		.data(countries)
-		.enter()
-			.append('path')
-			.attr('d', path)
-			.attr('class', 'country');
+		d3.json(dataPath, (error, data) => {
+			if (error) window.alert('Could not load temperatures');
+
+			return new TemeraturesMap(id, data, world, width, height);
+		})
+	})
 }
