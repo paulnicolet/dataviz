@@ -23,22 +23,28 @@ class Slider {
 						.range([0, this.width])
 						.clamp(true);
 
+		// Define event handlers
+		this.handlers = [];
+
 		// Render elements
 		this.renderAxis();
 		this.renderSlider();
 	}
 
 	renderSlider() {
-		// TODO error here on brushing
+		// Define brush
 		let brush = d3.brushX()
-					.on('brush', () => console.log('BRUSHED'));
+						.handleSize(1)
+						.on('brush', () => this.brushed(this));
 
 		let slider = this.svg.append('g')
 							.attr('class', 'slider')
 							.call(brush);
 
+		slider.selectAll('.selection,.handle').remove();
+
 		let handle = slider.append('g')
-							.attr('class', 'slider-handle');
+							.attr('id', 'slider-handle');
 
 		handle.append('path')
 				.attr('transform', `translate(0, ${this.height / 2})`)
@@ -61,6 +67,40 @@ class Slider {
 				.attr('class', 'x axis')
 				.attr('transform', `translate(0, ${this.height / 2})`)
 				.call(axis);
+	}
+
+	brushed(instance) {
+		let handle = d3.select('#slider-handle');
+		let lastLeft = handle.attr('lastLeft');
+		let lastRight = handle.attr('lastRight');
+
+		if (lastLeft != null && lastRight != null) {
+			let newX = 0;
+			if (lastLeft == d3.event.selection[0]) {
+				newX = d3.event.selection[1];
+			} else {
+				newX = d3.event.selection[0];
+			}
+
+			// Scale to get corresponding year
+			let year = new Date(this.scale.invert(newX).getFullYear().toString());
+
+			// Clamp handle and translate
+			newX = this.scale(year);
+			handle.attr('transform', `translate(${newX}, 0)`);
+
+			// Call handlers
+			// TODO only if current year changed
+			this.handlers.forEach(f => f(year));
+		}
+
+		handle.attr('lastLeft', d3.event.selection[0])
+				.attr('lastRight', d3.event.selection[1]);
+	}
+
+	// Register handlers
+	moved(handler) {
+		this.handlers.push(handler);
 	}
 }
 
