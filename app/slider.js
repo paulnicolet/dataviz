@@ -31,14 +31,14 @@ class Slider {
 	renderSlider() {
 		// TODO error here on brushing
 		let brush = d3.brushX()
-					.on('brush', console.log('BRUSHED'));
+					.on('brush', () => console.log('BRUSHED'));
 
 		let slider = this.svg.append('g')
 							.attr('class', 'slider')
 							.call(brush);
 
 		let handle = slider.append('g')
-							.attr('class', 'handle');
+							.attr('class', 'slider-handle');
 
 		handle.append('path')
 				.attr('transform', `translate(0, ${this.height / 2})`)
