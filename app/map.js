@@ -67,6 +67,7 @@ function buildTemperatures(data, svg) {
 						.attr('fill', 'black')
 						.attr('font-family', 'Inconsolata')
 						.attr('font-size', 20)
+						.attr('transform', `translate(0, ${-20})`)
 						.text(`${d.City}: ${d.AverageTemperature.toFixed(1)}°`);
 
 			})
