@@ -1,7 +1,17 @@
 import * as d3 from 'd3';
+import buildSlider from './slider';
 import buildMap from './map';
 
-//require('./main.scss');
+require('./main.scss');
+
+// Build time slider
+const SLIDER_ID = 'slider';
+const SLIDER_WIDTH = 900;
+const SLIDER_HEIGHT = 100;
+const START_DATE = new Date('1900');
+const END_DATE = new Date('2017');
+buildSlider(SLIDER_ID, START_DATE, END_DATE, SLIDER_WIDTH, SLIDER_HEIGHT);
+
 
 // Build map
 const MAP_ID = 'map';
