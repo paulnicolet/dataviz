@@ -72,11 +72,9 @@ class TemeraturesMap {
 					.attr('r', LARGE_CIRCLE);
 
 			parent.append('text')
+					.attr('class', 'map-popup')
 					.attr('x', circle.attr('cx'))
 					.attr('y', circle.attr('cy'))
-					.attr('fill', 'black')
-					.attr('font-family', 'Inconsolata')
-					.attr('font-size', LARGE_CIRCLE)
 					.attr('transform', `translate(0, ${-LARGE_CIRCLE})`)
 					.text(`${d.City}: ${d.AverageTemperature.toFixed(1)}°`);
 
