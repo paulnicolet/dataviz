@@ -54,7 +54,11 @@ class Slider {
 
 		handle.append('path')
 				.attr('transform', `translate(0, ${this.height / 2})`)
-				.attr('d', 'M 0 -10 V 10');
+				.attr('d', 'M 0 -15 V 15');
+
+		handle.append('text')
+				.attr('id', 'current-value')
+				.attr('transform', `translate(-15, ${this.height / 2 - 20})`);
 	}
 
 	renderAxis() {
@@ -74,8 +78,10 @@ class Slider {
 	brushed(instance) {
 		let handle = d3.select('#slider-handle');
 
-		// Upon first event, only get selection coordinates
-		if (this.lastLeft == null && this.lastRight == null) {
+		// Upon first event, or new click, reset points
+		let isFirst = (this.lastLeft == null && this.lastRight == null);
+		let isNewSelection = (d3.event.selection[0] != this.lastLeft && d3.event.selection[1] != this.lastRight);
+		if (isFirst || isNewSelection) {
 			this.lastLeft = d3.event.selection[0];
 			this.lastRight = d3.event.selection[1];
 			return;
@@ -100,6 +106,9 @@ class Slider {
 		// Clamp handle and translate
 		pos = this.scale(new Date(year));
 		handle.attr('transform', `translate(${pos}, 0)`);
+
+		// Update text
+		d3.select('#current-value').text(year);
 
 		// Call handlers
 		this.handlers.forEach(f => f(year));
