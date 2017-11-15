@@ -2,12 +2,15 @@ import * as d3 from 'd3';
 
 require('./slider.scss');
 
+const MARGIN = 20;
+
 class Slider {
 	constructor(id, minDate, maxDate, outerWidth, outerHeight) {
 		this.id = id;
 		this.minDate = minDate;
 		this.maxDate = maxDate;
 		this.width = outerWidth;
+		this.sliderWidth = this.width - 2 * MARGIN;
 		this.height = outerHeight;
 
 		// Define container
@@ -15,15 +18,17 @@ class Slider {
 						.attr('width', this.width)
 						.attr('height', this.height);
 
-
 		// Define timescale
 		this.format = d3.timeFormat('%Y');
 		this.scale = d3.scaleTime()
 						.domain([this.minDate, this.maxDate])
-						.range([0, this.width])
+						.range([0, this.sliderWidth])
 						.clamp(true);
 
-		// Define event handlers
+		// Define movement related fields
+		this.lastLeft = null;
+		this.lastRight = null;
+		this.currentYear = null;
 		this.handlers = [];
 
 		// Render elements
@@ -39,6 +44,7 @@ class Slider {
 
 		let slider = this.svg.append('g')
 							.attr('class', 'slider')
+							.attr('transform', `translate(${MARGIN}, 0)`)
 							.call(brush);
 
 		slider.selectAll('.selection,.handle').remove();
@@ -49,10 +55,6 @@ class Slider {
 		handle.append('path')
 				.attr('transform', `translate(0, ${this.height / 2})`)
 				.attr('d', 'M 0 -10 V 10');
-
-		handle.append('text')
-				.attr('transform', `translate(0, ${this.height / 2 - 20})`)
-				.text(this.format(this.minDate));
 	}
 
 	renderAxis() {
@@ -65,37 +67,46 @@ class Slider {
 
 		this.svg.append('g')
 				.attr('class', 'x axis')
-				.attr('transform', `translate(0, ${this.height / 2})`)
+				.attr('transform', `translate(${MARGIN}, ${this.height / 2})`)
 				.call(axis);
 	}
 
 	brushed(instance) {
 		let handle = d3.select('#slider-handle');
-		let lastLeft = handle.attr('lastLeft');
-		let lastRight = handle.attr('lastRight');
 
-		if (lastLeft != null && lastRight != null) {
-			let newX = 0;
-			if (lastLeft == d3.event.selection[0]) {
-				newX = d3.event.selection[1];
-			} else {
-				newX = d3.event.selection[0];
-			}
-
-			// Scale to get corresponding year
-			let year = new Date(this.scale.invert(newX).getFullYear().toString());
-
-			// Clamp handle and translate
-			newX = this.scale(year);
-			handle.attr('transform', `translate(${newX}, 0)`);
-
-			// Call handlers
-			// TODO only if current year changed
-			this.handlers.forEach(f => f(year));
+		// Upon first event, only get selection coordinates
+		if (this.lastLeft == null && this.lastRight == null) {
+			this.lastLeft = d3.event.selection[0];
+			this.lastRight = d3.event.selection[1];
+			return;
 		}
 
-		handle.attr('lastLeft', d3.event.selection[0])
-				.attr('lastRight', d3.event.selection[1]);
+		let pos = 0;
+		if (this.lastLeft == d3.event.selection[0]) {
+			pos = d3.event.selection[1];
+		} else {
+			pos = d3.event.selection[0];
+		}
+
+		// Scale to get corresponding year
+		let year = this.scale.invert(pos).getFullYear().toString();
+
+		// Do not update anything if handle did not move enough
+		if (year == this.currentYear) {
+			return;
+		}
+		this.currentYear = year;
+
+		// Clamp handle and translate
+		pos = this.scale(new Date(year));
+		handle.attr('transform', `translate(${pos}, 0)`);
+
+		// Call handlers
+		this.handlers.forEach(f => f(year));
+
+		// Update current selection
+		this.lastLeft = d3.event.selection[0];
+		this.lastRight = d3.event.selection[1];
 	}
 
 	// Register handlers
