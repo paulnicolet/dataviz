@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "babel-runtime": "latest",
+    "c3": "^0.4.18",
     "d3": "latest",
     "lodash": "latest",
+    "regression": "^2.0.0",
     "topojson": "^3.0.2"
   },
   "devDependencies": {

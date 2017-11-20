@@ -4,7 +4,7 @@ import * as topojson from 'topojson';
 require('./map.scss');
 
 // Circle constants
-const SMALL_CIRCLE = 7;
+const SMALL_CIRCLE = 3;
 const LARGE_CIRCLE = 20;
 const CIRCLE_ANIM_DURATION = '300';
 
@@ -12,11 +12,9 @@ const CIRCLE_ANIM_DURATION = '300';
 const COLD_COLOR = d3.rgb(149, 184, 252, 0.5);
 const HOT_COLOR = d3.rgb(252, 18, 27, 0.5);
 
-class TemeraturesMap {
-	constructor(id, data, topology, outerWidth, outerHeight) {
+class TemperaturesMap {
+	constructor(id, dataPath, topologyPath, outerWidth, outerHeight) {
 		this.id = id;
-		this.data = data;
-		this.topology = topology;
 		this.width = outerWidth;
 		this.height = outerHeight;
 
@@ -29,13 +27,15 @@ class TemeraturesMap {
 		this.projection = d3.geoNaturalEarth1();
 		this.path = d3.geoPath(this.projection);
 
-		// Render elements
-		this.renderTopology();
-		this.renderTemperatures();
+		// Load and display
+		this.init(dataPath, topologyPath);
 	}
 
-	renderTemperatures() {
-		let temperatures = this.data[0]['1900-01-01'];
+	renderTemperatures(year) {
+		// Clean everything up
+		d3.selectAll('circle').remove();
+
+		let temperatures = this.data[year];
 
 		let tempValues = temperatures.map(t => t.AverageTemperature);
 		let minTemp = Math.min(...tempValues);
@@ -72,11 +72,9 @@ class TemeraturesMap {
 					.attr('r', LARGE_CIRCLE);
 
 			parent.append('text')
+					.attr('class', 'map-popup')
 					.attr('x', circle.attr('cx'))
 					.attr('y', circle.attr('cy'))
-					.attr('fill', 'black')
-					.attr('font-family', 'Inconsolata')
-					.attr('font-size', LARGE_CIRCLE)
 					.attr('transform', `translate(0, ${-LARGE_CIRCLE})`)
 					.text(`${d.City}: ${d.AverageTemperature.toFixed(1)}°`);
 
@@ -105,16 +103,28 @@ class TemeraturesMap {
 					.attr('d', this.path)
 					.attr('class', 'country');
 	}
+
+	init(dataPath, topologyPath) {
+		// Load data
+		d3.json(topologyPath, (error, world) => {
+			if (error) window.alert('Could not load topology');
+
+			d3.json(dataPath, (error, data) => {
+				if (error) window.alert('Could not load temperatures');
+
+				this.topology = world;
+				this.data = data;
+
+				// Render elements
+				let minYear = Math.min(...Object.keys(this.data));
+
+				this.renderTopology();
+				this.renderTemperatures(minYear);
+			});
+		});
+	}
 }
 
 export default function(id, dataPath, topoPath, width, height) {
-	d3.json(topoPath, (error, world) => {
-		if (error) window.alert('Could not load topology');
-
-		d3.json(dataPath, (error, data) => {
-			if (error) window.alert('Could not load temperatures');
-
-			return new TemeraturesMap(id, data, world, width, height);
-		})
-	})
+	return new TemperaturesMap(id, dataPath, topoPath, width, height);
 }
