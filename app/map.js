@@ -1,4 +1,5 @@
 import * as d3 from 'd3';
+import * as chrom from  'd3-scale-chromatic';
 import * as topojson from 'topojson';
 
 require('./map.scss');
@@ -7,10 +8,6 @@ require('./map.scss');
 const SMALL_CIRCLE = 3;
 const LARGE_CIRCLE = 20;
 const CIRCLE_ANIM_DURATION = '300';
-
-// Color constants
-const COLD_COLOR = d3.rgb(149, 184, 252, 0.5);
-const HOT_COLOR = d3.rgb(252, 18, 27, 0.5);
 
 class TemperaturesMap {
 	constructor(id, dataPath, topologyPath, outerWidth, outerHeight) {
@@ -37,14 +34,6 @@ class TemperaturesMap {
 
 		let temperatures = this.data[year];
 
-		let tempValues = temperatures.map(t => t.AverageTemperature);
-		let minTemp = Math.min(...tempValues);
-		let maxTemp = Math.max(...tempValues);
-
-		let colorScale = d3.scaleLinear().domain([minTemp, maxTemp])
-						      .interpolate(d3.interpolateHcl)
-						      .range([COLD_COLOR, HOT_COLOR]);
-
 		let newCircle = this.svg.append('g')
 							.attr('id', 'temperatures')
 							.selectAll('g .temperature-group')
@@ -56,7 +45,12 @@ class TemperaturesMap {
 							.attr('cx', d => this.projection([d.Longitude, d.Latitude])[0])
 							.attr('cy', d => this.projection([d.Longitude, d.Latitude])[1])
 							.attr('r', SMALL_CIRCLE)
-							.attr('fill', d => colorScale(d.AverageTemperature));
+							.attr('fill', d => {
+								let c = chrom.interpolateRdYlBu(this.colorScale(d.AverageTemperature));
+								let color = d3.color(c);
+								color.opacity = 0.9;
+								return color;
+							});
 
 		this.animateCircle(newCircle);
 
@@ -112,8 +106,16 @@ class TemperaturesMap {
 			d3.json(dataPath, (error, data) => {
 				if (error) window.alert('Could not load temperatures');
 
+				// Get data
 				this.topology = world;
-				this.data = data;
+				this.data = data.data;
+				this.minTemp = data.min;
+				this.maxTemp = data.max;
+
+				// Create color scale
+				this.colorScale =  d3.scaleLinear()
+									.domain([this.minTemp, this.maxTemp])
+						      		.range([1, 0]);
 
 				// Render elements
 				let minYear = Math.min(...Object.keys(this.data));
