@@ -58,8 +58,9 @@ class TemperaturesMap {
 
 	animateCircle(circle) {
 		circle.on('mouseover', function(d, i) {
+			let group = this.parentNode;
 			let circle = d3.select(this);
-			let parent = d3.select(this.parentNode);
+			let parent = d3.select(group);
 
 			circle.transition()
 					.duration(CIRCLE_ANIM_DURATION)
@@ -72,6 +73,7 @@ class TemperaturesMap {
 					.attr('transform', `translate(0, ${-LARGE_CIRCLE})`)
 					.text(`${d.City}: ${d.AverageTemperature.toFixed(1)}°`);
 
+			group.parentNode.appendChild(group);
 		})
 		.on('mouseout', function(d, i) {
 			let circle = d3.select(this);
