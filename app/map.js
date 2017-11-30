@@ -5,9 +5,14 @@ import * as topojson from 'topojson';
 require('./map.scss');
 
 // Circle constants
+const OPACITY = 0.9;
 const SMALL_CIRCLE = 3;
 const LARGE_CIRCLE = 20;
 const CIRCLE_ANIM_DURATION = '300';
+
+// Legend constants
+const LEGEND_WIDTH = 30;
+const LEGEND_HEIGHT = 20;
 
 class TemperaturesMap {
 	constructor(id, dataPath, topologyPath, outerWidth, outerHeight) {
@@ -48,7 +53,7 @@ class TemperaturesMap {
 							.attr('fill', d => {
 								let c = chrom.interpolateRdYlBu(this.colorScale(d.AverageTemperature));
 								let color = d3.color(c);
-								color.opacity = 0.9;
+								color.opacity = OPACITY;
 								return color;
 							});
 
@@ -100,10 +105,43 @@ class TemperaturesMap {
 					.attr('class', 'country');
 	}
 
+	renderLegend() {
+		let legend = this.svg.append('g')
+						.attr('id', 'map-legend');
+
+		let low = d3.color(chrom.interpolateRdYlBu(1));
+		let high = d3.color(chrom.interpolateRdYlBu(0));
+		low.opacity = OPACITY;
+		high.opacity = OPACITY;
+
+
+		legend.append('rect')
+				.attr('width', LEGEND_WIDTH)
+				.attr('height', LEGEND_HEIGHT)
+				.style('fill', low);
+
+		legend.append('rect')
+				.attr('width', LEGEND_WIDTH)
+				.attr('height', LEGEND_HEIGHT)
+				.attr('transform', `translate(0, ${(3/2) * LEGEND_HEIGHT})`)
+				.style('fill', high);
+
+		legend.append('text')
+				.text(`${this.minTemp.toFixed(1)}°`)
+				.attr('class', 'map-legend-text')
+				.attr('transform', `translate(${LEGEND_WIDTH + 5}, ${LEGEND_HEIGHT - 5})`);
+
+		legend.append('text')
+				.text(`${this.maxTemp.toFixed(1)}°`)
+				.attr('class', 'map-legend-text')
+				.attr('transform', `translate(${LEGEND_WIDTH + 5}, ${(5/2) * LEGEND_HEIGHT - 5})`);
+
+	}
+
 	init(dataPath, topologyPath) {
 		// Load data
 		d3.json(topologyPath, (error, world) => {
-			if (error) window.alert('Could not load topology');
+			//if (error) window.alert('Could not load topology');
 
 			d3.json(dataPath, (error, data) => {
 				if (error) window.alert('Could not load temperatures');
@@ -122,7 +160,8 @@ class TemperaturesMap {
 				// Render elements
 				let minYear = Math.min(...Object.keys(this.data));
 
-				this.renderTopology();
+				//this.renderTopology();
+				this.renderLegend();
 				this.renderTemperatures(minYear);
 			});
 		});

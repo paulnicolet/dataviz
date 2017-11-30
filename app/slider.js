@@ -66,7 +66,7 @@ class Slider {
 						.scale(this.scale)
 						.tickFormat(t => this.format(t))
 						.tickSize(0)
-						.tickPadding(12)
+						.tickPadding(20)
 						.tickValues([this.scale.domain()[0], this.scale.domain()[1]]);
 
 		this.svg.append('g')

@@ -7,7 +7,7 @@ require('./main.scss');
 
 // Build time slider
 const SLIDER_ID = 'slider';
-const SLIDER_WIDTH = 900;
+const SLIDER_WIDTH = 400;
 const SLIDER_HEIGHT = 100;
 const START_DATE = new Date('1745');
 const END_DATE = new Date('2013');
@@ -30,5 +30,5 @@ const COUNTRY_TIME_SERIES_PATH = './data/country_temp_from_1850-01-01_step_1y.js
 const GLOBAL_TIME_SERIES_PATH = './data/glob_temp_from_1850-01-01_step_1y.json';
 const COUNTRY_TIME_SERIES_WIDTH = 900;
 const COUNTRY_TIME_SERIES_HEIGHT = 600;
-buildCountryTimeSeries(COUNTRY_TIME_SERIES_ID, COUNTRY_TIME_SERIES_PATH, 
+buildCountryTimeSeries(COUNTRY_TIME_SERIES_ID, COUNTRY_TIME_SERIES_PATH,
 	GLOBAL_TIME_SERIES_PATH, COUNTRY_TIME_SERIES_WIDTH, COUNTRY_TIME_SERIES_HEIGHT);
