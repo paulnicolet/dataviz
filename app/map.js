@@ -13,6 +13,7 @@ const CIRCLE_ANIM_DURATION = '300';
 // Legend constants
 const LEGEND_WIDTH = 30;
 const LEGEND_HEIGHT = 20;
+const CORNER_RADIUS = 10;
 
 class TemperaturesMap {
 	constructor(id, dataPath, topologyPath, outerWidth, outerHeight) {
@@ -118,11 +119,15 @@ class TemperaturesMap {
 		legend.append('rect')
 				.attr('width', LEGEND_WIDTH)
 				.attr('height', LEGEND_HEIGHT)
+				.attr('rx', CORNER_RADIUS)
+				.attr('ry', CORNER_RADIUS)
 				.style('fill', low);
 
 		legend.append('rect')
 				.attr('width', LEGEND_WIDTH)
 				.attr('height', LEGEND_HEIGHT)
+				.attr('rx', CORNER_RADIUS)
+				.attr('ry', CORNER_RADIUS)
 				.attr('transform', `translate(0, ${(3/2) * LEGEND_HEIGHT})`)
 				.style('fill', high);
 
@@ -141,7 +146,7 @@ class TemperaturesMap {
 	init(dataPath, topologyPath) {
 		// Load data
 		d3.json(topologyPath, (error, world) => {
-			//if (error) window.alert('Could not load topology');
+			if (error) window.alert('Could not load topology');
 
 			d3.json(dataPath, (error, data) => {
 				if (error) window.alert('Could not load temperatures');
@@ -160,7 +165,7 @@ class TemperaturesMap {
 				// Render elements
 				let minYear = Math.min(...Object.keys(this.data));
 
-				//this.renderTopology();
+				this.renderTopology();
 				this.renderLegend();
 				this.renderTemperatures(minYear);
 			});

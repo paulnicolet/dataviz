@@ -17,7 +17,7 @@ let slider = buildSlider(SLIDER_ID, START_DATE, END_DATE, SLIDER_WIDTH, SLIDER_H
 const MAP_ID = 'map';
 const MAP_WIDTH = 900;
 const MAP_HEIGHT = 600;
-const WORLD_TOPOJSON_PATH = 'https://unpkg.com/world-atlas@1/world/110m.json';
+const WORLD_TOPOJSON_PATH = './data/110m.json';
 const TEMPERATURES_PATH = './data/temp_city_all.json';
 let map = buildMap(MAP_ID, TEMPERATURES_PATH, WORLD_TOPOJSON_PATH, MAP_WIDTH, MAP_HEIGHT, slider);
 
