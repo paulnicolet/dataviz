@@ -13,6 +13,15 @@ let fake_data = {
 						'population': 60000000,
 						'temperature': 20,
 						'variation': 3
+					},
+
+				'USA':
+					{
+						'country': 'USA',
+						'gdp': 10000,
+						'population': 100000000,
+						'temperature': 17,
+						'variation': 3
 					}
 			},
 
@@ -20,9 +29,18 @@ let fake_data = {
 				'France':
 					{
 						'country': 'France',
-						'gdp': 8000,
+						'gdp': 800,
 						'population': 6000000,
 						'temperature': 10,
+						'variation': 3
+					},
+
+				'USA':
+					{
+						'country': 'USA',
+						'gdp': 80000,
+						'population': 500000000,
+						'temperature': 3,
 						'variation': 3
 					}
 			}
