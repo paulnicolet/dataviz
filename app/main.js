@@ -38,5 +38,5 @@ buildCountryTimeSeries(COUNTRY_TIME_SERIES_ID, COUNTRY_TIME_SERIES_PATH,
 // Build bubble chart
 const BUBBLE_CHART_ID = 'bubbles';
 const BUBBLE_CHART_WIDTH = 900;
-const BUBBLE_CHART_HEIGHT = 600;
+const BUBBLE_CHART_HEIGHT = 400;
 let bubbles = buildBubbleChart(BUBBLE_CHART_ID, BUBBLE_CHART_WIDTH, BUBBLE_CHART_HEIGHT);

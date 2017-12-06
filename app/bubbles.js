@@ -1,8 +1,32 @@
 import * as d3 from 'd3';
 
 const MIN_RADIUS = 5;
-const MAX_RADIUS = 20;
+const MAX_RADIUS = 50;
 const MARGIN = {top: 20, right: 20, bottom: 20, left: 50};
+
+let fake_data = {
+			2000: {
+				'France':
+					{
+						'country': 'France',
+						'gdp': 80000,
+						'population': 60000000,
+						'temperature': 20,
+						'variation': 3
+					}
+			},
+
+			2001: {
+				'France':
+					{
+						'country': 'France',
+						'gdp': 8000,
+						'population': 6000000,
+						'temperature': 10,
+						'variation': 3
+					}
+			}
+		};
 
 class BubbleChart {
 	constructor(id, outerWidth, outerHeight) {
@@ -26,7 +50,7 @@ class BubbleChart {
 
 		// xScale for GDP
 		this.xScale = d3.scaleLog()
-						.domain([0, 150000])
+						.domain([10e-6, 150000])
 						.range([0, this.width]);
 
 		// yScale for temperatures
@@ -44,6 +68,38 @@ class BubbleChart {
 
 		// Render chart
 		this.renderAxis();
+		this.renderBubbles();
+
+		let button = document.getElementById('button3');
+        button.addEventListener('click', () => {
+            this.animateBubbles(2001);
+        });
+	}
+
+	animateBubbles(year) {
+		let data = fake_data[year];
+
+		d3.selectAll('.bubble')
+			.transition()
+			.duration(2000)
+			.attr('cx', d => this.xScale(data[d.country].gdp))
+			.attr('cy', d => this.yScale(data[d.country].temperature))
+			.attr('r', d => this.radiusScale(data[d.country].population));
+	}
+
+	renderBubbles(year) {
+		let data = Object.values(fake_data[2000]);
+
+		let newCircle = this.svg.append('g')
+							.attr('id', 'bubbles')
+							.selectAll('bubble')
+							.data(data)
+							.enter()
+							.append('circle')
+							.attr('class', 'bubble')
+							.attr('cx', d => this.xScale(d.gdp))
+							.attr('cy', d => this.yScale(d.temperature))
+							.attr('r', d => this.radiusScale(d.population));
 	}
 
 	renderAxis() {
