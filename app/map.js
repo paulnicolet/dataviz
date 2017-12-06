@@ -4,6 +4,8 @@ import * as topojson from 'topojson';
 
 require('./map.scss');
 
+const MARGIN = {top: 20, bottom: 20, left: 20, right: 20};
+
 // Circle constants
 const OPACITY = 0.9;
 const SMALL_CIRCLE = 3;
@@ -18,13 +20,15 @@ const CORNER_RADIUS = 10;
 class TemperaturesMap {
 	constructor(id, dataPath, topologyPath, outerWidth, outerHeight) {
 		this.id = id;
-		this.width = outerWidth;
-		this.height = outerHeight;
+		this.width = outerWidth - MARGIN.left - MARGIN.right;
+		this.height = outerHeight - MARGIN.top - MARGIN.bottom;
 
 		// Define container
 		this.svg = d3.select(`#${this.id}`).append('svg')
-						.attr('width', this.width)
-						.attr('height', this.height);
+						.attr('width', outerWidth)
+						.attr('height', outerHeight)
+						.append('g')
+						.attr('transform', `translate(${MARGIN.left}, ${MARGIN.top})`);
 
 		// Define projection and path
 		this.projection = d3.geoNaturalEarth1();
