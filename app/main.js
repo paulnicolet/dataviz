@@ -2,6 +2,7 @@ import * as d3 from 'd3';
 import buildSlider from './slider';
 import buildMap from './map';
 import buildCountryTimeSeries from './country_time_series';
+import buildBubbleChart from './bubbles';
 
 require('./main.scss');
 
@@ -24,7 +25,7 @@ let map = buildMap(MAP_ID, TEMPERATURES_PATH, WORLD_TOPOJSON_PATH, MAP_WIDTH, MA
 // Register with slider
 slider.moved(year => map.renderTemperatures(year));
 
-// build time series
+// Build time series
 const COUNTRY_TIME_SERIES_ID = 'country_time_series';
 const COUNTRY_TIME_SERIES_PATH = './data/country_temp_from_1850-01-01_step_1y.json';
 const GLOBAL_TIME_SERIES_PATH = './data/glob_temp_from_1850-01-01_step_1y.json';
@@ -32,3 +33,10 @@ const COUNTRY_TIME_SERIES_WIDTH = 900;
 const COUNTRY_TIME_SERIES_HEIGHT = 600;
 buildCountryTimeSeries(COUNTRY_TIME_SERIES_ID, COUNTRY_TIME_SERIES_PATH,
 	GLOBAL_TIME_SERIES_PATH, COUNTRY_TIME_SERIES_WIDTH, COUNTRY_TIME_SERIES_HEIGHT);
+
+
+// Build bubble chart
+const BUBBLE_CHART_ID = 'bubbles';
+const BUBBLE_CHART_WIDTH = 900;
+const BUBBLE_CHART_HEIGHT = 600;
+let bubbles = buildBubbleChart(BUBBLE_CHART_ID, BUBBLE_CHART_WIDTH, BUBBLE_CHART_HEIGHT);
