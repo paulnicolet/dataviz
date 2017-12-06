@@ -40,7 +40,7 @@ class TemperaturesMap {
 
 	renderTemperatures(year) {
 		// Clean everything up
-		d3.selectAll('circle').remove();
+		d3.selectAll('.temperature-group').remove();
 
 		let temperatures = this.data[year];
 
