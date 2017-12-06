@@ -45,7 +45,6 @@ class Slider {
 
 		let slider = this.svg.append('g')
 							.attr('class', 'slider')
-							.attr('transform', `translate(${MARGIN}, 0)`)
 							.call(brush);
 
 		slider.selectAll('.selection,.handle').remove();
