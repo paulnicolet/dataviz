@@ -4,6 +4,8 @@ import * as topojson from 'topojson';
 
 require('./map.scss');
 
+const MARGIN = {top: 20, bottom: 20, left: 20, right: 20};
+
 // Circle constants
 const OPACITY = 0.9;
 const SMALL_CIRCLE = 3;
@@ -13,17 +15,20 @@ const CIRCLE_ANIM_DURATION = '300';
 // Legend constants
 const LEGEND_WIDTH = 30;
 const LEGEND_HEIGHT = 20;
+const CORNER_RADIUS = 10;
 
 class TemperaturesMap {
 	constructor(id, dataPath, topologyPath, outerWidth, outerHeight) {
 		this.id = id;
-		this.width = outerWidth;
-		this.height = outerHeight;
+		this.width = outerWidth - MARGIN.left - MARGIN.right;
+		this.height = outerHeight - MARGIN.top - MARGIN.bottom;
 
 		// Define container
 		this.svg = d3.select(`#${this.id}`).append('svg')
-						.attr('width', this.width)
-						.attr('height', this.height);
+						.attr('width', outerWidth)
+						.attr('height', outerHeight)
+						.append('g')
+						.attr('transform', `translate(${MARGIN.left}, ${MARGIN.top})`);
 
 		// Define projection and path
 		this.projection = d3.geoNaturalEarth1();
@@ -35,7 +40,7 @@ class TemperaturesMap {
 
 	renderTemperatures(year) {
 		// Clean everything up
-		d3.selectAll('circle').remove();
+		d3.selectAll('.temperature-group').remove();
 
 		let temperatures = this.data[year];
 
@@ -118,11 +123,15 @@ class TemperaturesMap {
 		legend.append('rect')
 				.attr('width', LEGEND_WIDTH)
 				.attr('height', LEGEND_HEIGHT)
+				.attr('rx', CORNER_RADIUS)
+				.attr('ry', CORNER_RADIUS)
 				.style('fill', low);
 
 		legend.append('rect')
 				.attr('width', LEGEND_WIDTH)
 				.attr('height', LEGEND_HEIGHT)
+				.attr('rx', CORNER_RADIUS)
+				.attr('ry', CORNER_RADIUS)
 				.attr('transform', `translate(0, ${(3/2) * LEGEND_HEIGHT})`)
 				.style('fill', high);
 
@@ -141,7 +150,7 @@ class TemperaturesMap {
 	init(dataPath, topologyPath) {
 		// Load data
 		d3.json(topologyPath, (error, world) => {
-			//if (error) window.alert('Could not load topology');
+			if (error) window.alert('Could not load topology');
 
 			d3.json(dataPath, (error, data) => {
 				if (error) window.alert('Could not load temperatures');
@@ -160,7 +169,7 @@ class TemperaturesMap {
 				// Render elements
 				let minYear = Math.min(...Object.keys(this.data));
 
-				//this.renderTopology();
+				this.renderTopology();
 				this.renderLegend();
 				this.renderTemperatures(minYear);
 			});

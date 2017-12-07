@@ -2,27 +2,28 @@ import * as d3 from 'd3';
 
 require('./slider.scss');
 
-const MARGIN = 20;
+const MARGIN = {top: 20, bottom: 20, left: 30, right: 30};
 
 class Slider {
 	constructor(id, minDate, maxDate, outerWidth, outerHeight) {
 		this.id = id;
 		this.minDate = minDate;
 		this.maxDate = maxDate;
-		this.width = outerWidth;
-		this.sliderWidth = this.width - 2 * MARGIN;
-		this.height = outerHeight;
+		this.width = outerWidth - MARGIN.left - MARGIN.right;
+		this.height = outerHeight - MARGIN.top - MARGIN.bottom;
 
 		// Define container
 		this.svg = d3.select(`#${id}`).append('svg')
-						.attr('width', this.width)
-						.attr('height', this.height);
+						.attr('width', outerWidth)
+						.attr('height', outerHeight)
+						.append('g')
+						.attr('transform', `translate(${MARGIN.left}, ${MARGIN.top})`);
 
 		// Define timescale
 		this.format = d3.timeFormat('%Y');
 		this.scale = d3.scaleTime()
 						.domain([this.minDate, this.maxDate])
-						.range([0, this.sliderWidth])
+						.range([0, this.width])
 						.clamp(true);
 
 		// Define movement related fields
@@ -44,7 +45,6 @@ class Slider {
 
 		let slider = this.svg.append('g')
 							.attr('class', 'slider')
-							.attr('transform', `translate(${MARGIN}, 0)`)
 							.call(brush);
 
 		slider.selectAll('.selection,.handle').remove();
@@ -71,7 +71,7 @@ class Slider {
 
 		this.svg.append('g')
 				.attr('class', 'x axis')
-				.attr('transform', `translate(${MARGIN}, ${this.height / 2})`)
+				.attr('transform', `translate(0, ${this.height / 2})`)
 				.call(axis);
 	}
 
