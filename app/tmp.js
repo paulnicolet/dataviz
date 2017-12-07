@@ -2,18 +2,13 @@ import * as d3 from 'd3';
 import * as c3 from 'c3';
 import * as reg from 'regression';
 import * as topojson from 'topojson';
-import * as autocomplete from 'js-autocomplete';
-import * as mat from 'materialize-css';
-import $ from 'jquery';
 
 require('./country_time_series.scss');
 require('./c3.css');
-//require('js-autocomplete/auto-complete.min.js')
 
 
 class CountryTimeSeries {
     constructor(id, dataCountry, dataGlobal, width, height) {
-
         this.id = id;
         this.dataCountry = dataCountry;
         this.dataGlobal = dataGlobal;
@@ -24,41 +19,30 @@ class CountryTimeSeries {
         this.displayedData = []
         this.chart = null;
 
-        this.zeroMeanButton = document.getElementById('zeroMean');
-        this.resetCountryButton = document.getElementById('resetCountry');
-
         var self = this;
 
         this.initChart();
 
-        this.initAutocomplete();
+        setTimeout(() => {
+            this.addCountryTemp('Europe', self);
+        }, 1000);
 
-        this.resetCountryButton.addEventListener('click', () => {
-            this.chart.unload({
-                ids: this.displayedData,
-                done: () => {
-                    this.displayedCountry = []
-                    this.displayedData = []
 
-                    this.addCountryTemp('World', self);
+        setTimeout(function() {
+            self.addCountryTemp('Asia', self);
+        }, 2000);
 
-                    this.zeroMeanButton.disabled = false;
-                }
-            });
 
+
+        var button = document.getElementById('button2');
+        button.addEventListener('click', function() {
+            self.chart.unload(self.displayedCountry);
         });
 
-        this.zeroMeanButton.addEventListener('click', () => {
-
-            this.zeroMeanButton.disabled = true;
-            this.resetCountryButton.disabled = true;
-
-            var toUnload = this.displayedData.slice()
-            toUnload.push('World');
-            toUnload.push('Reg_World');
+        var button1 = document.getElementById('button1');
+        button1.addEventListener('click', function() {
 
             self.displayedCountry.push('World');
-            this.displayedData = []
             var columns = [];
 
             var xs = {};
@@ -72,10 +56,6 @@ class CountryTimeSeries {
                 var countryName = self.displayedCountry[i] + endWord;
                 var countryDatesName = 'dates_' + countryName;
                 var regCountryName = 'Reg_' + countryName;
-
-                this.displayedData.push(countryName);
-                this.displayedData.push(countryDatesName);
-                this.displayedData.push(regCountryName);
 
                 var dates = [];
                 dates.push(countryDatesName);
@@ -102,15 +82,17 @@ class CountryTimeSeries {
                 self.prepareDataAttributes(self, countryName, countryDatesName, regCountryName, xs, types, colors);
             }
 
+
+            self.displayedData.push('World');
+            self.displayedData.push('Reg_World');
+
             self.chart.load({
                 xs: xs,
                 types: types,
                 colors: colors,
                 columns: columns,
-                unload: toUnload,
+                unload: self.displayedData,
             });
-
-            this.resetCountryButton.disabled = false;
         });
 
     }
@@ -140,7 +122,7 @@ class CountryTimeSeries {
         return result;
     }
 
-    resetGraphData() {
+    initChart() {
 
         var worldData = this.dataGlobal.World;
 
@@ -151,31 +133,24 @@ class CountryTimeSeries {
         var fin = [];
         fin.push('Reg_World');
 
-        this.displayedData.push('dates_World');
-        this.displayedData.push('World');
-        this.displayedData.push('Reg_World');
-
         this.computeCountryPointsAndAxisAndReg(worldData, val, dates, fin);
 
-        return [dates, val, fin];
-    }
-
-    initChart() {
-
-        var worldColor = this.getRandomColor('World');
-
-        this.chart = c3.generate({
+        var ch = c3.generate({
             bindto: `#${this.id}`,
             data: {
                 x: 'dates_World',
-                columns: this.resetGraphData(),
+                columns: [
+                    dates,
+                    val,
+                    fin,
+                ],
                 types: {
                     World: 'scatter',
                     Reg_World: 'spline'
                 },
                 colors: {
-                    World: worldColor,
-                    Reg_World: worldColor,
+                    World: '#ff0000',
+                    Reg_World: '#ff0000',
 
                 },
             },
@@ -199,58 +174,14 @@ class CountryTimeSeries {
             }
             */
         });
-    }
 
-    initAutocomplete() {
+        this.chart = ch;
 
-        console.log(document.getElementsByClassName('autocomplete'))
-
-        console.log(autocomplete)
-
-        console.log(c3)
-
-        console.log(mat)
-
-        console.log($)
-
-        var a = new autocomplete.autocomplete({
-            selector: '#autocompleteInput',
-            minChars: 2,
-            source: function(term, suggest) {
-                term = term.toLowerCase();
-                var choices = ['ActionScript', 'AppleScript', 'Asp'];
-                var matches = [];
-                for (i = 0; i < choices.length; i++)
-                    if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
-                suggest(matches);
-            }
-        });
-
-        console.log(a)
-        /*
-                document.getElementsByClassName('autocomplete').autocomplete({
-                    data: {
-                        "Apple": 'bob',
-                        "Microsoft": 'ada',
-                        "Google": 'https://placehold.it/250x250'
-                    },
-                    limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
-                    onAutocomplete: function(val) {
-                        console.log(val)
-                    },
-                    minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
-                });
-                */
     }
 
     addCountryTemp(countryName, self) {
 
-        var countryData = null;
-        if (countryName == 'World') {
-            countryData = self.dataGlobal.World;
-        } else {
-            countryData = self.dataCountry[countryName];
-        }
+        var countryData = self.dataCountry[countryName];
         var countryDatesName = 'dates_' + countryName;
         var regCountryName = 'Reg_' + countryName;
 
@@ -303,14 +234,12 @@ class CountryTimeSeries {
         types[countryName] = 'scatter';
         types[regCountryName] = 'spline';
 
-        var color = self.getRandomColor(countryName);
+        var color = self.getRandomColor();
         colors[countryName] = color;
         colors[regCountryName] = color;
     }
 
     loadData(self, countryName, countryDatesName, regCountryName, countryPoints, countryDates, regCountryLine, xs, types, colors) {
-
-
 
         self.chart.load({
             xs: xs,
@@ -329,25 +258,12 @@ class CountryTimeSeries {
         self.displayedData.push(regCountryName);
     }
 
-    getRandomColor(countryName) {
-
-        var tmp = countryName.split('_')
-
-        var seed = 0;
-        for (var i = 0, len = tmp[0].length; i < len; i++) {
-            seed += tmp[0].charAt(i).charCodeAt(0);
-        }
-
-        console.log(seed)
-
+    getRandomColor() {
         var letters = '0123456789ABCDEF';
         var color = '#';
         for (var i = 0; i < 6; i++) {
-            color += letters[((i + 1) * seed) % 16];
+            color += letters[Math.floor(Math.random() * 16)];
         }
-
-        console.log(color)
-
         return color;
     }
 }
