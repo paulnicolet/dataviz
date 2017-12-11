@@ -2,14 +2,9 @@ import * as d3 from 'd3';
 import * as c3 from 'c3';
 import * as reg from 'regression';
 import * as topojson from 'topojson';
-import * as autocomplete from 'js-autocomplete';
-import * as mat from 'materialize-css';
-import $ from 'jquery';
 
 require('./country_time_series.scss');
 require('./c3.css');
-//require('js-autocomplete/auto-complete.min.js')
-
 
 class CountryTimeSeries {
     constructor(id, dataCountry, dataGlobal, width, height) {
@@ -205,13 +200,7 @@ class CountryTimeSeries {
 
         console.log(document.getElementsByClassName('autocomplete'))
 
-        console.log(autocomplete)
-
         console.log(c3)
-
-        console.log(mat)
-
-        console.log($)
 
         var a = new autocomplete.autocomplete({
             selector: '#autocompleteInput',
