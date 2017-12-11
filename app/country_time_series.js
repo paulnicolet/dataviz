@@ -4,7 +4,7 @@ import * as reg from 'regression';
 import 'materialize-css';
 
 require('./country_time_series.scss');
-require('./c3.css');
+require('./css/c3.css');
 
 class CountryTimeSeries {
     constructor(id, dataCountry, dataGlobal, width, height) {
