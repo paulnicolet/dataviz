@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
 import * as c3 from 'c3';
 import * as reg from 'regression';
-import * as topojson from 'topojson';
+import 'materialize-css';
 
 require('./country_time_series.scss');
 require('./c3.css');
@@ -197,39 +197,18 @@ class CountryTimeSeries {
     }
 
     initAutocomplete() {
-
-        console.log(document.getElementsByClassName('autocomplete'))
-
-        console.log(c3)
-
-        var a = new autocomplete.autocomplete({
-            selector: '#autocompleteInput',
-            minChars: 2,
-            source: function(term, suggest) {
-                term = term.toLowerCase();
-                var choices = ['ActionScript', 'AppleScript', 'Asp'];
-                var matches = [];
-                for (i = 0; i < choices.length; i++)
-                    if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
-                suggest(matches);
-            }
+        $('input.autocomplete').autocomplete({
+            data: {
+                "Apple": 'bob',
+                "Microsoft": 'ada',
+                "Google": 'https://placehold.it/250x250'
+            },
+            limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+            onAutocomplete: function(val) {
+                console.log(val)
+            },
+            minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
         });
-
-        console.log(a)
-        /*
-                document.getElementsByClassName('autocomplete').autocomplete({
-                    data: {
-                        "Apple": 'bob',
-                        "Microsoft": 'ada',
-                        "Google": 'https://placehold.it/250x250'
-                    },
-                    limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
-                    onAutocomplete: function(val) {
-                        console.log(val)
-                    },
-                    minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
-                });
-                */
     }
 
     addCountryTemp(countryName, self) {
