@@ -4,9 +4,12 @@ const MIN_RADIUS = 5;
 const MAX_RADIUS = 50;
 const MARGIN = {top: 20, right: 20, bottom: 20, left: 50};
 
+const MOTION_DURATION = 1000;
+
 class BubbleChart {
-	constructor(id, outerWidth, outerHeight) {
+	constructor(id, dataPath, outerWidth, outerHeight) {
 		this.id = id;
+		this.dataPath = dataPath;
 		this.width = outerWidth - MARGIN.left - MARGIN.right;
 		this.height = outerHeight - MARGIN.top - MARGIN.bottom;
 
@@ -42,22 +45,15 @@ class BubbleChart {
 		// TODO temperature variation scale for color
 		// Convert to color using chromatic (see map.js)
 
-		d3.json('./data/final.min.json', (error, data) => {
+		d3.json(this.dataPath, (error, data) => {
 			if (error) window.alert('Could not load bubble data');
 
 			self.data = data;
 
 			// Render chart
 			this.renderAxis();
-			this.renderBubbles(2000);
+			this.renderBubbles(1976);
 		});
-
-
-		let button = document.getElementById('button3');
-        button.addEventListener('click', () => {
-            this.animateBubbles(2001);
-        });
-
 	}
 
 	animateBubbles(year) {
@@ -65,7 +61,7 @@ class BubbleChart {
 
 		d3.selectAll('.bubble')
 			.transition()
-			.duration(1000)
+			.duration(MOTION_DURATION)
 			.attr('cx', d => this.xScale(data[d.country].gdp))
 			.attr('cy', d => this.yScale(data[d.country].temperature))
 			.attr('r', d => this.radiusScale(data[d.country].population));
@@ -83,13 +79,7 @@ class BubbleChart {
 							.attr('class', 'bubble')
 							.attr('cx', d => this.xScale(d.gdp))
 							.attr('cy', d => this.yScale(d.temperature))
-							.attr('r', d => {
-								if (isNaN(this.radiusScale(d.population))) {
-									console.log(d);
-								}
-
-								return this.radiusScale(d.population);
-							});
+							.attr('r', d => this.radiusScale(d.population));
 	}
 
 	renderAxis() {
@@ -112,6 +102,6 @@ class BubbleChart {
 }
 
 
-export default function(id, width, height) {
-	return new BubbleChart(id, width, height);
+export default function(id, dataPath, width, height) {
+	return new BubbleChart(id, dataPath, width, height);
 }
