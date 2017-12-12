@@ -67,7 +67,8 @@ class BubbleChart {
 			.duration(MOTION_DURATION)
 			.attr('cx', d => this.xScale(data[d.country].gdp))
 			.attr('cy', d => this.yScale(data[d.country].temperature))
-			.attr('r', d => this.radiusScale(data[d.country].population));
+			.attr('r', d => this.radiusScale(data[d.country].population))
+			.style("fill", () => `hsl(${Math.random() * 360},100%,50%)`);
 	}
 
 	renderBubbles(year) {
@@ -82,7 +83,8 @@ class BubbleChart {
 							.attr('class', 'bubble')
 							.attr('cx', d => this.xScale(d.gdp))
 							.attr('cy', d => this.yScale(d.temperature))
-							.attr('r', d => this.radiusScale(d.population));
+							.attr('r', d => this.radiusScale(d.population))
+							.style("fill", () => `hsl(${Math.random() * 360}, 100%, 50%)`);
 
 		newCircle.on('mouseover', (d, i) => {
 			d3.select(`#${this.detailsId} #country`).html(d.country);
