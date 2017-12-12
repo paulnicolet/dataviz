@@ -31,7 +31,10 @@ class TemperaturesMap {
 						.attr('transform', `translate(${MARGIN.left}, ${MARGIN.top})`);
 
 		// Define projection and path
-		this.projection = d3.geoNaturalEarth1();
+		this.projection = d3.geoNaturalEarth1()
+							.scale((this.width/640)*100)
+							.translate([this.width/2, this.height/2]);
+
 		this.path = d3.geoPath(this.projection);
 
 		// Load and display
@@ -167,13 +170,36 @@ class TemperaturesMap {
 						      		.range([1, 0]);
 
 				// Render elements
-				let minYear = Math.min(...Object.keys(this.data));
+				this.minYear = Math.min(...Object.keys(this.data));
 
 				this.renderTopology();
 				this.renderLegend();
-				this.renderTemperatures(minYear);
+				this.renderTemperatures(this.minYear);
 			});
 		});
+	}
+
+	resize(outerWidth, outerHeight) {
+		this.width = outerWidth - MARGIN.left - MARGIN.right;
+		this.height = outerHeight - MARGIN.top - MARGIN.bottom;
+
+		// Define container
+		this.svg = d3.select(`#${this.id}`).append('svg')
+						.attr('width', outerWidth)
+						.attr('height', outerHeight)
+						.append('g')
+						.attr('transform', `translate(${MARGIN.left}, ${MARGIN.top})`);
+
+		// Define projection and path
+		this.projection = d3.geoNaturalEarth1()
+							.scale((this.width/640)*100)
+							.translate([this.width/2, this.height/2]);
+
+		this.path = d3.geoPath(this.projection);
+
+		this.renderTopology();
+		this.renderLegend();
+		this.renderTemperatures(this.minYear);
 	}
 }
 

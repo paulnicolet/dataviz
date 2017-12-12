@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
 
-const MIN_RADIUS = 5;
-const MAX_RADIUS = 50;
+const MIN_RADIUS_WIDTH_RATIO = 1/200;
+const MAX_RADIUS_WIDTH_RATIO = 1/25;
 const MARGIN = {top: 20, right: 20, bottom: 20, left: 50};
 
 const MOTION_DURATION = 1000;
@@ -43,7 +43,7 @@ class BubbleChart {
 		// radiusScale for population
 		this.radiusScale = d3.scaleLinear()
 								.domain([0, 600000])
-								.range([MIN_RADIUS, MAX_RADIUS]);
+								.range([MIN_RADIUS_WIDTH_RATIO * this.width, MAX_RADIUS_WIDTH_RATIO * this.width]);
 
 		// TODO temperature variation scale for color
 		// Convert to color using chromatic (see map.js)
@@ -119,6 +119,37 @@ class BubbleChart {
 		this.svg.append('g')
 					.attr('class', 'y axis')
 					.call(yAxis);
+	}
+
+	resize(outerWidth, outerHeight) {
+		this.width = outerWidth - MARGIN.left - MARGIN.right;
+		this.height = outerHeight - MARGIN.top - MARGIN.bottom;
+
+		// Define container
+		this.svg = d3.select(`#${this.id}`).append('svg')
+						.attr('width', outerWidth)
+						.attr('height', outerHeight)
+						.append('g')
+						.attr('transform', `translate(${MARGIN.left}, ${MARGIN.top})`);
+
+		// xScale for GDP
+		this.xScale = d3.scaleLog()
+						.domain([100, 150000])
+						.range([0, this.width]);
+
+		// yScale for temperatures
+		this.yScale = d3.scaleLinear()
+						.domain([-10, 40])
+						.range([this.height, 0]);
+
+		// radiusScale for population
+		this.radiusScale = d3.scaleLinear()
+								.domain([0, 600000])
+								.range([MIN_RADIUS_WIDTH_RATIO * this.width, MAX_RADIUS_WIDTH_RATIO * this.width]);
+
+		// Render chart
+		this.renderAxis();
+		this.renderBubbles(1976);
 	}
 }
 

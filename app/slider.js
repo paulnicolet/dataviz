@@ -76,7 +76,7 @@ class Slider {
 	}
 
 	brushed(instance) {
-		let handle = d3.select('#slider-handle');
+		let handle = d3.select(`#${this.id} #slider-handle`);
 
 		// Upon first event, or new click, reset points
 		let isFirst = (this.lastLeft == null && this.lastRight == null);
@@ -108,7 +108,7 @@ class Slider {
 		handle.attr('transform', `translate(${pos}, 0)`);
 
 		// Update text
-		d3.select('#current-value').text(year);
+		d3.select(`#${this.id} #current-value`).text(year);
 
 		// Call handlers
 		this.handlers.forEach(f => f(year));
@@ -121,6 +121,28 @@ class Slider {
 	// Register handlers
 	moved(handler) {
 		this.handlers.push(handler);
+	}
+
+	resize(outerWidth, outerHeight) {
+		this.width = outerWidth - MARGIN.left - MARGIN.right;
+		this.height = outerHeight - MARGIN.top - MARGIN.bottom;
+
+		// Define container
+		this.svg = d3.select(`#${this.id}`).append('svg')
+						.attr('width', outerWidth)
+						.attr('height', outerHeight)
+						.append('g')
+						.attr('transform', `translate(${MARGIN.left}, ${MARGIN.top})`);
+
+		// Define timescale
+		this.scale = d3.scaleTime()
+						.domain([this.minDate, this.maxDate])
+						.range([0, this.width])
+						.clamp(true);
+
+		// Render elements
+		this.renderAxis();
+		this.renderSlider();
 	}
 }
 
