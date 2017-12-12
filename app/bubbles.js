@@ -6,9 +6,12 @@ const MARGIN = {top: 20, right: 20, bottom: 20, left: 50};
 
 const MOTION_DURATION = 1000;
 
+const NO_SELECTION_MSG = 'No selection';
+
 class BubbleChart {
-	constructor(id, dataPath, outerWidth, outerHeight) {
+	constructor(id, detailsId, dataPath, outerWidth, outerHeight) {
 		this.id = id;
+		this.detailsId = detailsId;
 		this.dataPath = dataPath;
 		this.width = outerWidth - MARGIN.left - MARGIN.right;
 		this.height = outerHeight - MARGIN.top - MARGIN.bottom;
@@ -80,6 +83,22 @@ class BubbleChart {
 							.attr('cx', d => this.xScale(d.gdp))
 							.attr('cy', d => this.yScale(d.temperature))
 							.attr('r', d => this.radiusScale(d.population));
+
+		newCircle.on('mouseover', (d, i) => {
+			d3.select(`#${this.detailsId} #country`).html(d.country);
+			d3.select(`#${this.detailsId} #temp`).html(d.temperature);
+			d3.select(`#${this.detailsId} #gdp`).html(d.gdp);
+			d3.select(`#${this.detailsId} #pop`).html(d.population);
+			d3.select(`#${this.detailsId} #var`).html(d.variation);
+		});
+
+		newCircle.on('mouseout', (d, i) => {
+			d3.select(`#${this.detailsId} #country`).html(NO_SELECTION_MSG);
+			d3.select(`#${this.detailsId} #temp`).html(NO_SELECTION_MSG);
+			d3.select(`#${this.detailsId} #gdp`).html(NO_SELECTION_MSG);
+			d3.select(`#${this.detailsId} #pop`).html(NO_SELECTION_MSG);
+			d3.select(`#${this.detailsId} #var`).html(NO_SELECTION_MSG);
+		});
 	}
 
 	renderAxis() {
@@ -102,6 +121,6 @@ class BubbleChart {
 }
 
 
-export default function(id, dataPath, width, height) {
-	return new BubbleChart(id, dataPath, width, height);
+export default function(id, detailsId, dataPath, width, height) {
+	return new BubbleChart(id, detailsId, dataPath, width, height);
 }

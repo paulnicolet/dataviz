@@ -38,10 +38,11 @@ buildCountryTimeSeries(COUNTRY_TIME_SERIES_ID, COUNTRY_TIME_SERIES_PATH,
 
 // Build bubble chart
 const BUBBLE_CHART_ID = 'bubbles';
+const BUBBLE_DETAILS_ID = 'bubble-details';
 const BUBBLE_DATA_PATH = './data/final.min.json';
 const BUBBLE_CHART_WIDTH = 900;
 const BUBBLE_CHART_HEIGHT = 400;
-let bubbles = buildBubbleChart(BUBBLE_CHART_ID, BUBBLE_DATA_PATH, BUBBLE_CHART_WIDTH, BUBBLE_CHART_HEIGHT);
+let bubbles = buildBubbleChart(BUBBLE_CHART_ID, BUBBLE_DETAILS_ID, BUBBLE_DATA_PATH, BUBBLE_CHART_WIDTH, BUBBLE_CHART_HEIGHT);
 
 const BUBBLE_SLIDER_ID = 'bubble-slider';
 const BUBBLE_SLIDER_WIDTH = 400;
