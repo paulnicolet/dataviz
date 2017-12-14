@@ -1,19 +1,45 @@
 html {
 	font-family: 'Open Sans', sans-serif;
+	background-color: #fcfcfc;
 }
 
 #bubbles {
-    width: 75%;
+    width: 100%;
 }
 
 #map {
-	width: 75%;
+	width: 100%;
+}
+
+#time-series-section {
+	opacity: 0;
+}
+
+#map-section {
+	opacity: 0;
+}
+
+#bubble-section {
+	opacity: 0;
 }
 
 #map-slider {
-	width: 20%;
+	width: 50%;
 }
 
 #bubble-slider {
-	width: 20%;
+	width: 50%;
+}
+
+.block {
+	min-height: 100vh;
+}
+
+#header-map {
+	z-index:-1;
+	opacity: 0.1;
+	position: absolute;
+	top: -200px;
+	margin-left: 10%;
+	width: 80%;
 }

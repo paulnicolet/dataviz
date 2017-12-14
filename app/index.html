@@ -9,31 +9,217 @@
     <link rel="stylesheet" type="text/css" href="main.css">
     <link rel="stylesheet" type="text/css" href="css/materialize.min.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
-    <div class="container row">
-        <button id="resetCountry" class="waves-effect waves-light btn col s3">Reset</button>
-        <button id="zeroMean" class="col s3">Zero mean</button>
-    </div>
-    <div class="container row">
-        <div class="col s8">
-            <input type="text" class="autocomplete">
-            <label>Write a country/continent you want to display</label>
-        </div>
-    </div>
-    <div id="country_time_series" class="container"></div>
-    <div id="map-slider"></div>
-    <div id="map"></div>
-    <div id="bubble-slider"></div>
-    <div id="bubbles"></div>
-    <div id="bubble-details">
-        <div>Country: <span id="country"></span></div>
-        <div>Temperature: <span id="temp"></span></div>
-        <div>GDP: <span id="gdp"></span></div>
-        <div>Population: <span id="pop"></span></div>
-        <div>Variation: <span id="var"></span></div>
-    </div>
+    
+        <main>
+            <img src="./map.svg" alt="" id="header-map">
+            <div class="container">
+                <div id="intro-section" class="block">
+                    <h1>Visualising world temperatures</h1>
+
+                    <p class="flow-text">
+                        Et eodem impetu Domitianum praecipitem per scalas itidem funibus constrinxerunt, eosque coniunctos per ampla spatia civitatis acri raptavere discursu. iamque artuum et membrorum divulsa conpage superscandentes corpora mortuorum ad ultimam truncata deformitatem velut exsaturati mox abiecerunt in flumen.
+                    </p>
+
+                    <blockquote>
+                        This is an example quotation that uses the blockquote tag.
+                    </blockquote>
+                    
+                    <h4>Goal</h4>
+                    <p class="flow-text">
+                        Et eodem impetu Domitianum praecipitem per scalas itidem funibus constrinxerunt, eosque coniunctos per ampla spatia civitatis acri raptavere discursu. iamque artuum et membrorum divulsa conpage superscandentes corpora mortuorum ad ultimam truncata deformitatem velut exsaturati mox abiecerunt in flumen.
+                    </p>
+
+                    <div class="row">
+                        <div class="col s6">
+                            <h4>Data</h4>
+                            
+                            <ul>
+                                <li class="flow-text">
+                                    Temperatures <a href="https://www.kaggle.com/berkeleyearth/climate-change-earth-surface-temperature-data">dataset</a>
+                                </li>
+        
+                                <li class="flow-text">
+                                    Population <a href="https://esa.un.org/unpd/wpp/Download/Standard/Population/">dataset</a>
+                                </li>
+        
+                                <li class="flow-text">
+                                    Growth domestic product <a href="http://ghdx.healthdata.org/record/gross-domestic-product-gdp-estimates-country-1950-2015">dataset</a>
+                                </li>
+        
+                            </ul>
+                        </div>
+
+                        <div class="col s6">
+                            <h4>Tools</h4>
+                            
+                            <ul>
+                                <li class="flow-text">
+                                    Visualisation: d3.js, c3.js
+                                </li>
+        
+                                <li class="flow-text">
+                                    Preprocessing: pandas, Java
+                                </li>
+        
+                                <li class="flow-text">
+                                    Web: materializecss, webpack
+                                </li>
+        
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <hr>
+
+                <div id="time-series-section" class="block">
+                    <h2>Time series</h2>
+        
+                    <p class="flow-text">
+                        Et eodem impetu Domitianum praecipitem per scalas itidem funibus constrinxerunt, eosque coniunctos per ampla spatia civitatis acri raptavere discursu. iamque artuum et membrorum divulsa conpage superscandentes corpora mortuorum ad ultimam truncata deformitatem velut exsaturati mox abiecerunt in flumen.
+                    </p>
+        
+                    <blockquote>
+                        This is an example quotation that uses the blockquote tag.
+                    </blockquote>
+
+                    <div class="row">
+                        
+                        <div class="col s2 offset-s3">
+                            <button id="zeroMean" class="waves-effect waves-light btn">0-mean</button>    
+                        </div> 
+
+                        <div class="col s2">
+                            <button id="resetCountry" class="waves-effect waves-light btn">Reset</button>
+                        </div>
+
+                        <div class="col s3">
+                                <div>
+                                    <input id="time-series-input" type="text" class="autocomplete" placeholder="Type here">
+                                    <label for="time-series-input">Country or continent to display</label>
+                                </div>  
+                        </div> 
+                    </div>
+                    
+                    <div id="country_time_series"></div>
+        
+                </div>
+
+                <hr>
+        
+                <div id="map-section" class="block">
+                    <h2>Map</h2>
+        
+                    <p class="flow-text">
+                        Et eodem impetu Domitianum praecipitem per scalas itidem funibus constrinxerunt, eosque coniunctos per ampla spatia civitatis acri raptavere discursu. iamque artuum et membrorum divulsa conpage superscandentes corpora mortuorum ad ultimam truncata deformitatem velut exsaturati mox abiecerunt in flumen.
+                    </p>
+        
+                    <blockquote>
+                        This is an example quotation that uses the blockquote tag.
+                    </blockquote>
+                    
+                    <div class="row">
+                        <div id="map-slider" class="col s6 offset-s3"></div>
+                    </div>
+                    <div id="map"></div>
+                </div>
+        
+                
+                <hr>
+        
+        
+                <div id="bubble-section" class="block">
+                    <h1>Bubbles</h1>
+        
+                    <p class="flow-text">
+                        Et eodem impetu Domitianum praecipitem per scalas itidem funibus constrinxerunt, eosque coniunctos per ampla spatia civitatis acri raptavere discursu. iamque artuum et membrorum divulsa conpage superscandentes corpora mortuorum ad ultimam truncata deformitatem velut exsaturati mox abiecerunt in flumen.
+                    </p>
+        
+                    <blockquote>
+                        This is an example quotation that uses the blockquote tag.
+                    </blockquote>
+                    
+                    <div class="row">
+                        <div id="bubble-slider" class="col s6 offset-s3"></div>
+                    </div>
+
+                    <div id="bubbles"></div>
+
+                    <div class="row">
+
+                        <div class="col s4 offset-s4">
+                            <table id="bubble-details" class="">
+                                <thead>
+                                    <tr>
+                                        <th>Attribute</th>
+                                        <th>Value</th>
+                                    </tr>
+                                </thead>
+                        
+                                <tbody>
+                                    <tr>
+                                        <td>Country</td>
+                                        <td><span id="country"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Temperature</td>
+                                        <td><span id="temp"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>GDP</td>
+                                        <td><span id="gdp"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Population</td>
+                                        <td><span id="pop"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Variation</td>
+                                        <td><span id="var"></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+        
+            </div>
+
+        </main>
+
+        <footer class="page-footer">
+            <div class="container">
+                <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Data visualisation project</h5>
+                    <p class="grey-text text-lighten-4">
+                        Data visualisation project for EPFL COM-480 class.
+                    </p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Links</h5>
+                    <ul>
+                    <li><a class="grey-text text-lighten-3" href="#!">GitHub repo</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Process book</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Screencast</a></li>
+                    </ul>
+                </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    Quentin Laville - Paul Nicolet
+                </div>
+            </div>
+        </footer>
 
     <script type="text/javascript" src="bundle.js"></script>
 </body>

@@ -6,8 +6,6 @@ const MARGIN = {top: 20, right: 20, bottom: 20, left: 50};
 
 const MOTION_DURATION = 1000;
 
-const NO_SELECTION_MSG = 'No selection';
-
 class BubbleChart {
 	constructor(id, detailsId, dataPath, outerWidth, outerHeight) {
 		this.id = id;
@@ -60,7 +58,10 @@ class BubbleChart {
 	}
 
 	animateBubbles(year) {
+		self.currentYear = year;
 		let data = self.data[year];
+
+		this.updateDetails(self.currentCountry, data[self.currentCountry].temperature, data[self.currentCountry].gdp, data[self.currentCountry].population, data[self.currentCountry].variation);
 
 		d3.selectAll('.bubble')
 			.transition()
@@ -72,6 +73,7 @@ class BubbleChart {
 	}
 
 	renderBubbles(year) {
+		self.currentYear = year;
 		let data = Object.values(self.data[year]);
 
 		let newCircle = this.svg.append('g')
@@ -87,20 +89,20 @@ class BubbleChart {
 							.style("fill", () => `hsl(${Math.random() * 360}, 100%, 50%)`);
 
 		newCircle.on('mouseover', (d, i) => {
-			d3.select(`#${this.detailsId} #country`).html(d.country);
-			d3.select(`#${this.detailsId} #temp`).html(d.temperature);
-			d3.select(`#${this.detailsId} #gdp`).html(d.gdp);
-			d3.select(`#${this.detailsId} #pop`).html(d.population);
-			d3.select(`#${this.detailsId} #var`).html(d.variation);
-		});
+			let data = self.data[self.currentYear];
 
-		newCircle.on('mouseout', (d, i) => {
-			d3.select(`#${this.detailsId} #country`).html(NO_SELECTION_MSG);
-			d3.select(`#${this.detailsId} #temp`).html(NO_SELECTION_MSG);
-			d3.select(`#${this.detailsId} #gdp`).html(NO_SELECTION_MSG);
-			d3.select(`#${this.detailsId} #pop`).html(NO_SELECTION_MSG);
-			d3.select(`#${this.detailsId} #var`).html(NO_SELECTION_MSG);
+			self.currentCountry = d.country;
+
+			this.updateDetails(d.country, data[d.country].temperature, data[d.country].gdp, data[d.country].population, data[d.country].variation);
 		});
+	}
+
+	updateDetails(country, temperature, gdp, population, variation) {
+		d3.select(`#${this.detailsId} #country`).html(country);
+		d3.select(`#${this.detailsId} #temp`).html(temperature.toFixed(1));
+		d3.select(`#${this.detailsId} #gdp`).html(gdp.toFixed(3));
+		d3.select(`#${this.detailsId} #pop`).html(population.toFixed(3));
+		d3.select(`#${this.detailsId} #var`).html(variation);
 	}
 
 	renderAxis() {

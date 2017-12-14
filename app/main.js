@@ -1,4 +1,5 @@
 import * as d3 from 'd3';
+import './layout';
 import buildSlider from './slider';
 import buildMap from './map';
 import buildCountryTimeSeries from './country_time_series';
