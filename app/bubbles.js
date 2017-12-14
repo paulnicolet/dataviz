@@ -11,38 +11,14 @@ class BubbleChart {
 		this.id = id;
 		this.detailsId = detailsId;
 		this.dataPath = dataPath;
-		this.width = outerWidth - MARGIN.left - MARGIN.right;
-		this.height = outerHeight - MARGIN.top - MARGIN.bottom;
-
-		// Define container
-		this.svg = d3.select(`#${this.id}`).append('svg')
-						.attr('width', outerWidth)
-						.attr('height', outerHeight)
-						.append('g')
-						.attr('transform', `translate(${MARGIN.left}, ${MARGIN.top})`);
+		
+		this.initSizable(outerWidth, outerHeight);
 
 		// Init chart
 		this.init();
 	}
 
 	init() {
-		// Create scales
-
-		// xScale for GDP
-		this.xScale = d3.scaleLog()
-						.domain([100, 150000])
-						.range([0, this.width]);
-
-		// yScale for temperatures
-		this.yScale = d3.scaleLinear()
-						.domain([-10, 40])
-						.range([this.height, 0]);
-
-		// radiusScale for population
-		this.radiusScale = d3.scaleLinear()
-								.domain([0, 600000])
-								.range([MIN_RADIUS_WIDTH_RATIO * this.width, MAX_RADIUS_WIDTH_RATIO * this.width]);
-
 		// TODO temperature variation scale for color
 		// Convert to color using chromatic (see map.js)
 
@@ -126,6 +102,14 @@ class BubbleChart {
 	}
 
 	resize(outerWidth, outerHeight) {
+		this.initSizable(outerWidth, outerHeight);
+
+		// Render chart
+		this.renderAxis();
+		this.renderBubbles(self.currentYear);
+	}
+
+	initSizable(outerWidth, outerHeight) {
 		this.width = outerWidth - MARGIN.left - MARGIN.right;
 		this.height = outerHeight - MARGIN.top - MARGIN.bottom;
 
@@ -150,10 +134,6 @@ class BubbleChart {
 		this.radiusScale = d3.scaleLinear()
 								.domain([0, 600000])
 								.range([MIN_RADIUS_WIDTH_RATIO * this.width, MAX_RADIUS_WIDTH_RATIO * this.width]);
-
-		// Render chart
-		this.renderAxis();
-		this.renderBubbles(1976);
 	}
 }
 

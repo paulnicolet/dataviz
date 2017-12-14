@@ -9,28 +9,13 @@ class Slider {
 		this.id = id;
 		this.minDate = minDate;
 		this.maxDate = maxDate;
-		this.width = outerWidth - MARGIN.left - MARGIN.right;
-		this.height = outerHeight - MARGIN.top - MARGIN.bottom;
-
-		// Define container
-		this.svg = d3.select(`#${id}`).append('svg')
-						.attr('width', outerWidth)
-						.attr('height', outerHeight)
-						.append('g')
-						.attr('transform', `translate(${MARGIN.left}, ${MARGIN.top})`);
-
-		// Define timescale
 		this.format = d3.timeFormat('%Y');
-		this.scale = d3.scaleTime()
-						.domain([this.minDate, this.maxDate])
-						.range([0, this.width])
-						.clamp(true);
-
-		// Define movement related fields
 		this.lastLeft = null;
 		this.lastRight = null;
 		this.currentYear = null;
 		this.handlers = [];
+
+		this.initSizable(outerWidth, outerHeight);
 
 		// Render elements
 		this.renderAxis();
@@ -124,6 +109,14 @@ class Slider {
 	}
 
 	resize(outerWidth, outerHeight) {
+		this.initSizable(outerWidth, outerHeight);
+
+		// Render elements
+		this.renderAxis();
+		this.renderSlider();
+	}
+
+	initSizable(outerWidth, outerHeight) {
 		this.width = outerWidth - MARGIN.left - MARGIN.right;
 		this.height = outerHeight - MARGIN.top - MARGIN.bottom;
 
@@ -139,10 +132,6 @@ class Slider {
 						.domain([this.minDate, this.maxDate])
 						.range([0, this.width])
 						.clamp(true);
-
-		// Render elements
-		this.renderAxis();
-		this.renderSlider();
 	}
 }
 

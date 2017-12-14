@@ -17,27 +17,14 @@ const LEGEND_WIDTH = 30;
 const LEGEND_HEIGHT = 20;
 const CORNER_RADIUS = 10;
 
+// Topology constants
+const TOPOLOGY_SCALING_RATIO = 140/640;
+
 class TemperaturesMap {
 	constructor(id, dataPath, topologyPath, outerWidth, outerHeight) {
 		this.id = id;
-		this.width = outerWidth - MARGIN.left - MARGIN.right;
-		this.height = outerHeight - MARGIN.top - MARGIN.bottom;
 
-		// Define container
-		this.svg = d3.select(`#${this.id}`).append('svg')
-						.attr('width', outerWidth)
-						.attr('height', outerHeight)
-						.append('g')
-						.attr('transform', `translate(${MARGIN.left}, ${MARGIN.top})`);
-
-		// Define projection and path
-		this.projection = d3.geoNaturalEarth1()
-							.scale((this.width/640)*100)
-							.translate([this.width/2, this.height/2]);
-
-		this.path = d3.geoPath(this.projection);
-
-		// Load and display
+		this.initSizable(outerWidth, outerHeight);
 		this.init(dataPath, topologyPath);
 	}
 
@@ -180,6 +167,14 @@ class TemperaturesMap {
 	}
 
 	resize(outerWidth, outerHeight) {
+		this.initSizable(outerWidth, outerHeight);
+
+		this.renderTopology();
+		this.renderLegend();
+		this.renderTemperatures(this.minYear);
+	}
+
+	initSizable(outerWidth, outerHeight) {
 		this.width = outerWidth - MARGIN.left - MARGIN.right;
 		this.height = outerHeight - MARGIN.top - MARGIN.bottom;
 
@@ -192,14 +187,10 @@ class TemperaturesMap {
 
 		// Define projection and path
 		this.projection = d3.geoNaturalEarth1()
-							.scale((this.width/640)*100)
+							.scale(this.width * TOPOLOGY_SCALING_RATIO)
 							.translate([this.width/2, this.height/2]);
 
 		this.path = d3.geoPath(this.projection);
-
-		this.renderTopology();
-		this.renderLegend();
-		this.renderTemperatures(this.minYear);
 	}
 }
 
