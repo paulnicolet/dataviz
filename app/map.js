@@ -7,10 +7,10 @@ require('./map.scss');
 const MARGIN = {top: 20, bottom: 20, left: 20, right: 20};
 
 // Circle constants
-const OPACITY = 0.9;
-const SMALL_CIRCLE = 3;
-const LARGE_CIRCLE = 20;
-const CIRCLE_ANIM_DURATION = '300';
+const OPACITY = 1;
+const SMALL_CIRCLE = 3.5;
+const LARGE_CIRCLE = 30;
+const CIRCLE_ANIM_DURATION = '200';
 
 // Legend constants
 const LEGEND_WIDTH = 30;
@@ -128,12 +128,12 @@ class TemperaturesMap {
 		legend.append('text')
 				.text(`${this.minTemp.toFixed(1)}°`)
 				.attr('class', 'map-legend-text')
-				.attr('transform', `translate(${LEGEND_WIDTH + 5}, ${LEGEND_HEIGHT - 5})`);
+				.attr('transform', `translate(${LEGEND_WIDTH + 5}, ${LEGEND_HEIGHT - 3})`);
 
 		legend.append('text')
 				.text(`${this.maxTemp.toFixed(1)}°`)
 				.attr('class', 'map-legend-text')
-				.attr('transform', `translate(${LEGEND_WIDTH + 5}, ${(5/2) * LEGEND_HEIGHT - 5})`);
+				.attr('transform', `translate(${LEGEND_WIDTH + 5}, ${(5/2) * LEGEND_HEIGHT - 3})`);
 
 	}
 
