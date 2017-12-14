@@ -61,7 +61,9 @@ class BubbleChart {
 		self.currentYear = year;
 		let data = self.data[year];
 
-		this.updateDetails(self.currentCountry, data[self.currentCountry].temperature, data[self.currentCountry].gdp, data[self.currentCountry].population, data[self.currentCountry].variation);
+		if (self.currentCountry != null) {
+			this.updateDetails(self.currentCountry, data[self.currentCountry].temperature, data[self.currentCountry].gdp, data[self.currentCountry].population, data[self.currentCountry].variation);			
+		}
 
 		d3.selectAll('.bubble')
 			.transition()

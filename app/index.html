@@ -38,15 +38,15 @@
                             <h4>Data</h4>
                             
                             <ul>
-                                <li class="flow-text">
+                                <li>
                                     Temperatures <a href="https://www.kaggle.com/berkeleyearth/climate-change-earth-surface-temperature-data">dataset</a>
                                 </li>
         
-                                <li class="flow-text">
+                                <li>
                                     Population <a href="https://esa.un.org/unpd/wpp/Download/Standard/Population/">dataset</a>
                                 </li>
         
-                                <li class="flow-text">
+                                <li>
                                     Growth domestic product <a href="http://ghdx.healthdata.org/record/gross-domestic-product-gdp-estimates-country-1950-2015">dataset</a>
                                 </li>
         
@@ -57,15 +57,15 @@
                             <h4>Tools</h4>
                             
                             <ul>
-                                <li class="flow-text">
+                                <li>
                                     Visualisation: d3.js, c3.js
                                 </li>
         
-                                <li class="flow-text">
+                                <li>
                                     Preprocessing: pandas, Java
                                 </li>
         
-                                <li class="flow-text">
+                                <li>
                                     Web: materializecss, webpack
                                 </li>
         
@@ -79,15 +79,11 @@
                 <hr>
 
                 <div id="time-series-section" class="block">
-                    <h2>Time series</h2>
+                    <h3>Time series</h3>
         
                     <p class="flow-text">
                         Et eodem impetu Domitianum praecipitem per scalas itidem funibus constrinxerunt, eosque coniunctos per ampla spatia civitatis acri raptavere discursu. iamque artuum et membrorum divulsa conpage superscandentes corpora mortuorum ad ultimam truncata deformitatem velut exsaturati mox abiecerunt in flumen.
                     </p>
-        
-                    <blockquote>
-                        This is an example quotation that uses the blockquote tag.
-                    </blockquote>
 
                     <div class="row">
                         
@@ -114,15 +110,11 @@
                 <hr>
         
                 <div id="map-section" class="block">
-                    <h2>Map</h2>
+                    <h3>Map</h3>
         
                     <p class="flow-text">
                         Et eodem impetu Domitianum praecipitem per scalas itidem funibus constrinxerunt, eosque coniunctos per ampla spatia civitatis acri raptavere discursu. iamque artuum et membrorum divulsa conpage superscandentes corpora mortuorum ad ultimam truncata deformitatem velut exsaturati mox abiecerunt in flumen.
                     </p>
-        
-                    <blockquote>
-                        This is an example quotation that uses the blockquote tag.
-                    </blockquote>
                     
                     <div class="row">
                         <div id="map-slider" class="col s6 offset-s3"></div>
@@ -135,15 +127,11 @@
         
         
                 <div id="bubble-section" class="block">
-                    <h1>Bubbles</h1>
+                    <h3>Bubbles</h3>
         
                     <p class="flow-text">
                         Et eodem impetu Domitianum praecipitem per scalas itidem funibus constrinxerunt, eosque coniunctos per ampla spatia civitatis acri raptavere discursu. iamque artuum et membrorum divulsa conpage superscandentes corpora mortuorum ad ultimam truncata deformitatem velut exsaturati mox abiecerunt in flumen.
                     </p>
-        
-                    <blockquote>
-                        This is an example quotation that uses the blockquote tag.
-                    </blockquote>
                     
                     <div class="row">
                         <div id="bubble-slider" class="col s6 offset-s3"></div>
@@ -153,34 +141,24 @@
 
                     <div class="row">
 
-                        <div class="col s4 offset-s4">
-                            <table id="bubble-details" class="">
+                        <div class="col s8 offset-s2">
+                            <table id="bubble-details" style="table-layout:fixed;">
                                 <thead>
                                     <tr>
-                                        <th>Attribute</th>
-                                        <th>Value</th>
+                                        <th>Country</th>
+                                        <th>Temperature</th>
+                                        <th>GDP</th>
+                                        <th>Population</th>
+                                        <th>Variation</th>
                                     </tr>
                                 </thead>
                         
                                 <tbody>
                                     <tr>
-                                        <td>Country</td>
                                         <td><span id="country"></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Temperature</td>
                                         <td><span id="temp"></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>GDP</td>
                                         <td><span id="gdp"></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Population</td>
                                         <td><span id="pop"></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Variation</td>
                                         <td><span id="var"></span></td>
                                     </tr>
                                 </tbody>
