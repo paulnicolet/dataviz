@@ -1,14 +1,16 @@
 .country {
-	fill: white;
+	fill: transparent;
 	stroke: gray;
 }
 
 .map-legend-text {
-	color: black;
-	font-size: 36;
+	font-size: 17px;
+	font-family: 'Open Sans', sans-serif;
 }
 
 .map-popup {
 	fill: black;
-	font-size: 48;
+	font-size: 22px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
 }

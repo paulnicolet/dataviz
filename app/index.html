@@ -17,16 +17,205 @@
 		<div class="container row">
 						<div id="country_time_series" class="col s5"> </div>
 
-			<div class="col s7">
-				<label for="autocompleteInput">Write a country/continent you want to display</label>
-				<input id="autocompleteInput" type="text" class="autocomplete">
-			</div>
-		</div>
-		
-		<div id="slider"></div>
-		<div id="map"></div>
-		<button id="button3">Animate bubbles</button>
-		<div id="bubbles"></div>
-		<script type="text/javascript" src="bundle.js"></script>
-	</body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    
+        <main>
+            <img src="./map.svg" alt="" id="header-map">
+            <div class="container">
+                <div id="intro-section" class="block">
+                    <h1>Visualising world temperatures</h1>
+
+                    <p class="flow-text">
+                        Et eodem impetu Domitianum praecipitem per scalas itidem funibus constrinxerunt, eosque coniunctos per ampla spatia civitatis acri raptavere discursu. iamque artuum et membrorum divulsa conpage superscandentes corpora mortuorum ad ultimam.
+                    </p>
+
+                    <blockquote>
+                        This is an example quotation that uses the blockquote tag.
+                    </blockquote>
+                    
+                    <h4>Goal</h4>
+                    <p class="flow-text">
+                        Et eodem impetu Domitianum praecipitem per scalas itidem funibus constrinxerunt, eosque coniunctos per ampla spatia civitatis acri raptavere discursu. iamque artuum et membrorum divulsa conpage superscandentes corpora mortuorum ad ultimam truncata deformitatem velut exsaturati mox abiecerunt in flumen.
+                    </p>
+
+                    <div class="row">
+                        <div class="col s6">
+                            <h4>Data</h4>
+                            
+                            <ul>
+                                <li>
+                                    Temperatures <a href="https://www.kaggle.com/berkeleyearth/climate-change-earth-surface-temperature-data">dataset</a>
+                                </li>
+        
+                                <li>
+                                    Population <a href="https://esa.un.org/unpd/wpp/Download/Standard/Population/">dataset</a>
+                                </li>
+        
+                                <li>
+                                    Growth domestic product <a href="http://ghdx.healthdata.org/record/gross-domestic-product-gdp-estimates-country-1950-2015">dataset</a>
+                                </li>
+        
+                            </ul>
+                        </div>
+
+                        <div class="col s6">
+                            <h4>Tools</h4>
+                            
+                            <ul>
+                                <li>
+                                    Visualisation: d3.js, c3.js
+                                </li>
+        
+                                <li>
+                                    Preprocessing: pandas, Java
+                                </li>
+        
+                                <li>
+                                    Web: materializecss, webpack
+                                </li>
+        
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <hr>
+
+                <div id="time-series-section" class="block">
+                    <h3>Time series</h3>
+        
+                    <p class="flow-text">
+                        Et eodem impetu Domitianum praecipitem per scalas itidem funibus constrinxerunt, eosque coniunctos per ampla spatia civitatis acri raptavere discursu. iamque artuum et membrorum divulsa conpage superscandentes corpora mortuorum ad ultimam truncata deformitatem velut exsaturati mox abiecerunt in flumen.
+                    </p>
+
+                    <div class="row">
+                        
+                        <div class="col s2 offset-s3">
+                            <button id="zeroMean" class="waves-effect waves-light btn">0-mean</button>    
+                        </div> 
+
+                        <div class="col s2">
+                            <button id="resetCountry" class="waves-effect waves-light btn">Reset</button>
+                        </div>
+
+                        <div class="col s3">
+                                <div>
+                                    <input id="time-series-input" type="text" class="autocomplete" placeholder="Type here">
+                                    <label for="time-series-input">Country or continent to display</label>
+                                </div>  
+                        </div> 
+                    </div>
+                    
+                    <div id="country_time_series"></div>
+        
+                </div>
+
+                <hr>
+        
+                <div id="map-section" class="block">
+                    <h3>Map</h3>
+        
+                    <p class="flow-text">
+                        Et eodem impetu Domitianum praecipitem per scalas itidem funibus constrinxerunt, eosque coniunctos per ampla spatia civitatis acri raptavere discursu. iamque artuum et membrorum divulsa conpage superscandentes corpora mortuorum ad ultimam truncata deformitatem velut exsaturati mox abiecerunt in flumen.
+                    </p>
+                    
+                    <div class="row">
+                        <div id="map-slider" class="col s6 offset-s3"></div>
+                    </div>
+                    <div id="map"></div>
+                </div>
+        
+                
+                <hr>
+        
+        
+                <div id="bubble-section" class="block">
+                    <h3>Bubbles</h3>
+        
+                    <p class="flow-text">
+                        Et eodem impetu Domitianum praecipitem per scalas itidem funibus constrinxerunt, eosque coniunctos per ampla spatia civitatis acri raptavere discursu. iamque artuum et membrorum divulsa conpage superscandentes corpora mortuorum ad ultimam truncata deformitatem velut exsaturati mox abiecerunt in flumen.
+                    </p>
+                    
+                    <div class="row">
+                        <div id="bubble-slider" class="col s6 offset-s3"></div>
+                    </div>
+
+                    <div id="bubbles"></div>
+
+                    <div class="row">
+
+                        <div class="col s8 offset-s2">
+                            <table id="bubble-details" style="table-layout:fixed;">
+                                <thead>
+                                    <tr>
+                                        <th>Country</th>
+                                        <th>Temperature</th>
+                                        <th>GDP</th>
+                                        <th>Population</th>
+                                        <th>Variation</th>
+                                    </tr>
+                                </thead>
+                        
+                                <tbody>
+                                    <tr>
+                                        <td><span id="country"></span></td>
+                                        <td><span id="temp"></span></td>
+                                        <td><span id="gdp"></span></td>
+                                        <td><span id="pop"></span></td>
+                                        <td><span id="var"></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+        
+            </div>
+
+        </main>
+
+        <footer class="page-footer">
+            <div class="container">
+                <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Data visualisation project</h5>
+                    <p class="grey-text text-lighten-4">
+                        Data visualisation project for EPFL COM-480 class.
+                    </p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Links</h5>
+                    <ul>
+                    <li><a class="grey-text text-lighten-3" href="#!">GitHub repo</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Process book</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Screencast</a></li>
+                    </ul>
+                </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    Quentin Laville - Paul Nicolet
+                </div>
+            </div>
+        </footer>
+
+    <script type="text/javascript" src="bundle.js"></script>
+</body>
+
 </html>

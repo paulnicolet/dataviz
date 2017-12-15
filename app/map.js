@@ -7,34 +7,24 @@ require('./map.scss');
 const MARGIN = {top: 20, bottom: 20, left: 20, right: 20};
 
 // Circle constants
-const OPACITY = 0.9;
-const SMALL_CIRCLE = 3;
-const LARGE_CIRCLE = 20;
-const CIRCLE_ANIM_DURATION = '300';
+const OPACITY = 1;
+const SMALL_CIRCLE = 3.5;
+const LARGE_CIRCLE = 30;
+const CIRCLE_ANIM_DURATION = '200';
 
 // Legend constants
 const LEGEND_WIDTH = 30;
 const LEGEND_HEIGHT = 20;
 const CORNER_RADIUS = 10;
 
+// Topology constants
+const TOPOLOGY_SCALING_RATIO = 140/640;
+
 class TemperaturesMap {
 	constructor(id, dataPath, topologyPath, outerWidth, outerHeight) {
 		this.id = id;
-		this.width = outerWidth - MARGIN.left - MARGIN.right;
-		this.height = outerHeight - MARGIN.top - MARGIN.bottom;
 
-		// Define container
-		this.svg = d3.select(`#${this.id}`).append('svg')
-						.attr('width', outerWidth)
-						.attr('height', outerHeight)
-						.append('g')
-						.attr('transform', `translate(${MARGIN.left}, ${MARGIN.top})`);
-
-		// Define projection and path
-		this.projection = d3.geoNaturalEarth1();
-		this.path = d3.geoPath(this.projection);
-
-		// Load and display
+		this.initSizable(outerWidth, outerHeight);
 		this.init(dataPath, topologyPath);
 	}
 
@@ -138,12 +128,12 @@ class TemperaturesMap {
 		legend.append('text')
 				.text(`${this.minTemp.toFixed(1)}°`)
 				.attr('class', 'map-legend-text')
-				.attr('transform', `translate(${LEGEND_WIDTH + 5}, ${LEGEND_HEIGHT - 5})`);
+				.attr('transform', `translate(${LEGEND_WIDTH + 5}, ${LEGEND_HEIGHT - 3})`);
 
 		legend.append('text')
 				.text(`${this.maxTemp.toFixed(1)}°`)
 				.attr('class', 'map-legend-text')
-				.attr('transform', `translate(${LEGEND_WIDTH + 5}, ${(5/2) * LEGEND_HEIGHT - 5})`);
+				.attr('transform', `translate(${LEGEND_WIDTH + 5}, ${(5/2) * LEGEND_HEIGHT - 3})`);
 
 	}
 
@@ -167,13 +157,40 @@ class TemperaturesMap {
 						      		.range([1, 0]);
 
 				// Render elements
-				let minYear = Math.min(...Object.keys(this.data));
+				this.minYear = Math.min(...Object.keys(this.data));
 
 				this.renderTopology();
 				this.renderLegend();
-				this.renderTemperatures(minYear);
+				this.renderTemperatures(this.minYear);
 			});
 		});
+	}
+
+	resize(outerWidth, outerHeight) {
+		this.initSizable(outerWidth, outerHeight);
+
+		this.renderTopology();
+		this.renderLegend();
+		this.renderTemperatures(this.minYear);
+	}
+
+	initSizable(outerWidth, outerHeight) {
+		this.width = outerWidth - MARGIN.left - MARGIN.right;
+		this.height = outerHeight - MARGIN.top - MARGIN.bottom;
+
+		// Define container
+		this.svg = d3.select(`#${this.id}`).append('svg')
+						.attr('width', outerWidth)
+						.attr('height', outerHeight)
+						.append('g')
+						.attr('transform', `translate(${MARGIN.left}, ${MARGIN.top})`);
+
+		// Define projection and path
+		this.projection = d3.geoNaturalEarth1()
+							.scale(this.width * TOPOLOGY_SCALING_RATIO)
+							.translate([this.width/2, this.height/2]);
+
+		this.path = d3.geoPath(this.projection);
 	}
 }
 
