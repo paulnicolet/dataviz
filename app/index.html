@@ -1,35 +1,32 @@
 <!doctype html>
 <html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Home</title>
+		<link rel="stylesheet" type="text/css" href="main.css">
+		<link rel="stylesheet" type="text/css" href="css/materialize.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	</head>
+	<body>
+		<div class="container row">
+			<button id="resetCountry" class="waves-effect waves-light btn col s3">Reset</button>
+			<button id="zeroMean" class="waves-effect waves-light btn col s3">Zero mean</button>
+		</div>
+		<div class="container row">
+						<div id="country_time_series" class="col s5"> </div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home</title>
-    <link rel="stylesheet" type="text/css" href="main.css">
-    <link rel="stylesheet" type="text/css" href="css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-</head>
-
-<body>
-    <div class="container row">
-        <button id="resetCountry" class="waves-effect waves-light btn col s3">Reset</button>
-        <button id="zeroMean" class="col s3">Zero mean</button>
-    </div>
-    <div class="container row">
-        <div class="col s8">
-            <input type="text" class="autocomplete">
-            <label>Write a country/continent you want to display</label>
-        </div>
-    </div>
-    <!--div id="country_time_series" class="container"></div-->
-    <div id="slider"></div>
-    <div id="map"></div>
-    <button id="button3">Animate bubbles</button>
-    <div id="bubbles"></div>
-
-    <script type="text/javascript" src="bundle.js"></script>
-</body>
-
+			<div class="col s7">
+				<label for="autocompleteInput">Write a country/continent you want to display</label>
+				<input id="autocompleteInput" type="text" class="autocomplete">
+			</div>
+		</div>
+		
+		<div id="slider"></div>
+		<div id="map"></div>
+		<button id="button3">Animate bubbles</button>
+		<div id="bubbles"></div>
+		<script type="text/javascript" src="bundle.js"></script>
+	</body>
 </html>
-

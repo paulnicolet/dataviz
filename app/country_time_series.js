@@ -21,39 +21,49 @@ class CountryTimeSeries {
 
         this.zeroMeanButton = document.getElementById('zeroMean');
         this.resetCountryButton = document.getElementById('resetCountry');
-
-        var self = this;
+        this.autocompleteID = "autocompleteInput";
 
         this.initChart();
 
         this.initAutocomplete();
 
+        this.linkResetButton();
+
+        this.linkZeroMeanButton();
+
+    }
+
+    linkResetButton() {
         this.resetCountryButton.addEventListener('click', () => {
+
+            this.zeroMeanButton.disabled = true;
+            this.resetCountryButton.disabled = true;
+
             this.chart.unload({
                 ids: this.displayedData,
                 done: () => {
-                    this.displayedCountry = []
-                    this.displayedData = []
+                    this.displayedCountry = [];
+                    this.displayedData = [];
 
-                    this.addCountryTemp('World', self);
+                    this.addCountryTemp('World');
 
                     this.zeroMeanButton.disabled = false;
+                    this.resetCountryButton.disabled = false;
                 }
             });
 
         });
+    }
 
+    linkZeroMeanButton() {
         this.zeroMeanButton.addEventListener('click', () => {
 
             this.zeroMeanButton.disabled = true;
             this.resetCountryButton.disabled = true;
 
-            var toUnload = this.displayedData.slice()
-            toUnload.push('World');
-            toUnload.push('Reg_World');
+            var toUnload = this.displayedData.slice();
 
-            self.displayedCountry.push('World');
-            this.displayedData = []
+            this.displayedData = [];
             var columns = [];
 
             var xs = {};
@@ -62,9 +72,9 @@ class CountryTimeSeries {
 
 
             var endWord = '_0mean';
-            for (var i = 0; i < self.displayedCountry.length; i++) {
+            for (var i = 0; i < this.displayedCountry.length; i++) {
 
-                var countryName = self.displayedCountry[i] + endWord;
+                var countryName = this.displayedCountry[i] + endWord;
                 var countryDatesName = 'dates_' + countryName;
                 var regCountryName = 'Reg_' + countryName;
 
@@ -84,20 +94,20 @@ class CountryTimeSeries {
                 columns.push(fin);
 
                 var countryData = null;
-                if (self.displayedCountry[i] == 'World') {
-                    countryData = self.dataGlobal.World;
+                if (this.displayedCountry[i] == 'World') {
+                    countryData = this.dataGlobal.World;
                 } else {
-                    countryData = self.dataCountry[self.displayedCountry[i]];
+                    countryData = this.dataCountry[this.displayedCountry[i]];
                 }
 
-                countryData = self.zeroMeansData(countryData);
+                countryData = this.zeroMeansData(countryData);
 
-                self.computeCountryPointsAndAxisAndReg(countryData, val, dates, fin);
+                this.computeCountryPointsAndAxisAndReg(countryData, val, dates, fin);
 
-                self.prepareDataAttributes(self, countryName, countryDatesName, regCountryName, xs, types, colors);
+                this.prepareDataAttributes(countryName, countryDatesName, regCountryName, xs, types, colors);
             }
 
-            self.chart.load({
+            this.chart.load({
                 xs: xs,
                 types: types,
                 colors: colors,
@@ -107,7 +117,6 @@ class CountryTimeSeries {
 
             this.resetCountryButton.disabled = false;
         });
-
     }
 
     zeroMeansData(countryData) {
@@ -146,6 +155,7 @@ class CountryTimeSeries {
         var fin = [];
         fin.push('Reg_World');
 
+        this.displayedCountry.push('World'); 
         this.displayedData.push('dates_World');
         this.displayedData.push('World');
         this.displayedData.push('Reg_World');
@@ -197,27 +207,33 @@ class CountryTimeSeries {
     }
 
     initAutocomplete() {
-        $('input.autocomplete').autocomplete({
-            data: {
-                "Apple": 'bob',
-                "Microsoft": 'ada',
-                "Google": 'https://placehold.it/250x250'
-            },
+
+        var countries = {}
+        Object.keys(this.dataCountry).forEach((entry) => {
+            countries[entry] = null;
+        })
+        countries['World'] = null;
+
+        $("#" + this.autocompleteID).autocomplete({
+            data: countries,
             limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
-            onAutocomplete: function(val) {
-                console.log(val)
+            onAutocomplete: (val) => {
+                if($.inArray(val, this.displayedCountry) == -1) {
+                    this.addCountryTemp(val);
+                    $("#" + this.autocompleteID).val('');
+                }
             },
-            minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+            minLength: 2, // The minimum length of the input for the autocomplete to start. Default: 1.
         });
     }
 
-    addCountryTemp(countryName, self) {
+    addCountryTemp(countryName) {
 
         var countryData = null;
         if (countryName == 'World') {
-            countryData = self.dataGlobal.World;
+            countryData = this.dataGlobal.World;
         } else {
-            countryData = self.dataCountry[countryName];
+            countryData = this.dataCountry[countryName];
         }
         var countryDatesName = 'dates_' + countryName;
         var regCountryName = 'Reg_' + countryName;
@@ -229,15 +245,15 @@ class CountryTimeSeries {
         var fin = [];
         fin.push(regCountryName);
 
-        self.computeCountryPointsAndAxisAndReg(countryData, val, dates, fin);
+        this.computeCountryPointsAndAxisAndReg(countryData, val, dates, fin);
 
         var xs = {};
         var types = {};
         var colors = {};
 
-        self.prepareDataAttributes(self, countryName, countryDatesName, regCountryName, xs, types, colors);
+        this.prepareDataAttributes(countryName, countryDatesName, regCountryName, xs, types, colors);
 
-        self.loadData(self, countryName, countryDatesName, regCountryName, val, dates, fin, xs, types, colors);
+        this.loadData(countryName, countryDatesName, regCountryName, val, dates, fin, xs, types, colors);
     }
 
     computeCountryPointsAndAxisAndReg(countryData, countryPoints, countryDates, regCountryLine) {
@@ -264,23 +280,21 @@ class CountryTimeSeries {
         }
     }
 
-    prepareDataAttributes(self, countryName, countryDatesName, regCountryName, xs, types, colors) {
+    prepareDataAttributes(countryName, countryDatesName, regCountryName, xs, types, colors) {
 
         xs[countryName] = countryDatesName;
 
         types[countryName] = 'scatter';
         types[regCountryName] = 'spline';
 
-        var color = self.getRandomColor(countryName);
+        var color = this.getRandomColor(countryName);
         colors[countryName] = color;
         colors[regCountryName] = color;
     }
 
-    loadData(self, countryName, countryDatesName, regCountryName, countryPoints, countryDates, regCountryLine, xs, types, colors) {
+    loadData(countryName, countryDatesName, regCountryName, countryPoints, countryDates, regCountryLine, xs, types, colors) {
 
-
-
-        self.chart.load({
+        this.chart.load({
             xs: xs,
             columns: [
                 countryDates,
@@ -291,10 +305,10 @@ class CountryTimeSeries {
             colors: colors,
         });
 
-        self.displayedCountry.push(countryName);
-        self.displayedData.push(countryName);
-        self.displayedData.push(countryDatesName);
-        self.displayedData.push(regCountryName);
+        this.displayedCountry.push(countryName);
+        this.displayedData.push(countryName);
+        this.displayedData.push(countryDatesName);
+        this.displayedData.push(regCountryName);
     }
 
     getRandomColor(countryName) {
@@ -306,15 +320,11 @@ class CountryTimeSeries {
             seed += tmp[0].charAt(i).charCodeAt(0);
         }
 
-        console.log(seed)
-
         var letters = '0123456789ABCDEF';
         var color = '#';
         for (var i = 0; i < 6; i++) {
-            color += letters[((i + 1) * seed) % 16];
+            color += letters[((i + 1) * (seed + 1 + i)) % 16];
         }
-
-        console.log(color)
 
         return color;
     }
