@@ -18,7 +18,7 @@ const LEGEND_HEIGHT = 20;
 const CORNER_RADIUS = 10;
 
 // Topology constants
-const TOPOLOGY_SCALING_RATIO = 140/640;
+const TOPOLOGY_SCALING_RATIO = 120/640;
 
 class TemperaturesMap {
 	constructor(id, dataPath, topologyPath, outerWidth, outerHeight) {
@@ -70,7 +70,8 @@ class TemperaturesMap {
 					.attr('class', 'map-popup')
 					.attr('x', circle.attr('cx'))
 					.attr('y', circle.attr('cy'))
-					.attr('transform', `translate(0, ${-LARGE_CIRCLE})`)
+					.attr('transform', `translate(${LARGE_CIRCLE}, ${-LARGE_CIRCLE - 5})`)
+					.style('text-anchor', 'end')
 					.text(`${d.City}: ${d.AverageTemperature.toFixed(1)}°`);
 
 			group.parentNode.appendChild(group);
