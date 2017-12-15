@@ -21,7 +21,7 @@ class CountryTimeSeries {
 
         this.zeroMeanButton = document.getElementById('zeroMean');
         this.resetCountryButton = document.getElementById('resetCountry');
-        this.autocompleteID = "autocompleteInput";
+        this.autocompleteID = "time-series-input";
 
         this.initChart();
 
