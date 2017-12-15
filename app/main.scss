@@ -26,6 +26,10 @@ hr {
 	border: 0;
 }
 
+.animate-btn {
+	margin-top: 40%;
+}
+
 // Bubbles
 #bubble-section {
 	opacity: 0;
@@ -70,6 +74,10 @@ blockquote {
 	background-color: $primary-color;
 }
 
+.btn:focus{ 
+	background-color: $primary-color;
+}
+
 .btn:hover {
 	background-color: $secondary-color;
 }
@@ -79,4 +87,8 @@ input[type=text]:not(.browser-default):focus:not([readonly]) {
 	-webkit-box-shadow: 0 1px 0 0 $primary-color;
 	-moz-box-shadow: 0 1px 0 0 $primary-color;
 	box-shadow: 0 1px 0 0 $primary-color;
+}
+
+ul.dropdown-content li span {
+	color: $primary-color;
 }

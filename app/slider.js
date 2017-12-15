@@ -9,10 +9,9 @@ class Slider {
 		this.id = id;
 		this.minDate = minDate;
 		this.maxDate = maxDate;
-		this.format = d3.timeFormat('%Y');
 		this.lastLeft = null;
 		this.lastRight = null;
-		this.currentYear = null;
+		this.currentYear = minDate;
 		this.handlers = [];
 
 		this.initSizable(outerWidth, outerHeight);
@@ -49,7 +48,6 @@ class Slider {
 	renderAxis() {
 		let axis = d3.axisBottom()
 						.scale(this.scale)
-						.tickFormat(t => this.format(t))
 						.tickSize(0)
 						.tickPadding(20)
 						.tickValues([this.scale.domain()[0], this.scale.domain()[1]]);
@@ -80,7 +78,7 @@ class Slider {
 		}
 
 		// Scale to get corresponding year
-		let year = this.scale.invert(pos).getFullYear().toString();
+		let year = parseInt(this.scale.invert(pos));
 
 		// Do not update anything if handle did not move enough
 		if (year == this.currentYear) {
@@ -89,7 +87,7 @@ class Slider {
 		this.currentYear = year;
 
 		// Clamp handle and translate
-		pos = this.scale(new Date(year));
+		pos = this.scale(year);
 		handle.attr('transform', `translate(${pos}, 0)`);
 
 		// Update text
@@ -101,6 +99,25 @@ class Slider {
 		// Update current selection
 		this.lastLeft = d3.event.selection[0];
 		this.lastRight = d3.event.selection[1];
+	}
+
+	inc() {
+		if (this.currentYear >= this.maxDate) {
+			return;
+		}
+
+		this.currentYear++;
+
+		// Clamp handle and translate
+		let pos = this.scale(new Date(this.currentYear));
+		let handle = d3.select(`#${this.id} #slider-handle`);
+		handle.attr('transform', `translate(${pos}, 0)`);
+
+		// Update text
+		d3.select(`#${this.id} #current-value`).text(this.currentYear);
+
+		// Call handlers
+		this.handlers.forEach(f => f(this.currentYear));
 	}
 
 	// Register handlers
@@ -128,7 +145,7 @@ class Slider {
 						.attr('transform', `translate(${MARGIN.left}, ${MARGIN.top})`);
 
 		// Define timescale
-		this.scale = d3.scaleTime()
+		this.scale = d3.scaleLinear()
 						.domain([this.minDate, this.maxDate])
 						.range([0, this.width])
 						.clamp(true);
