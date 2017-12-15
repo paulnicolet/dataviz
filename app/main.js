@@ -8,15 +8,6 @@ import buildBubbleChart from './bubbles';
 
 require('./main.scss');
 
-// Build time slider
-const MAP_SLIDER_ID = 'map-slider';
-const MAP_SLIDER_WIDTH = document.getElementById(MAP_SLIDER_ID).clientWidth;
-const MAP_SLIDER_RATIO = 1/3;
-const MAP_SLIDER_HEIGHT = MAP_SLIDER_RATIO * MAP_SLIDER_WIDTH;
-const MAP_START_DATE = new Date('1745');
-const MAP_END_DATE = new Date('2013');
-let mapSlider = buildSlider(MAP_SLIDER_ID, MAP_START_DATE, MAP_END_DATE, MAP_SLIDER_WIDTH, MAP_SLIDER_HEIGHT);
-
 // Build map
 const MAP_ID = 'map';
 const MAP_WIDTH = document.getElementById(MAP_ID).clientWidth;
@@ -26,8 +17,29 @@ const WORLD_TOPOJSON_PATH = './data/110m.json';
 const TEMPERATURES_PATH = './data/temp_city_all.json';
 let map = buildMap(MAP_ID, TEMPERATURES_PATH, WORLD_TOPOJSON_PATH, MAP_WIDTH, MAP_HEIGHT);
 
-// Register with slider
+// Build time slider
+const MAP_SLIDER_ID = 'map-slider';
+const MAP_PLAY_ID = 'play-map-btn';
+const MAP_STOP_ID = 'stop-map-btn';
+const MAP_PLAY_INTERVAL = 1000;
+const MAP_SLIDER_WIDTH = document.getElementById(MAP_SLIDER_ID).clientWidth;
+const MAP_SLIDER_RATIO = 1/3;
+const MAP_SLIDER_HEIGHT = MAP_SLIDER_RATIO * MAP_SLIDER_WIDTH;
+const MAP_START_DATE = 1745;
+const MAP_END_DATE = 2013;
+let mapSlider = buildSlider(MAP_SLIDER_ID, MAP_START_DATE, MAP_END_DATE, MAP_SLIDER_WIDTH, MAP_SLIDER_HEIGHT);
 mapSlider.moved(year => map.renderTemperatures(year));
+
+let mapIntervalID;
+document.getElementById(MAP_PLAY_ID).addEventListener('click', () => {
+	mapIntervalID = setInterval(() => {
+		mapSlider.inc();
+	}, MAP_PLAY_INTERVAL);
+});
+
+document.getElementById(MAP_STOP_ID).addEventListener('click', () => {
+	clearInterval(mapIntervalID);
+});
 
 // Build time series
 const COUNTRY_TIME_SERIES_ID = 'country_time_series';
@@ -51,13 +63,27 @@ let bubbles = buildBubbleChart(BUBBLE_CHART_ID, BUBBLE_DETAILS_ID, BUBBLE_DATA_P
 
 
 const BUBBLE_SLIDER_ID = 'bubble-slider';
+const BUBBLE_PLAY_ID = 'play-bubbles-btn';
+const BUBBLE_STOP_ID = 'stop-bubbles-btn';
+const BUBBLE_PLAY_INTERVAL = 1000;
 const BUBBLE_SLIDER_WIDTH = document.getElementById(BUBBLE_SLIDER_ID).clientWidth;
 const BUBBLE_SLIDER_RATIO = 1/3;
 const BUBBLE_SLIDER_HEIGHT = MAP_SLIDER_RATIO * MAP_SLIDER_WIDTH;
-const BUBBLE_START_DATE = new Date('1976');
-const BUBBLE_END_DATE = new Date('2013');
+const BUBBLE_START_DATE = 1950;
+const BUBBLE_END_DATE = 2013;
 let bubbleSlider = buildSlider(BUBBLE_SLIDER_ID, BUBBLE_START_DATE, BUBBLE_END_DATE, BUBBLE_SLIDER_WIDTH, BUBBLE_SLIDER_HEIGHT);
 bubbleSlider.moved(year => bubbles.animateBubbles(year));
+
+let bubbleIntervalID;
+document.getElementById(BUBBLE_PLAY_ID).addEventListener('click', () => {
+	bubbleIntervalID = setInterval(() => {
+		bubbleSlider.inc();
+	}, BUBBLE_PLAY_INTERVAL);
+});
+
+document.getElementById(BUBBLE_STOP_ID).addEventListener('click', () => {
+	clearInterval(bubbleIntervalID);
+});
 
 // Resize charts
 window.addEventListener('resize', () => {

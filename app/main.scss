@@ -26,6 +26,10 @@ hr {
 	border: 0;
 }
 
+.animate-btn {
+	margin-top: 40%;
+}
+
 // Bubbles
 #bubble-section {
 	opacity: 0;
@@ -67,6 +71,10 @@ blockquote {
 }
 
 .btn {
+	background-color: $primary-color;
+}
+
+.btn:focus{ 
 	background-color: $primary-color;
 }
 

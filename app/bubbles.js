@@ -29,7 +29,7 @@ class BubbleChart {
 
 			// Render chart
 			this.renderAxis();
-			this.renderBubbles(1976);
+			this.renderBubbles(1950);
 		});
 	}
 
@@ -47,7 +47,7 @@ class BubbleChart {
 			.attr('cx', d => this.xScale(data[d.country].gdp))
 			.attr('cy', d => this.yScale(data[d.country].temperature))
 			.attr('r', d => this.radiusScale(data[d.country].population))
-			.style("fill", () => `hsl(${Math.random() * 360},100%,50%)`);
+			//.style("fill", () => `hsl(${Math.random() * 360},100%,50%)`);
 	}
 
 	renderBubbles(year) {
@@ -64,7 +64,10 @@ class BubbleChart {
 							.attr('cx', d => this.xScale(d.gdp))
 							.attr('cy', d => this.yScale(d.temperature))
 							.attr('r', d => this.radiusScale(d.population))
-							.style("fill", () => `hsl(${Math.random() * 360}, 100%, 50%)`);
+							.style("fill", () => "red")
+							.style("stroke", () => "black")
+							.style("fill-opacity", 0.5);
+							//.style("fill", () => `hsl(${Math.random() * 360}, 100%, 50%)`);
 
 		newCircle.on('mouseover', (d, i) => {
 			let data = self.data[self.currentYear];
@@ -132,8 +135,8 @@ class BubbleChart {
 
 		// radiusScale for population
 		this.radiusScale = d3.scaleLinear()
-								.domain([0, 600000])
-								.range([MIN_RADIUS_WIDTH_RATIO * this.width, MAX_RADIUS_WIDTH_RATIO * this.width]);
+								.domain([1, 600000])
+								.range([MIN_RADIUS_WIDTH_RATIO * this.width, MAX_RADIUS_WIDTH_RATIO * this.width])
 	}
 }
 
