@@ -92,3 +92,7 @@ input[type=text]:not(.browser-default):focus:not([readonly]) {
 ul.dropdown-content li span {
 	color: $primary-color;
 }
+
+label:focus {
+	color: $primary-color;
+}
