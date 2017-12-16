@@ -202,7 +202,7 @@ class CountryTimeSeries {
                 },
                 y: {
                     tick: {
-                        count: 20,
+                        count: 10,
                         format: (d) => {
                             return d.toFixed(1);
                         }
