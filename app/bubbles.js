@@ -2,7 +2,7 @@ import * as d3 from 'd3';
 
 const MIN_RADIUS_WIDTH_RATIO = 1/200;
 const MAX_RADIUS_WIDTH_RATIO = 1/25;
-const MARGIN = {top: 20, right: 20, bottom: 20, left: 50};
+const MARGIN = {top: 20, right: 20, bottom: 70, left: 70};
 
 const MOTION_DURATION = 1000;
 
@@ -102,6 +102,17 @@ class BubbleChart {
 		this.svg.append('g')
 					.attr('class', 'y axis')
 					.call(yAxis);
+
+
+		this.svg.append('text')
+				.attr('text-anchor', 'middle')
+				.attr('transform', `translate(${this.width / 2}, ${this.height + MARGIN.bottom/2})`)
+				.text('GDP (x10³ $)');
+
+		this.svg.append('text')
+				.attr('text-anchor', 'middle')
+				.attr('transform', `translate(${-MARGIN.left/2}, ${this.height / 2})rotate(-90)`)
+				.text('Temperature (°C)');
 	}
 
 	resize(outerWidth, outerHeight) {
