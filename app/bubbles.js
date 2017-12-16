@@ -1,10 +1,13 @@
 import * as d3 from 'd3';
+import * as chrom from  'd3-scale-chromatic';
 
 const MIN_RADIUS_WIDTH_RATIO = 1/200;
 const MAX_RADIUS_WIDTH_RATIO = 1/25;
 const MARGIN = {top: 20, right: 20, bottom: 70, left: 70};
 
+const BUBBLE_OPACITY = 0.7;
 const MOTION_DURATION = 1000;
+const LARGE_VARIATION = 10;
 
 class BubbleChart {
 	constructor(id, detailsId, dataPath, outerWidth, outerHeight) {
@@ -12,20 +15,21 @@ class BubbleChart {
 		this.detailsId = detailsId;
 		this.dataPath = dataPath;
 		
-		this.initSizable(outerWidth, outerHeight);
-
 		// Init chart
-		this.init();
+		this.init(outerWidth, outerHeight);
 	}
 
-	init() {
+	init(outerWidth, outerHeight) {
 		// TODO temperature variation scale for color
 		// Convert to color using chromatic (see map.js)
 
 		d3.json(this.dataPath, (error, data) => {
 			if (error) window.alert('Could not load bubble data');
 
-			self.data = data;
+			this.data = data;
+			this.metadata = data.metadata;
+
+			this.initSizable(outerWidth, outerHeight);
 
 			// Render chart
 			this.renderAxis();
@@ -34,11 +38,11 @@ class BubbleChart {
 	}
 
 	animateBubbles(year) {
-		self.currentYear = year;
-		let data = self.data[year];
+		this.currentYear = year;
+		let data = this.data[year];
 
-		if (self.currentCountry != null) {
-			this.updateDetails(self.currentCountry, data[self.currentCountry].temperature, data[self.currentCountry].gdp, data[self.currentCountry].population, data[self.currentCountry].variation);			
+		if (this.currentCountry != null) {
+			this.updateDetails(this.currentCountry, data[this.currentCountry].temperature, data[this.currentCountry].gdp, data[this.currentCountry].population, data[this.currentCountry].variation);			
 		}
 
 		d3.selectAll('.bubble')
@@ -47,12 +51,12 @@ class BubbleChart {
 			.attr('cx', d => this.xScale(data[d.country].gdp))
 			.attr('cy', d => this.yScale(data[d.country].temperature))
 			.attr('r', d => this.radiusScale(data[d.country].population))
-			//.style("fill", () => `hsl(${Math.random() * 360},100%,50%)`);
+			.style("fill", d => d3.color(chrom.interpolateRdYlGn(this.variationScale(data[d.country].variation))));
 	}
 
 	renderBubbles(year) {
-		self.currentYear = year;
-		let data = Object.values(self.data[year]);
+		this.currentYear = year;
+		let data = Object.values(this.data[year]);
 
 		let newCircle = this.svg.append('g')
 							.attr('id', 'bubbles')
@@ -64,15 +68,13 @@ class BubbleChart {
 							.attr('cx', d => this.xScale(d.gdp))
 							.attr('cy', d => this.yScale(d.temperature))
 							.attr('r', d => this.radiusScale(d.population))
-							.style("fill", () => "red")
-							.style("stroke", () => "black")
-							.style("fill-opacity", 0.5);
-							//.style("fill", () => `hsl(${Math.random() * 360}, 100%, 50%)`);
+							.style("fill-opacity", BUBBLE_OPACITY)
+							.style("fill", d => d3.color(chrom.interpolateRdYlGn(this.variationScale(d.variation))));
 
 		newCircle.on('mouseover', (d, i) => {
-			let data = self.data[self.currentYear];
+			let data = this.data[this.currentYear];
 
-			self.currentCountry = d.country;
+			this.currentCountry = d.country;
 
 			this.updateDetails(d.country, data[d.country].temperature, data[d.country].gdp, data[d.country].population, data[d.country].variation);
 		});
@@ -120,7 +122,7 @@ class BubbleChart {
 
 		// Render chart
 		this.renderAxis();
-		this.renderBubbles(self.currentYear);
+		this.renderBubbles(this.currentYear);
 	}
 
 	initSizable(outerWidth, outerHeight) {
@@ -136,18 +138,22 @@ class BubbleChart {
 
 		// xScale for GDP
 		this.xScale = d3.scaleLog()
-						.domain([100, 150000])
+						.domain([this.metadata.minGDP, this.metadata.maxGDP])
 						.range([0, this.width]);
 
 		// yScale for temperatures
 		this.yScale = d3.scaleLinear()
-						.domain([15, 22])
+						.domain([this.metadata.minTemp, this.metadata.maxTemp])
 						.range([this.height, 0]);
 
 		// radiusScale for population
 		this.radiusScale = d3.scaleLinear()
-								.domain([1, 600000])
-								.range([MIN_RADIUS_WIDTH_RATIO * this.width, MAX_RADIUS_WIDTH_RATIO * this.width])
+								.domain([this.metadata.minPop, this.metadata.maxPop])
+								.range([MIN_RADIUS_WIDTH_RATIO * this.width, MAX_RADIUS_WIDTH_RATIO * this.width]);
+
+		this.variationScale = d3.scaleLinear()
+								.domain([0, LARGE_VARIATION])
+								.range([1, 0]);
 	}
 }
 
