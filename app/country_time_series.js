@@ -190,11 +190,6 @@ class CountryTimeSeries {
                         format: '%Y'
                     }
                 },
-                y: {
-                    tick: {
-                        format: (d) => {return "{0:.2f}".format(d)},
-                    }
-                }
             },
             transition: {
                 duration: 1000
