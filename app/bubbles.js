@@ -130,7 +130,7 @@ class BubbleChart {
 
 		// yScale for temperatures
 		this.yScale = d3.scaleLinear()
-						.domain([-10, 40])
+						.domain([15, 22])
 						.range([this.height, 0]);
 
 		// radiusScale for population
