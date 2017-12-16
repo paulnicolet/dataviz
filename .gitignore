@@ -31,7 +31,7 @@ node_modules
 
 # Data
 climate-change-earth-surface-temperature-data
-data
+#data
 
 # Jupyter
 .ipynb_checkpoints
