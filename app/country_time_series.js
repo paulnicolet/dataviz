@@ -7,11 +7,10 @@ require('./country_time_series.scss');
 require('./css/c3.css');
 
 class CountryTimeSeries {
-    constructor(id, dataCountry, dataGlobal, width, height) {
+    constructor(id, dataCountry, width, height) {
 
         this.id = id;
         this.dataCountry = dataCountry;
-        this.dataGlobal = dataGlobal;
         this.width = width;
         this.height = height;
 
@@ -30,7 +29,6 @@ class CountryTimeSeries {
         this.linkResetButton();
 
         this.linkZeroMeanButton();
-
     }
 
     linkResetButton() {
@@ -93,14 +91,13 @@ class CountryTimeSeries {
                 columns.push(val);
                 columns.push(fin);
 
-                var countryData = null;
-                if (this.displayedCountry[i] == 'World') {
-                    countryData = this.dataGlobal.World;
-                } else {
-                    countryData = this.dataCountry[this.displayedCountry[i]];
-                }
+                console.log(this.displayedCountry[i])
 
-                countryData = this.zeroMeansData(countryData);
+                console.log(this.dataCountry[this.displayedCountry[i]])
+
+                var countryData = this.zeroMeansData(this.dataCountry[this.displayedCountry[i]]);
+
+                console.log(countryData)
 
                 this.computeCountryPointsAndAxisAndReg(countryData, val, dates, fin);
 
@@ -128,17 +125,16 @@ class CountryTimeSeries {
 
         var mean = 0.0;
         for (var i = 0; i < countryData.length; i++) {
-            var tmp = countryData[i].split("_");
-            dates.push(tmp[0]);
-            val.push(tmp[1]);
+            dates.push(1850 + i);
+            val.push(countryData[i]);
 
-            mean += parseFloat(tmp[1]);
+            mean += countryData[i];
         }
 
         mean /= countryData.length;
 
         for (var i = 0; i < countryData.length; i++) {
-            result.push(dates[i] + "_" + (val[i] - mean).toString());
+            result.push(val[i] - mean);
         }
 
         return result;
@@ -146,7 +142,7 @@ class CountryTimeSeries {
 
     resetGraphData() {
 
-        var worldData = this.dataGlobal.World;
+        var worldData = this.dataCountry.World;
 
         var dates = [];
         dates.push('dates_World');
@@ -155,7 +151,7 @@ class CountryTimeSeries {
         var fin = [];
         fin.push('Reg_World');
 
-        this.displayedCountry.push('World'); 
+        this.displayedCountry.push('World');
         this.displayedData.push('dates_World');
         this.displayedData.push('World');
         this.displayedData.push('Reg_World');
@@ -191,7 +187,12 @@ class CountryTimeSeries {
                 x: {
                     type: 'timeseries',
                     tick: {
-                        format: '%Y-%m-%d'
+                        format: '%Y'
+                    }
+                },
+                y: {
+                    tick: {
+                        format: (d) => {return "{0:.2f}".format(d)},
                     }
                 }
             },
@@ -218,7 +219,7 @@ class CountryTimeSeries {
             data: countries,
             limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
             onAutocomplete: (val) => {
-                if($.inArray(val, this.displayedCountry) == -1) {
+                if ($.inArray(val, this.displayedCountry) == -1) {
                     this.addCountryTemp(val);
                     $("#" + this.autocompleteID).val('');
                 }
@@ -230,11 +231,8 @@ class CountryTimeSeries {
     addCountryTemp(countryName) {
 
         var countryData = null;
-        if (countryName == 'World') {
-            countryData = this.dataGlobal.World;
-        } else {
-            countryData = this.dataCountry[countryName];
-        }
+        countryData = this.dataCountry[countryName];
+
         var countryDatesName = 'dates_' + countryName;
         var regCountryName = 'Reg_' + countryName;
 
@@ -261,12 +259,11 @@ class CountryTimeSeries {
         var datas = [];
 
         for (var i = 0; i < countryData.length; i++) {
-            var tmp = countryData[i].split("_");
-            countryDates.push(tmp[0]);
-            countryPoints.push(tmp[1]);
+            countryDates.push(1850 + i);
+            countryPoints.push(countryData[i]);
 
-            if (tmp[1] != 'nan') {
-                datas.push([i, parseFloat(tmp[1])]);
+            if (countryData[i] != null) {
+                datas.push([(1850 + i), countryData[i]]);
             }
         }
 
@@ -275,8 +272,8 @@ class CountryTimeSeries {
             precision: 10
         });
 
-        for (var i = 0; i < cc.points.length; i++) {
-            regCountryLine.push(cc.points[i][1]);
+        for (var i = 0; i < countryData.length; i++) {
+            regCountryLine.push(cc.predict(1850 + i)[1]);
         }
     }
 
@@ -330,19 +327,12 @@ class CountryTimeSeries {
     }
 }
 
-export default function(id, dataCountryPath, dataGlobalPath, width, height) {
+export default function(id, dataCountryPath, width, height) {
     d3.json(dataCountryPath, (errorCountry, dataCountry) => {
         if (errorCountry) {
-            window.alert('Could not load country_temperature data');
+            window.alert('Could not load country_temperature data: ' + errorCountry);
         }
 
-        d3.json(dataGlobalPath, (errorGlobal, dataGlobal) => {
-            if (errorGlobal) {
-                window.alert('Could not load global_temperature data');
-            }
-
-            return new CountryTimeSeries(id, dataCountry, dataGlobal, width, height);
-
-        })
+        return new CountryTimeSeries(id, dataCountry, width, height);
     })
 }
