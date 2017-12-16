@@ -51,7 +51,8 @@ module.exports = {
     new CopyWebpackPlugin([
       { from: './app/index.html', to: 'index.html' },
       { from: './app/main.scss', to: 'main.css' },
-      { from: './app/data', to: 'data' }
+      { from: './app/data', to: 'data' },
+      { from: './app/css', to: 'css' }
     ]),
     new webpack.LoaderOptionsPlugin({
       options: {
