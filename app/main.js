@@ -43,13 +43,11 @@ document.getElementById(MAP_STOP_ID).addEventListener('click', () => {
 
 // Build time series
 const COUNTRY_TIME_SERIES_ID = 'country_time_series';
-const COUNTRY_TIME_SERIES_PATH = './data/country_temp_from_1850-01-01_step_1y.json';
-const GLOBAL_TIME_SERIES_PATH = './data/glob_temp_from_1850-01-01_step_1y.json';
+const COUNTRY_TIME_SERIES_PATH = './data/temp_time_series.json';
 const COUNTRY_TIME_SERIES_WIDTH = document.getElementById(COUNTRY_TIME_SERIES_ID).clientWidth;
 const COUNTRY_TIME_SERIES_RATIO = 2/3;
 const COUNTRY_TIME_SERIES_HEIGHT = COUNTRY_TIME_SERIES_RATIO * COUNTRY_TIME_SERIES_WIDTH;
-buildCountryTimeSeries(COUNTRY_TIME_SERIES_ID, COUNTRY_TIME_SERIES_PATH,
-	GLOBAL_TIME_SERIES_PATH, COUNTRY_TIME_SERIES_WIDTH, COUNTRY_TIME_SERIES_HEIGHT);
+buildCountryTimeSeries(COUNTRY_TIME_SERIES_ID, COUNTRY_TIME_SERIES_PATH, COUNTRY_TIME_SERIES_WIDTH, COUNTRY_TIME_SERIES_HEIGHT);
 
 
 // Build bubble chart
