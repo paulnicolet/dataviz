@@ -5,6 +5,8 @@ import buildMap from './map';
 import buildCountryTimeSeries from './country_time_series';
 import buildBubbleChart from './bubbles';
 
+import './css/materialize.min.css';
+import './css/c3.css';
 
 require('./main.scss');
 

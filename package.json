@@ -36,6 +36,7 @@
     "eslint-plugin-jsx-a11y": "latest",
     "eslint-plugin-react": "^7.5.1",
     "extract-text-webpack-plugin": "^2.0.0",
+    "file-loader": "^1.1.6",
     "node-sass": "^3.0.0",
     "open-browser-webpack-plugin": "latest",
     "sass-loader": "^2.0.0",

@@ -32,6 +32,11 @@ module.exports = {
           presets: ['es2015', 'stage-0', 'react']
         }
       },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        exclude: /node_modules/,
+        loader: 'file-loader'
+      },
       { test: /\.css$/, include: path.resolve(__dirname, 'app'), loader: 'style-loader!css-loader' },
       { test: /\.scss$/, loader: ExtractTextPlugin.extract({fallback: 'style-loader', use: 'css-loader?sourceMap!sass-loader?sourceMap'})},
      //{ test: /\.scss$/, loaders: ['style-loader','css-loader','sass-loader?sourceMap', 'resolve-url-loader']},
