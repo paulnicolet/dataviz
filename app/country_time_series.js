@@ -91,13 +91,7 @@ class CountryTimeSeries {
                 columns.push(val);
                 columns.push(fin);
 
-                console.log(this.displayedCountry[i])
-
-                console.log(this.dataCountry[this.displayedCountry[i]])
-
                 var countryData = this.zeroMeansData(this.dataCountry[this.displayedCountry[i]]);
-
-                console.log(countryData)
 
                 this.computeCountryPointsAndAxisAndReg(countryData, val, dates, fin);
 
