@@ -5,9 +5,6 @@ import buildMap from './map';
 import buildCountryTimeSeries from './country_time_series';
 import buildBubbleChart from './bubbles';
 
-//import './css/materialize.min.css';
-//import './css/c3.css';
-
 require('./main.scss');
 
 // Build map
@@ -15,8 +12,8 @@ const MAP_ID = 'map';
 const MAP_WIDTH = document.getElementById(MAP_ID).clientWidth;
 const MAP_RATIO = 2/3;
 const MAP_HEIGHT = MAP_RATIO * MAP_WIDTH;
-const WORLD_TOPOJSON_PATH = './data/110m.json';
-const TEMPERATURES_PATH = './data/temp_city_all.json';
+const WORLD_TOPOJSON_PATH = '/data/110m.json';
+const TEMPERATURES_PATH = '/data/temp_city_all.json';
 let map = buildMap(MAP_ID, TEMPERATURES_PATH, WORLD_TOPOJSON_PATH, MAP_WIDTH, MAP_HEIGHT);
 
 // Build time slider
@@ -45,7 +42,7 @@ document.getElementById(MAP_STOP_ID).addEventListener('click', () => {
 
 // Build time series
 const COUNTRY_TIME_SERIES_ID = 'country_time_series';
-const COUNTRY_TIME_SERIES_PATH = './data/temp_time_series.json';
+const COUNTRY_TIME_SERIES_PATH = '/data/temp_time_series.json';
 const COUNTRY_TIME_SERIES_WIDTH = document.getElementById(COUNTRY_TIME_SERIES_ID).clientWidth;
 const COUNTRY_TIME_SERIES_RATIO = 2/3;
 const COUNTRY_TIME_SERIES_HEIGHT = COUNTRY_TIME_SERIES_RATIO * COUNTRY_TIME_SERIES_WIDTH;
@@ -55,7 +52,7 @@ buildCountryTimeSeries(COUNTRY_TIME_SERIES_ID, COUNTRY_TIME_SERIES_PATH, COUNTRY
 // Build bubble chart
 const BUBBLE_CHART_ID = 'bubbles';
 const BUBBLE_DETAILS_ID = 'bubble-details';
-const BUBBLE_DATA_PATH = './data/final.min.json';
+const BUBBLE_DATA_PATH = '/data/final.min.json';
 const BUBBLE_CHART_WIDTH = document.getElementById(BUBBLE_CHART_ID).clientWidth;
 const BUBBLE_CHART_RATIO = 1/3;
 const BUBBLE_CHART_HEIGHT = BUBBLE_CHART_RATIO * BUBBLE_CHART_WIDTH;
