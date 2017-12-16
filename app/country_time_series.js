@@ -69,12 +69,12 @@ class CountryTimeSeries {
             var colors = {};
 
 
-            var endWord = '_0mean';
+            var endWord = '';//' 0mean';
             for (var i = 0; i < this.displayedCountry.length; i++) {
 
                 var countryName = this.displayedCountry[i] + endWord;
-                var countryDatesName = 'dates_' + countryName;
-                var regCountryName = 'Reg_' + countryName;
+                var countryDatesName = 'dates ' + countryName;
+                var regCountryName = 'Regression ' + countryName;
 
                 this.displayedData.push(countryName);
                 this.displayedData.push(countryDatesName);
@@ -124,17 +124,25 @@ class CountryTimeSeries {
         var dates = []
 
         var mean = 0.0;
+        var notNull = 0;
         for (var i = 0; i < countryData.length; i++) {
             dates.push(1850 + i);
             val.push(countryData[i]);
 
-            mean += countryData[i];
+            if(countryData[i] != null) {
+                mean += countryData[i];
+                notNull++;
+            }
         }
 
-        mean /= countryData.length;
+        mean /= notNull;
 
         for (var i = 0; i < countryData.length; i++) {
-            result.push(val[i] - mean);
+            if(val[i] != null) {
+                result.push(val[i] - mean);
+            } else {
+                result.push(null);
+            }
         }
 
         return result;
@@ -145,16 +153,16 @@ class CountryTimeSeries {
         var worldData = this.dataCountry.World;
 
         var dates = [];
-        dates.push('dates_World');
+        dates.push('dates World');
         var val = [];
         val.push('World');
         var fin = [];
-        fin.push('Reg_World');
+        fin.push('Regression World');
 
         this.displayedCountry.push('World');
-        this.displayedData.push('dates_World');
+        this.displayedData.push('dates World');
         this.displayedData.push('World');
-        this.displayedData.push('Reg_World');
+        this.displayedData.push('Regression World');
 
         this.computeCountryPointsAndAxisAndReg(worldData, val, dates, fin);
 
@@ -168,15 +176,15 @@ class CountryTimeSeries {
         this.chart = c3.generate({
             bindto: `#${this.id}`,
             data: {
-                x: 'dates_World',
+                x: 'dates World',
                 columns: this.resetGraphData(),
                 types: {
                     World: 'scatter',
                     Reg_World: 'spline'
                 },
                 colors: {
-                    World: worldColor,
-                    Reg_World: worldColor,
+                    "World": worldColor,
+                    "Regression World": worldColor,
 
                 },
             },
@@ -185,11 +193,22 @@ class CountryTimeSeries {
             },
             axis: {
                 x: {
-                    type: 'timeseries',
                     tick: {
-                        format: '%Y'
-                    }
+                        count: 20,
+                        format: (d) => {
+                            return d.toFixed(0);
+                        }
+                    },
                 },
+                y: {
+                    tick: {
+                        count: 10,
+                        format: (d) => {
+                            return d.toFixed(1);
+                        }
+                    },
+
+                }
             },
             transition: {
                 duration: 1000
@@ -228,8 +247,8 @@ class CountryTimeSeries {
         var countryData = null;
         countryData = this.dataCountry[countryName];
 
-        var countryDatesName = 'dates_' + countryName;
-        var regCountryName = 'Reg_' + countryName;
+        var countryDatesName = 'dates ' + countryName;
+        var regCountryName = 'Regression ' + countryName;
 
         var dates = [];
         dates.push(countryDatesName);
