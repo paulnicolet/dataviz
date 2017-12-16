@@ -50,7 +50,8 @@ module.exports = {
     new ExtractTextPlugin('main.css'),
     new CopyWebpackPlugin([
       { from: './app/index.html', to: 'index.html' },
-      { from: './app/main.scss', to: 'main.css' }
+      { from: './app/main.scss', to: 'main.css' },
+      { from: './app/data', to: 'data' }
     ]),
     new webpack.LoaderOptionsPlugin({
       options: {
