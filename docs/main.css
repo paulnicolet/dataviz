@@ -1,38 +1,94 @@
-html,
-body {
-  padding: 0;
-  margin: 0; }
+#slider-handle path {
+  stroke: black;
+  stroke-width: 3px;
+  pointer-events: none; }
 
-.bars {
-  fill: #4E7798;
-  opacity: 0.8; }
+#current-value {
+  fill: black; }
+.country {
+  fill: transparent;
+  stroke: gray; }
 
-.svg-container {
-  display: inline-block;
-  position: relative;
-  width: 100%;
-  padding-bottom: 100%;
-  /* aspect ratio */
-  vertical-align: top;
-  overflow: hidden; }
+.map-legend-text {
+  font-size: 17px;
+  font-family: 'Open Sans', sans-serif; }
 
-.svg-content-responsive {
-  display: inline-block;
+.map-popup {
+  fill: black;
+  font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold; }
+.dropdown-content {
+  position: absolute; }
+html {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #fcfcfc; }
+
+.block {
+  min-height: 100vh; }
+
+#header-map {
+  z-index: -1;
+  opacity: 0.12;
   position: absolute;
-  top: 10px;
-  left: 0; }
+  top: -180px;
+  margin-left: 10%;
+  width: 80%; }
 
-.axis line,
-.axis path {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges; }
+hr {
+  background-color: #b71c1c;
+  height: 1px;
+  border: 0; }
 
-#viz {
-  position: fixed;
-  left: 0px;
-  right: 0px;
-  top: 0px;
-  bottom: 0px; }
+.animate-btn {
+  margin-top: 40%; }
+
+#bubble-section {
+  opacity: 0; }
+
+#bubbles {
+  width: 100%; }
+
+#bubble-slider {
+  width: 50%; }
+
+#map-section {
+  opacity: 0; }
+
+#map {
+  width: 100%; }
+
+#map-slider {
+  width: 50%; }
+
+#time-series-section {
+  opacity: 0; }
+
+.page-footer {
+  background-color: #b71c1c; }
+
+blockquote {
+  border-left: 5px solid #b71c1c; }
+
+.btn {
+  background-color: #b71c1c; }
+
+.btn:focus {
+  background-color: #b71c1c; }
+
+.btn:hover {
+  background-color: #d32f2f; }
+
+input[type=text]:not(.browser-default):focus:not([readonly]) {
+  border-bottom: 1px solid #b71c1c;
+  -webkit-box-shadow: 0 1px 0 0 #b71c1c;
+  -moz-box-shadow: 0 1px 0 0 #b71c1c;
+  box-shadow: 0 1px 0 0 #b71c1c; }
+
+ul.dropdown-content li span {
+  color: #b71c1c; }
+
+label:focus {
+  color: #b71c1c; }
 
 /*# sourceMappingURL=main.css.map*/
