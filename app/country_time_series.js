@@ -193,6 +193,10 @@ class CountryTimeSeries {
                             return d.toFixed(0);
                         }
                     },
+                    label: {
+                        text: 'Year',
+                        position: 'outer'
+                    }
                 },
                 y: {
                     tick: {
@@ -201,6 +205,10 @@ class CountryTimeSeries {
                             return d.toFixed(1);
                         }
                     },
+                    label: {
+                        text: 'Temperature (°C)',
+                        position: 'outer'
+                    }
 
                 }
             },

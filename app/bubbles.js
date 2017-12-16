@@ -107,13 +107,15 @@ class BubbleChart {
 
 
 		this.svg.append('text')
-				.attr('text-anchor', 'middle')
-				.attr('transform', `translate(${this.width / 2}, ${this.height + MARGIN.bottom/2})`)
+				.attr('text-anchor', 'end')
+				.attr('transform', `translate(${this.width}, ${this.height + MARGIN.bottom/2})`)
+				.attr('class', 'label')
 				.text('GDP (x10³ $)');
 
 		this.svg.append('text')
-				.attr('text-anchor', 'middle')
-				.attr('transform', `translate(${-MARGIN.left/2}, ${this.height / 2})rotate(-90)`)
+				.attr('text-anchor', 'end')
+				.attr('transform', `translate(${-MARGIN.left/2}, 0)rotate(-90)`)
+				.attr('class', 'label')
 				.text('Temperature (°C)');
 	}
 
