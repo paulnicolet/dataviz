@@ -30,14 +30,16 @@ let mapSlider = buildSlider(MAP_SLIDER_ID, MAP_START_DATE, MAP_END_DATE, MAP_SLI
 mapSlider.moved(year => map.renderTemperatures(year));
 
 let mapIntervalID;
-document.getElementById(MAP_PLAY_ID).addEventListener('click', () => {
+document.getElementById(MAP_PLAY_ID).addEventListener('click', (e) => {
+	e.target.classList.add("disabled");
 	mapIntervalID = setInterval(() => {
 		mapSlider.inc();
 	}, MAP_PLAY_INTERVAL);
 });
 
-document.getElementById(MAP_STOP_ID).addEventListener('click', () => {
+document.getElementById(MAP_STOP_ID).addEventListener('click', (e) => {
 	clearInterval(mapIntervalID);
+	document.getElementById(MAP_PLAY_ID).classList.remove("disabled");
 });
 
 // Build time series
@@ -72,14 +74,16 @@ let bubbleSlider = buildSlider(BUBBLE_SLIDER_ID, BUBBLE_START_DATE, BUBBLE_END_D
 bubbleSlider.moved(year => bubbles.animateBubbles(year));
 
 let bubbleIntervalID;
-document.getElementById(BUBBLE_PLAY_ID).addEventListener('click', () => {
+document.getElementById(BUBBLE_PLAY_ID).addEventListener('click', (e) => {
+	e.target.classList.add("disabled");
 	bubbleIntervalID = setInterval(() => {
 		bubbleSlider.inc();
 	}, BUBBLE_PLAY_INTERVAL);
 });
 
-document.getElementById(BUBBLE_STOP_ID).addEventListener('click', () => {
+document.getElementById(BUBBLE_STOP_ID).addEventListener('click', (e) => {
 	clearInterval(bubbleIntervalID);
+	document.getElementById(BUBBLE_PLAY_ID).classList.remove("disabled");
 });
 
 // Resize charts
