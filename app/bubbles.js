@@ -7,7 +7,7 @@ const MARGIN = {top: 20, right: 20, bottom: 70, left: 70};
 
 const BUBBLE_OPACITY = 0.7;
 const MOTION_DURATION = 1000;
-const LARGE_VARIATION = 10;
+const LARGE_VARIATION = 2.5;
 
 class BubbleChart {
 	constructor(id, detailsId, dataPath, outerWidth, outerHeight) {
