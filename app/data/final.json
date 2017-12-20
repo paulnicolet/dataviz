@@ -110,7 +110,7 @@
    "country": "Congo",
    "gdp": 2325.7,
    "temperature": 24.259666666666664,
-   "variation": 0.5020833333333314,
+   "variation": 0.4377500000000012,
    "population": 1637.941
   },
   "Guinea-Bissau": {
@@ -537,7 +537,7 @@
    "country": "Netherlands",
    "gdp": 21510.96,
    "temperature": 10.164750000000002,
-   "variation": 0.6890833333333362,
+   "variation": 0.31141666666666623,
    "population": 13793.11
   },
   "Virgin Islands British": {
@@ -985,7 +985,7 @@
    "country": "United Kingdom",
    "gdp": 17466.78,
    "temperature": 9.090333333333334,
-   "variation": 0.27891666666666737,
+   "variation": 0.47116666666666696,
    "population": 56247.405
   },
   "Switzerland": {
@@ -1237,7 +1237,7 @@
    "country": "France",
    "gdp": 18745.59,
    "temperature": 13.278333333333334,
-   "variation": 2.3565000000000023,
+   "variation": 0.04508333333333425,
    "population": 53295.791
   },
   "Lithuania": {
@@ -1328,7 +1328,7 @@
    "country": "Denmark",
    "gdp": 19796.09,
    "temperature": -17.49975,
-   "variation": 25.834916666666665,
+   "variation": 0.09341666666666626,
    "population": 5081.267
   },
   "Dominican Republic": {
@@ -1477,7 +1477,7 @@
    "country": "Congo",
    "gdp": 2309.79,
    "temperature": 24.393249999999995,
-   "variation": 0.6356666666666619,
+   "variation": 0.3041666666666707,
    "population": 1590.039
   },
   "Guinea-Bissau": {
@@ -1904,7 +1904,7 @@
    "country": "Netherlands",
    "gdp": 20736.87,
    "temperature": 10.260833333333334,
-   "variation": 0.7851666666666688,
+   "variation": 0.40749999999999886,
    "population": 13683.291
   },
   "Virgin Islands British": {
@@ -2352,7 +2352,7 @@
    "country": "United Kingdom",
    "gdp": 17032.51,
    "temperature": 9.077916666666667,
-   "variation": 0.2665000000000006,
+   "variation": 0.4587500000000002,
    "population": 56211.947
   },
   "Switzerland": {
@@ -2604,7 +2604,7 @@
    "country": "France",
    "gdp": 18034.1,
    "temperature": 12.962499999999999,
-   "variation": 2.0406666666666666,
+   "variation": 0.2707500000000014,
    "population": 53010.73
   },
   "Lithuania": {
@@ -2695,7 +2695,7 @@
    "country": "Denmark",
    "gdp": 18701.33,
    "temperature": -18.945750000000004,
-   "variation": 27.28091666666667,
+   "variation": 1.3525833333333388,
    "population": 5062.729
   },
   "Dominican Republic": {
@@ -2844,7 +2844,7 @@
    "country": "Congo",
    "gdp": 2431.45,
    "temperature": 24.36733333333333,
-   "variation": 0.6097499999999982,
+   "variation": 0.3300833333333344,
    "population": 1542.69
   },
   "Guinea-Bissau": {
@@ -3271,7 +3271,7 @@
    "country": "Netherlands",
    "gdp": 20726.95,
    "temperature": 10.125749999999998,
-   "variation": 0.6500833333333329,
+   "variation": 0.272416666666663,
    "population": 13562.438
   },
   "Virgin Islands British": {
@@ -3719,7 +3719,7 @@
    "country": "United Kingdom",
    "gdp": 17066.07,
    "temperature": 8.760166666666667,
-   "variation": 0.051249999999999574,
+   "variation": 0.14100000000000001,
    "population": 56152.179
   },
   "Switzerland": {
@@ -3971,7 +3971,7 @@
    "country": "France",
    "gdp": 18238.74,
    "temperature": 13.040416666666667,
-   "variation": 2.1185833333333353,
+   "variation": 0.19283333333333275,
    "population": 52646.198
   },
   "Lithuania": {
@@ -4062,7 +4062,7 @@
    "country": "Denmark",
    "gdp": 18878.38,
    "temperature": -17.661166666666663,
-   "variation": 25.996333333333332,
+   "variation": 0.06799999999999784,
    "population": 5041.419
   },
   "Dominican Republic": {
@@ -4211,7 +4211,7 @@
    "country": "Congo",
    "gdp": 2382.25,
    "temperature": 24.91325,
-   "variation": 1.1556666666666686,
+   "variation": 0.21583333333333599,
    "population": 1496.047
   },
   "Guinea-Bissau": {
@@ -4638,7 +4638,7 @@
    "country": "Netherlands",
    "gdp": 20067.26,
    "temperature": 9.848333333333334,
-   "variation": 0.37266666666666914,
+   "variation": 0.005000000000000782,
    "population": 13431.182
   },
   "Virgin Islands British": {
@@ -5086,7 +5086,7 @@
    "country": "United Kingdom",
    "gdp": 17207.06,
    "temperature": 8.7935,
-   "variation": 0.01791666666666636,
+   "variation": 0.17433333333333323,
    "population": 56066.83
   },
   "Switzerland": {
@@ -5338,7 +5338,7 @@
    "country": "France",
    "gdp": 17678.79,
    "temperature": 12.887166666666664,
-   "variation": 1.9653333333333318,
+   "variation": 0.3460833333333362,
    "population": 52212.314
   },
   "Lithuania": {
@@ -5429,7 +5429,7 @@
    "country": "Denmark",
    "gdp": 19103.61,
    "temperature": -18.714,
-   "variation": 27.049166666666665,
+   "variation": 1.1208333333333336,
    "population": 5017.248
   },
   "Dominican Republic": {
@@ -5578,7 +5578,7 @@
    "country": "Congo",
    "gdp": 2097.35,
    "temperature": 24.55933333333334,
-   "variation": 0.8017500000000055,
+   "variation": 0.13808333333332712,
    "population": 1450.518
   },
   "Guinea-Bissau": {
@@ -6005,7 +6005,7 @@
    "country": "Netherlands",
    "gdp": 19245.04,
    "temperature": 9.366166666666667,
-   "variation": 0.10949999999999882,
+   "variation": 0.48716666666666875,
    "population": 13291.873
   },
   "Virgin Islands British": {
@@ -6453,7 +6453,7 @@
    "country": "United Kingdom",
    "gdp": 16189.76,
    "temperature": 8.492500000000001,
-   "variation": 0.31891666666666474,
+   "variation": 0.12666666666666515,
    "population": 55953.322
   },
   "Switzerland": {
@@ -6705,7 +6705,7 @@
    "country": "France",
    "gdp": 16828.38,
    "temperature": 12.594416666666667,
-   "variation": 1.6725833333333355,
+   "variation": 0.6388333333333325,
    "population": 51739.837
   },
   "Lithuania": {
@@ -6796,7 +6796,7 @@
    "country": "Denmark",
    "gdp": 18459.22,
    "temperature": -18.274916666666666,
-   "variation": 26.610083333333336,
+   "variation": 0.681750000000001,
    "population": 4990.546
   },
   "Dominican Republic": {
@@ -6945,7 +6945,7 @@
    "country": "Congo",
    "gdp": 2010.98,
    "temperature": 24.326333333333334,
-   "variation": 0.5687500000000014,
+   "variation": 0.3710833333333312,
    "population": 1406.643
   },
   "Guinea-Bissau": {
@@ -7372,7 +7372,7 @@
    "country": "Netherlands",
    "gdp": 18930.73,
    "temperature": 9.901833333333332,
-   "variation": 0.426166666666667,
+   "variation": 0.0484999999999971,
    "population": 13147.932
   },
   "Virgin Islands British": {
@@ -7820,7 +7820,7 @@
    "country": "United Kingdom",
    "gdp": 15701.94,
    "temperature": 9.0505,
-   "variation": 0.23908333333333331,
+   "variation": 0.4313333333333329,
    "population": 55809.75
   },
   "Switzerland": {
@@ -8072,7 +8072,7 @@
    "country": "France",
    "gdp": 16266.6,
    "temperature": 12.869166666666667,
-   "variation": 1.9473333333333347,
+   "variation": 0.3640833333333333,
    "population": 51273.47
   },
   "Lithuania": {
@@ -8163,7 +8163,7 @@
    "country": "Denmark",
    "gdp": 17894.98,
    "temperature": -19.14225,
-   "variation": 27.47741666666667,
+   "variation": 1.5490833333333356,
    "population": 4961.762
   },
   "Dominican Republic": {
@@ -8312,7 +8312,7 @@
    "country": "Congo",
    "gdp": 1917.27,
    "temperature": 24.741083333333332,
-   "variation": 0.9834999999999994,
+   "variation": 0.04366666666666674,
    "population": 1364.812
   },
   "Guinea-Bissau": {
@@ -8739,7 +8739,7 @@
    "country": "Netherlands",
    "gdp": 18387.67,
    "temperature": 9.431500000000002,
-   "variation": 0.0441666666666638,
+   "variation": 0.4218333333333337,
    "population": 13001.943
   },
   "Virgin Islands British": {
@@ -9187,7 +9187,7 @@
    "country": "United Kingdom",
    "gdp": 15403.57,
    "temperature": 8.669749999999999,
-   "variation": 0.1416666666666675,
+   "variation": 0.05058333333333209,
    "population": 55634.935
   },
   "Switzerland": {
@@ -9439,7 +9439,7 @@
    "country": "France",
    "gdp": 15652.13,
    "temperature": 12.899250000000002,
-   "variation": 1.9774166666666702,
+   "variation": 0.33399999999999785,
    "population": 50843.829
   },
   "Lithuania": {
@@ -9530,7 +9530,7 @@
    "country": "Denmark",
    "gdp": 17525.27,
    "temperature": -18.2145,
-   "variation": 26.549666666666667,
+   "variation": 0.621333333333336,
    "population": 4931.241
   },
   "Dominican Republic": {
@@ -9679,7 +9679,7 @@
    "country": "Congo",
    "gdp": 2363.36,
    "temperature": 24.89108333333333,
-   "variation": 1.133499999999998,
+   "variation": 0.19366666666666532,
    "population": 1787.129
   },
   "Guinea-Bissau": {
@@ -10106,7 +10106,7 @@
    "country": "Netherlands",
    "gdp": 22706.37,
    "temperature": 8.885416666666666,
-   "variation": 0.5902499999999993,
+   "variation": 0.9679166666666692,
    "population": 14068.593
   },
   "Virgin Islands British": {
@@ -10554,7 +10554,7 @@
    "country": "United Kingdom",
    "gdp": 18781.68,
    "temperature": 8.052750000000001,
-   "variation": 0.7586666666666648,
+   "variation": 0.5664166666666652,
    "population": 56262.127
   },
   "Switzerland": {
@@ -10806,7 +10806,7 @@
    "country": "France",
    "gdp": 20449.38,
    "temperature": 12.836416666666667,
-   "variation": 1.9145833333333346,
+   "variation": 0.39683333333333337,
    "population": 53872.444
   },
   "Lithuania": {
@@ -10897,7 +10897,7 @@
    "country": "Denmark",
    "gdp": 21162.47,
    "temperature": -18.07166666666667,
-   "variation": 26.40683333333334,
+   "variation": 0.4785000000000039,
    "population": 5118.707
   },
   "Dominican Republic": {
@@ -11046,7 +11046,7 @@
    "country": "Congo",
    "gdp": 2166.56,
    "temperature": 24.608999999999998,
-   "variation": 0.8514166666666654,
+   "variation": 0.08841666666666725,
    "population": 1736.099
   },
   "Guinea-Bissau": {
@@ -11473,7 +11473,7 @@
    "country": "Netherlands",
    "gdp": 22387.21,
    "temperature": 9.34441666666667,
-   "variation": 0.1312499999999961,
+   "variation": 0.508916666666666,
    "population": 13984.06
   },
   "Virgin Islands British": {
@@ -11921,7 +11921,7 @@
    "country": "United Kingdom",
    "gdp": 18319.83,
    "temperature": 8.548416666666666,
-   "variation": 0.2629999999999999,
+   "variation": 0.07075000000000031,
    "population": 56263.661
   },
   "Switzerland": {
@@ -12173,7 +12173,7 @@
    "country": "France",
    "gdp": 19873.73,
    "temperature": 12.657000000000002,
-   "variation": 1.7351666666666699,
+   "variation": 0.5762499999999982,
    "population": 53696.453
   },
   "Lithuania": {
@@ -12264,7 +12264,7 @@
    "country": "Denmark",
    "gdp": 20470.62,
    "temperature": -17.918166666666668,
-   "variation": 26.253333333333337,
+   "variation": 0.32500000000000284,
    "population": 5109.69
   },
   "Dominican Republic": {
@@ -12413,7 +12413,7 @@
    "country": "Congo",
    "gdp": 2126.59,
    "temperature": 24.76125,
-   "variation": 1.0036666666666676,
+   "variation": 0.06383333333333496,
    "population": 1686.524
   },
   "Guinea-Bissau": {
@@ -12840,7 +12840,7 @@
    "country": "Netherlands",
    "gdp": 21915.54,
    "temperature": 10.037333333333335,
-   "variation": 0.5616666666666692,
+   "variation": 0.18399999999999928,
    "population": 13892.917
   },
   "Virgin Islands British": {
@@ -13288,7 +13288,7 @@
    "country": "United Kingdom",
    "gdp": 17736.29,
    "temperature": 8.649500000000002,
-   "variation": 0.1619166666666647,
+   "variation": 0.030333333333334878,
    "population": 56262.02
   },
   "Switzerland": {
@@ -13540,7 +13540,7 @@
    "country": "France",
    "gdp": 19269.79,
    "temperature": 13.016583333333331,
-   "variation": 2.0947499999999994,
+   "variation": 0.21666666666666856,
    "population": 53516.213
   },
   "Lithuania": {
@@ -13631,7 +13631,7 @@
    "country": "Denmark",
    "gdp": 20098.04,
    "temperature": -17.61916666666667,
-   "variation": 25.954333333333338,
+   "variation": 0.026000000000003354,
    "population": 5097.045
   },
   "Dominican Republic": {
@@ -13780,7 +13780,7 @@
    "country": "Congo",
    "gdp": 3238.78,
    "temperature": 24.766499999999997,
-   "variation": 1.0089166666666642,
+   "variation": 0.06908333333333161,
    "population": 2440.457
   },
   "Guinea-Bissau": {
@@ -14207,7 +14207,7 @@
    "country": "Netherlands",
    "gdp": 26959.03,
    "temperature": 11.000333333333332,
-   "variation": 1.5246666666666666,
+   "variation": 1.1469999999999967,
    "population": 14965.448
   },
   "Virgin Islands British": {
@@ -14655,7 +14655,7 @@
    "country": "United Kingdom",
    "gdp": 23791.33,
    "temperature": 9.674583333333333,
-   "variation": 0.8631666666666664,
+   "variation": 1.055416666666666,
    "population": 57183.331
   },
   "Switzerland": {
@@ -14907,7 +14907,7 @@
    "country": "France",
    "gdp": 24917.57,
    "temperature": 14.038833333333335,
-   "variation": 3.1170000000000027,
+   "variation": 0.8055833333333347,
    "population": 56960.835
   },
   "Lithuania": {
@@ -14998,7 +14998,7 @@
    "country": "Denmark",
    "gdp": 25811.29,
    "temperature": -17.87033333333333,
-   "variation": 26.2055,
+   "variation": 0.2771666666666661,
    "population": 5141.115
   },
   "Dominican Republic": {
@@ -15147,7 +15147,7 @@
    "country": "Congo",
    "gdp": 2951.19,
    "temperature": 24.732916666666664,
-   "variation": 0.9753333333333316,
+   "variation": 0.03549999999999898,
    "population": 3315.806
   },
   "Guinea-Bissau": {
@@ -15574,7 +15574,7 @@
    "country": "Netherlands",
    "gdp": 34998.59,
    "temperature": 10.579,
-   "variation": 1.1033333333333353,
+   "variation": 0.7256666666666653,
    "population": 16018.114
   },
   "Virgin Islands British": {
@@ -16022,7 +16022,7 @@
    "country": "United Kingdom",
    "gdp": 30218.25,
    "temperature": 9.140083333333335,
-   "variation": 0.32866666666666866,
+   "variation": 0.5209166666666682,
    "population": 59149.343
   },
   "Switzerland": {
@@ -16274,7 +16274,7 @@
    "country": "France",
    "gdp": 29306.38,
    "temperature": 13.6965,
-   "variation": 2.7746666666666684,
+   "variation": 0.4632500000000004,
    "population": 59911.252
   },
   "Lithuania": {
@@ -16365,7 +16365,7 @@
    "country": "Denmark",
    "gdp": 32357.69,
    "temperature": -17.06775,
-   "variation": 25.40291666666667,
+   "variation": 0.5254166666666649,
    "population": 5358.062
   },
   "Dominican Republic": {
@@ -16514,7 +16514,7 @@
    "country": "Congo",
    "gdp": 2960.67,
    "temperature": 24.785999999999998,
-   "variation": 1.028416666666665,
+   "variation": 0.08858333333333235,
    "population": 3225.727
   },
   "Guinea-Bissau": {
@@ -16941,7 +16941,7 @@
    "country": "Netherlands",
    "gdp": 34551.28,
    "temperature": 11.103499999999999,
-   "variation": 1.6278333333333332,
+   "variation": 1.2501666666666633,
    "population": 15926.188
   },
   "Virgin Islands British": {
@@ -17389,7 +17389,7 @@
    "country": "United Kingdom",
    "gdp": 29611.41,
    "temperature": 9.379666666666667,
-   "variation": 0.5682500000000008,
+   "variation": 0.7605000000000004,
    "population": 58950.848
   },
   "Switzerland": {
@@ -17641,7 +17641,7 @@
    "country": "France",
    "gdp": 28956.03,
    "temperature": 13.967333333333334,
-   "variation": 3.0455000000000023,
+   "variation": 0.7340833333333343,
    "population": 59608.201
   },
   "Lithuania": {
@@ -17732,7 +17732,7 @@
    "country": "Denmark",
    "gdp": 32255.56,
    "temperature": -16.8245,
-   "variation": 25.159666666666666,
+   "variation": 0.7686666666666646,
    "population": 5341.194
   },
   "Dominican Republic": {
@@ -17881,7 +17881,7 @@
    "country": "Congo",
    "gdp": 2921.28,
    "temperature": 25.13025,
-   "variation": 1.3726666666666674,
+   "variation": 0.43283333333333474,
    "population": 2249.146
   },
   "Guinea-Bissau": {
@@ -18308,7 +18308,7 @@
    "country": "Netherlands",
    "gdp": 24533.88,
    "temperature": 9.042416666666666,
-   "variation": 0.43324999999999925,
+   "variation": 0.8109166666666692,
    "population": 14682.649
   },
   "Virgin Islands British": {
@@ -18756,7 +18756,7 @@
    "country": "United Kingdom",
    "gdp": 22114.18,
    "temperature": 8.33025,
-   "variation": 0.48116666666666674,
+   "variation": 0.28891666666666715,
    "population": 56709.208
   },
   "Switzerland": {
@@ -19008,7 +19008,7 @@
    "country": "France",
    "gdp": 22713.14,
    "temperature": 12.955166666666669,
-   "variation": 2.0333333333333368,
+   "variation": 0.27808333333333124,
    "population": 56024.508
   },
   "Lithuania": {
@@ -19099,7 +19099,7 @@
    "country": "Denmark",
    "gdp": 25363.08,
    "temperature": -18.201666666666664,
-   "variation": 26.536833333333334,
+   "variation": 0.6084999999999994,
    "population": 5117.277
   },
   "Dominican Republic": {
@@ -19248,7 +19248,7 @@
    "country": "Congo",
    "gdp": 2964.39,
    "temperature": 24.5805,
-   "variation": 0.8229166666666679,
+   "variation": 0.11691666666666478,
    "population": 2188.046
   },
   "Guinea-Bissau": {
@@ -19675,7 +19675,7 @@
    "country": "Netherlands",
    "gdp": 24203.92,
    "temperature": 9.215083333333332,
-   "variation": 0.26058333333333294,
+   "variation": 0.6382500000000029,
    "population": 14595.755
   },
   "Virgin Islands British": {
@@ -20123,7 +20123,7 @@
    "country": "United Kingdom",
    "gdp": 21207.77,
    "temperature": 8.002749999999999,
-   "variation": 0.8086666666666673,
+   "variation": 0.6164166666666677,
    "population": 56574.28
   },
   "Switzerland": {
@@ -20375,7 +20375,7 @@
    "country": "France",
    "gdp": 22244.89,
    "temperature": 12.871666666666668,
-   "variation": 1.949833333333336,
+   "variation": 0.36158333333333204,
    "population": 55704.494
   },
   "Lithuania": {
@@ -20466,7 +20466,7 @@
    "country": "Denmark",
    "gdp": 25348.72,
    "temperature": -17.616583333333335,
-   "variation": 25.951750000000004,
+   "variation": 0.023416666666669528,
    "population": 5114.657
   },
   "Dominican Republic": {
@@ -20615,7 +20615,7 @@
    "country": "Congo",
    "gdp": 3151.27,
    "temperature": 24.513999999999996,
-   "variation": 0.756416666666663,
+   "variation": 0.18341666666666967,
    "population": 2127.77
   },
   "Guinea-Bissau": {
@@ -21042,7 +21042,7 @@
    "country": "Netherlands",
    "gdp": 23602.58,
    "temperature": 8.828000000000001,
-   "variation": 0.6476666666666642,
+   "variation": 1.025333333333334,
    "population": 14513.949
   },
   "Virgin Islands British": {
@@ -21490,7 +21490,7 @@
    "country": "United Kingdom",
    "gdp": 20430.73,
    "temperature": 8.17325,
-   "variation": 0.6381666666666668,
+   "variation": 0.4459166666666672,
    "population": 56466.131
   },
   "Switzerland": {
@@ -21742,7 +21742,7 @@
    "country": "France",
    "gdp": 21770.93,
    "temperature": 12.628,
-   "variation": 1.7061666666666682,
+   "variation": 0.6052499999999998,
    "population": 55397.482
   },
   "Lithuania": {
@@ -21833,7 +21833,7 @@
    "country": "Denmark",
    "gdp": 24126.65,
    "temperature": -17.07641666666667,
-   "variation": 25.41158333333334,
+   "variation": 0.5167499999999947,
    "population": 5114.243
   },
   "Dominican Republic": {
@@ -21982,7 +21982,7 @@
    "country": "Congo",
    "gdp": 3274.33,
    "temperature": 24.71375,
-   "variation": 0.9561666666666682,
+   "variation": 0.01633333333333553,
    "population": 2068.132
   },
   "Guinea-Bissau": {
@@ -22409,7 +22409,7 @@
    "country": "Netherlands",
    "gdp": 23127.22,
    "temperature": 9.697416666666667,
-   "variation": 0.2217500000000019,
+   "variation": 0.15591666666666804,
    "population": 14437.506
   },
   "Virgin Islands British": {
@@ -22857,7 +22857,7 @@
    "country": "United Kingdom",
    "gdp": 19787.83,
    "temperature": 8.90725,
-   "variation": 0.09583333333333321,
+   "variation": 0.2880833333333328,
    "population": 56386.226
   },
   "Switzerland": {
@@ -23109,7 +23109,7 @@
    "country": "France",
    "gdp": 21476.17,
    "temperature": 12.868250000000002,
-   "variation": 1.9464166666666696,
+   "variation": 0.36499999999999844,
    "population": 55102.743
   },
   "Lithuania": {
@@ -23200,7 +23200,7 @@
    "country": "Denmark",
    "gdp": 23158.48,
    "temperature": -18.769166666666667,
-   "variation": 27.104333333333336,
+   "variation": 1.176000000000002,
    "population": 5116.058
   },
   "Dominican Republic": {
@@ -23349,7 +23349,7 @@
    "country": "Congo",
    "gdp": 3172.92,
    "temperature": 24.88191666666667,
-   "variation": 1.124333333333336,
+   "variation": 0.18450000000000344,
    "population": 2009.165
   },
   "Guinea-Bissau": {
@@ -23776,7 +23776,7 @@
    "country": "Netherlands",
    "gdp": 22580.06,
    "temperature": 10.357416666666667,
-   "variation": 0.881750000000002,
+   "variation": 0.5040833333333321,
    "population": 14365.385
   },
   "Virgin Islands British": {
@@ -24224,7 +24224,7 @@
    "country": "United Kingdom",
    "gdp": 19319.56,
    "temperature": 9.091666666666667,
-   "variation": 0.28025000000000055,
+   "variation": 0.47250000000000014,
    "population": 56330.877
   },
   "Switzerland": {
@@ -24476,7 +24476,7 @@
    "country": "France",
    "gdp": 21276.96,
    "temperature": 13.487833333333334,
-   "variation": 2.5660000000000025,
+   "variation": 0.2545833333333345,
    "population": 54817.832
   },
   "Lithuania": {
@@ -24567,7 +24567,7 @@
    "country": "Denmark",
    "gdp": 22213.68,
    "temperature": -19.857750000000003,
-   "variation": 28.19291666666667,
+   "variation": 2.264583333333338,
    "population": 5119.607
   },
   "Dominican Republic": {
@@ -24716,7 +24716,7 @@
    "country": "Congo",
    "gdp": 3042.94,
    "temperature": 24.433333333333334,
-   "variation": 0.6757500000000007,
+   "variation": 0.2640833333333319,
    "population": 1951.195
   },
   "Guinea-Bissau": {
@@ -25143,7 +25143,7 @@
    "country": "Netherlands",
    "gdp": 22256.75,
    "temperature": 10.336250000000001,
-   "variation": 0.8605833333333361,
+   "variation": 0.4829166666666662,
    "population": 14295.217
   },
   "Virgin Islands British": {
@@ -25591,7 +25591,7 @@
    "country": "United Kingdom",
    "gdp": 18649.94,
    "temperature": 9.014583333333333,
-   "variation": 0.20316666666666627,
+   "variation": 0.39541666666666586,
    "population": 56296.24
   },
   "Switzerland": {
@@ -25843,7 +25843,7 @@
    "country": "France",
    "gdp": 21157.64,
    "temperature": 13.679416666666667,
-   "variation": 2.7575833333333346,
+   "variation": 0.4461666666666666,
    "population": 54547.688
   },
   "Lithuania": {
@@ -25934,7 +25934,7 @@
    "country": "Denmark",
    "gdp": 21645.24,
    "temperature": -18.438083333333335,
-   "variation": 26.773250000000004,
+   "variation": 0.8449166666666699,
    "population": 5123.349
   },
   "Dominican Republic": {
@@ -26083,7 +26083,7 @@
    "country": "Congo",
    "gdp": 2733.36,
    "temperature": 24.600250000000003,
-   "variation": 0.8426666666666698,
+   "variation": 0.09716666666666285,
    "population": 1894.676
   },
   "Guinea-Bissau": {
@@ -26510,7 +26510,7 @@
    "country": "Netherlands",
    "gdp": 22621.17,
    "temperature": 9.639916666666666,
-   "variation": 0.1642500000000009,
+   "variation": 0.21341666666666903,
    "population": 14223.763
   },
   "Virgin Islands British": {
@@ -26958,7 +26958,7 @@
    "country": "United Kingdom",
    "gdp": 18292.22,
    "temperature": 8.487083333333333,
-   "variation": 0.3243333333333336,
+   "variation": 0.132083333333334,
    "population": 56276.315
   },
   "Switzerland": {
@@ -27210,7 +27210,7 @@
    "country": "France",
    "gdp": 20744.84,
    "temperature": 13.080666666666666,
-   "variation": 2.158833333333334,
+   "variation": 0.15258333333333418,
    "population": 54298.045
   },
   "Lithuania": {
@@ -27301,7 +27301,7 @@
    "country": "Denmark",
    "gdp": 20862.73,
    "temperature": -17.817583333333328,
-   "variation": 26.152749999999997,
+   "variation": 0.22441666666666293,
    "population": 5125.298
   },
   "Dominican Republic": {
@@ -27450,7 +27450,7 @@
    "country": "Congo",
    "gdp": 2565.72,
    "temperature": 24.756500000000003,
-   "variation": 0.9989166666666698,
+   "variation": 0.05908333333333715,
    "population": 1839.935
   },
   "Guinea-Bissau": {
@@ -27877,7 +27877,7 @@
    "country": "Netherlands",
    "gdp": 23003.98,
    "temperature": 9.464916666666666,
-   "variation": 0.010749999999999815,
+   "variation": 0.38841666666666974,
    "population": 14148.415
   },
   "Virgin Islands British": {
@@ -28325,7 +28325,7 @@
    "country": "United Kingdom",
    "gdp": 18512.39,
    "temperature": 8.643166666666666,
-   "variation": 0.16825000000000045,
+   "variation": 0.023999999999999133,
    "population": 56265.475
   },
   "Switzerland": {
@@ -28577,7 +28577,7 @@
    "country": "France",
    "gdp": 20703.41,
    "temperature": 12.555833333333334,
-   "variation": 1.6340000000000021,
+   "variation": 0.6774166666666659,
    "population": 54070.817
   },
   "Lithuania": {
@@ -28668,7 +28668,7 @@
    "country": "Denmark",
    "gdp": 21030.56,
    "temperature": -17.009249999999998,
-   "variation": 25.344416666666667,
+   "variation": 0.5839166666666671,
    "population": 5123.945
   },
   "Dominican Republic": {
@@ -28817,7 +28817,7 @@
    "country": "Congo",
    "gdp": 3282.12,
    "temperature": 24.605500000000003,
-   "variation": 0.84791666666667,
+   "variation": 0.09191666666666265,
    "population": 2375.008
   },
   "Guinea-Bissau": {
@@ -29244,7 +29244,7 @@
    "country": "Netherlands",
    "gdp": 26081.99,
    "temperature": 10.932,
-   "variation": 1.456333333333335,
+   "variation": 1.078666666666665,
    "population": 14868.655
   },
   "Virgin Islands British": {
@@ -29692,7 +29692,7 @@
    "country": "United Kingdom",
    "gdp": 23678.28,
    "temperature": 9.5875,
-   "variation": 0.7760833333333341,
+   "variation": 0.9683333333333337,
    "population": 57023.746
   },
   "Switzerland": {
@@ -29944,7 +29944,7 @@
    "country": "France",
    "gdp": 24405.74,
    "temperature": 13.930083333333334,
-   "variation": 3.008250000000002,
+   "variation": 0.6968333333333341,
    "population": 56663.204
   },
   "Lithuania": {
@@ -30035,7 +30035,7 @@
    "country": "Denmark",
    "gdp": 25458.03,
    "temperature": -18.784583333333334,
-   "variation": 27.119750000000003,
+   "variation": 1.1914166666666688,
    "population": 5130.361
   },
   "Dominican Republic": {
@@ -30184,7 +30184,7 @@
    "country": "Congo",
    "gdp": 3108.17,
    "temperature": 24.917666666666673,
-   "variation": 1.1600833333333398,
+   "variation": 0.22025000000000716,
    "population": 2311.348
   },
   "Guinea-Bissau": {
@@ -30611,7 +30611,7 @@
    "country": "Netherlands",
    "gdp": 25138.7,
    "temperature": 10.537166666666666,
-   "variation": 1.0615000000000006,
+   "variation": 0.6838333333333306,
    "population": 14774.038
   },
   "Virgin Islands British": {
@@ -31059,7 +31059,7 @@
    "country": "United Kingdom",
    "gdp": 23206.18,
    "temperature": 8.973083333333333,
-   "variation": 0.16166666666666707,
+   "variation": 0.35391666666666666,
    "population": 56862.893
   },
   "Switzerland": {
@@ -31311,7 +31311,7 @@
    "country": "France",
    "gdp": 23628.29,
    "temperature": 13.580916666666667,
-   "variation": 2.659083333333335,
+   "variation": 0.347666666666667,
    "population": 56348.214
   },
   "Lithuania": {
@@ -31402,7 +31402,7 @@
    "country": "Denmark",
    "gdp": 25309.04,
    "temperature": -17.324999999999996,
-   "variation": 25.66016666666666,
+   "variation": 0.26816666666666933,
    "population": 5122.441
   },
   "Dominican Republic": {
@@ -31551,7 +31551,7 @@
    "country": "Congo",
    "gdp": 3713.55,
    "temperature": 24.873499999999996,
-   "variation": 1.1159166666666636,
+   "variation": 0.17608333333333093,
    "population": 4633.363
   },
   "Guinea-Bissau": {
@@ -31978,7 +31978,7 @@
    "country": "Netherlands",
    "gdp": 39564.82,
    "temperature": 10.438166666666667,
-   "variation": 0.9625000000000021,
+   "variation": 0.5848333333333322,
    "population": 16789.095
   },
   "Virgin Islands British": {
@@ -32426,7 +32426,7 @@
    "country": "United Kingdom",
    "gdp": 33686.95,
    "temperature": 9.037416666666667,
-   "variation": 0.22600000000000087,
+   "variation": 0.41825000000000045,
    "population": 64250.33
   },
   "Switzerland": {
@@ -32678,7 +32678,7 @@
    "country": "France",
    "gdp": 31494.75,
    "temperature": 13.707166666666666,
-   "variation": 2.785333333333334,
+   "variation": 0.4739166666666659,
    "population": 63639.873
   },
   "Lithuania": {
@@ -32769,7 +32769,7 @@
    "country": "Denmark",
    "gdp": 34868.19,
    "temperature": -16.260916666666667,
-   "variation": 24.596083333333333,
+   "variation": 1.3322499999999984,
    "population": 5610.66
   },
   "Dominican Republic": {
@@ -32918,7 +32918,7 @@
    "country": "Congo",
    "gdp": 3696.27,
    "temperature": 24.77508333333334,
-   "variation": 1.0175000000000054,
+   "variation": 0.07766666666667277,
    "population": 4512.73
   },
   "Guinea-Bissau": {
@@ -33345,7 +33345,7 @@
    "country": "Netherlands",
    "gdp": 38898.64,
    "temperature": 11.076,
-   "variation": 1.6003333333333352,
+   "variation": 1.2226666666666652,
    "population": 16737.002
   },
   "Virgin Islands British": {
@@ -33793,7 +33793,7 @@
    "country": "United Kingdom",
    "gdp": 33135.02,
    "temperature": 9.907916666666667,
-   "variation": 1.0965000000000007,
+   "variation": 1.2887500000000003,
    "population": 63811.882
   },
   "Switzerland": {
@@ -34045,7 +34045,7 @@
    "country": "France",
    "gdp": 31049.57,
    "temperature": 14.479583333333336,
-   "variation": 3.557750000000004,
+   "variation": 1.246333333333336,
    "population": 63343.577
   },
   "Lithuania": {
@@ -34136,7 +34136,7 @@
    "country": "Denmark",
    "gdp": 34206.95,
    "temperature": -16.641416666666668,
-   "variation": 24.976583333333338,
+   "variation": 0.951749999999997,
    "population": 5582.873
   },
   "Dominican Republic": {
@@ -34285,7 +34285,7 @@
    "country": "Congo",
    "gdp": 3509.32,
    "temperature": 25.559416666666674,
-   "variation": 1.8018333333333416,
+   "variation": 0.862000000000009,
    "population": 4386.693
   },
   "Guinea-Bissau": {
@@ -34712,7 +34712,7 @@
    "country": "Netherlands",
    "gdp": 38328.64,
    "temperature": 9.264583333333334,
-   "variation": 0.21108333333333107,
+   "variation": 0.588750000000001,
    "population": 16682.917
   },
   "Virgin Islands British": {
@@ -35160,7 +35160,7 @@
    "country": "United Kingdom",
    "gdp": 32669.79,
    "temperature": 8.394333333333334,
-   "variation": 0.41708333333333236,
+   "variation": 0.22483333333333277,
    "population": 63306.843
   },
   "Switzerland": {
@@ -35412,7 +35412,7 @@
    "country": "France",
    "gdp": 30654.45,
    "temperature": 13.115416666666667,
-   "variation": 2.1935833333333346,
+   "variation": 0.11783333333333346,
    "population": 63026.74
   },
   "Lithuania": {
@@ -35503,7 +35503,7 @@
    "country": "Denmark",
    "gdp": 33520.77,
    "temperature": -15.085749999999999,
-   "variation": 23.420916666666667,
+   "variation": 2.507416666666666,
    "population": 5554.844
   },
   "Dominican Republic": {
@@ -35652,7 +35652,7 @@
    "country": "Congo",
    "gdp": 1325.12,
    "temperature": 24.258499999999998,
-   "variation": 0.5009166666666651,
+   "variation": 0.4389166666666675,
    "population": 899.822
   },
   "Guinea-Bissau": {
@@ -36079,7 +36079,7 @@
    "country": "Netherlands",
    "gdp": 11050.07,
    "temperature": 9.33491666666667,
-   "variation": 0.14074999999999527,
+   "variation": 0.5184166666666652,
    "population": 10569.688
   },
   "Virgin Islands British": {
@@ -36527,7 +36527,7 @@
    "country": "United Kingdom",
    "gdp": 11166.02,
    "temperature": 8.456583333333334,
-   "variation": 0.3548333333333318,
+   "variation": 0.1625833333333322,
    "population": 50945.397
   },
   "Switzerland": {
@@ -36779,7 +36779,7 @@
    "country": "France",
    "gdp": 8490.88,
    "temperature": 12.618416666666668,
-   "variation": 1.6965833333333364,
+   "variation": 0.6148333333333316,
    "population": 43117.846
   },
   "Lithuania": {
@@ -36870,7 +36870,7 @@
    "country": "Denmark",
    "gdp": 10415.87,
    "temperature": -17.401833333333332,
-   "variation": 25.737000000000002,
+   "variation": 0.1913333333333327,
    "population": 4411.657
   },
   "Dominican Republic": {
@@ -37019,7 +37019,7 @@
    "country": "Congo",
    "gdp": 2982.15,
    "temperature": 25.540499999999998,
-   "variation": 1.7829166666666652,
+   "variation": 0.8430833333333325,
    "population": 3048.453
   },
   "Guinea-Bissau": {
@@ -37446,7 +37446,7 @@
    "country": "Netherlands",
    "gdp": 32194.92,
    "temperature": 10.51858333333333,
-   "variation": 1.042916666666665,
+   "variation": 0.665249999999995,
    "population": 15745.647
   },
   "Virgin Islands British": {
@@ -37894,7 +37894,7 @@
    "country": "United Kingdom",
    "gdp": 27777.79,
    "temperature": 9.462750000000002,
-   "variation": 0.6513333333333353,
+   "variation": 0.8435833333333349,
    "population": 58544.938
   },
   "Switzerland": {
@@ -38146,7 +38146,7 @@
    "country": "France",
    "gdp": 27244.94,
    "temperature": 13.720666666666666,
-   "variation": 2.7988333333333344,
+   "variation": 0.4874166666666664,
    "population": 59034.921
   },
   "Lithuania": {
@@ -38237,7 +38237,7 @@
    "country": "Denmark",
    "gdp": 30540.15,
    "temperature": -16.620916666666663,
-   "variation": 24.956083333333332,
+   "variation": 0.9722500000000025,
    "population": 5300.379
   },
   "Dominican Republic": {
@@ -38386,7 +38386,7 @@
    "country": "Congo",
    "gdp": 3280.44,
    "temperature": 25.34925,
-   "variation": 1.5916666666666686,
+   "variation": 0.6518333333333359,
    "population": 4253.712
   },
   "Guinea-Bissau": {
@@ -38813,7 +38813,7 @@
    "country": "Netherlands",
    "gdp": 37767.59,
    "temperature": 10.707166666666666,
-   "variation": 1.2315000000000005,
+   "variation": 0.8538333333333306,
    "population": 16626.926
   },
   "Virgin Islands British": {
@@ -39261,7 +39261,7 @@
    "country": "United Kingdom",
    "gdp": 32301.63,
    "temperature": 9.453333333333335,
-   "variation": 0.6419166666666687,
+   "variation": 0.8341666666666683,
    "population": 62722.607
   },
   "Switzerland": {
@@ -39513,7 +39513,7 @@
    "country": "France",
    "gdp": 30300.34,
    "temperature": 13.941666666666665,
-   "variation": 3.0198333333333327,
+   "variation": 0.7084166666666647,
    "population": 62687.521
   },
   "Lithuania": {
@@ -39604,7 +39604,7 @@
    "country": "Denmark",
    "gdp": 32947.49,
    "temperature": -16.78316666666667,
-   "variation": 25.11833333333334,
+   "variation": 0.8099999999999952,
    "population": 5526.447
   },
   "Dominican Republic": {
@@ -39753,7 +39753,7 @@
    "country": "Congo",
    "gdp": 1300.11,
    "temperature": 24.573083333333333,
-   "variation": 0.8155000000000001,
+   "variation": 0.12433333333333252,
    "population": 880.318
   },
   "Guinea-Bissau": {
@@ -40180,7 +40180,7 @@
    "country": "Netherlands",
    "gdp": 10419.43,
    "temperature": 10.231416666666666,
-   "variation": 0.7557500000000008,
+   "variation": 0.3780833333333309,
    "population": 10432.301
   },
   "Virgin Islands British": {
@@ -40628,7 +40628,7 @@
    "country": "United Kingdom",
    "gdp": 10851.6,
    "temperature": 9.206083333333334,
-   "variation": 0.3946666666666676,
+   "variation": 0.5869166666666672,
    "population": 50797.274
   },
   "Switzerland": {
@@ -40880,7 +40880,7 @@
    "country": "France",
    "gdp": 8327.78,
    "temperature": 13.143666666666668,
-   "variation": 2.221833333333336,
+   "variation": 0.0895833333333318,
    "population": 42724.223
   },
   "Lithuania": {
@@ -40971,7 +40971,7 @@
    "country": "Denmark",
    "gdp": 10125.55,
    "temperature": -17.83375,
-   "variation": 26.168916666666668,
+   "variation": 0.24058333333333337,
    "population": 4380.301
   },
   "Dominican Republic": {
@@ -41120,7 +41120,7 @@
    "country": "Congo",
    "gdp": 2916.01,
    "temperature": 25.0605,
-   "variation": 1.3029166666666683,
+   "variation": 0.36308333333333564,
    "population": 2962.47
   },
   "Guinea-Bissau": {
@@ -41547,7 +41547,7 @@
    "country": "Netherlands",
    "gdp": 31129.8,
    "temperature": 10.409416666666667,
-   "variation": 0.9337500000000016,
+   "variation": 0.5560833333333317,
    "population": 15655.475
   },
   "Virgin Islands British": {
@@ -41995,7 +41995,7 @@
    "country": "United Kingdom",
    "gdp": 26899.51,
    "temperature": 9.64425,
-   "variation": 0.8328333333333333,
+   "variation": 1.025083333333333,
    "population": 58346.673
   },
   "Switzerland": {
@@ -42247,7 +42247,7 @@
    "country": "France",
    "gdp": 26416.59,
    "temperature": 14.095999999999998,
-   "variation": 3.1741666666666664,
+   "variation": 0.8627499999999984,
    "population": 58763.395
   },
   "Lithuania": {
@@ -42338,7 +42338,7 @@
    "country": "Denmark",
    "gdp": 29975.31,
    "temperature": -17.455333333333336,
-   "variation": 25.7905,
+   "variation": 0.13783333333332948,
    "population": 5277.711
   },
   "Dominican Republic": {
@@ -42487,7 +42487,7 @@
    "country": "Congo",
    "gdp": 3084.64,
    "temperature": 25.29241666666667,
-   "variation": 1.5348333333333386,
+   "variation": 0.595000000000006,
    "population": 4115.435
   },
   "Guinea-Bissau": {
@@ -42914,7 +42914,7 @@
    "country": "Netherlands",
    "gdp": 39331.41,
    "temperature": 10.794583333333334,
-   "variation": 1.3189166666666683,
+   "variation": 0.9412499999999984,
    "population": 16568.734
   },
   "Virgin Islands British": {
@@ -43362,7 +43362,7 @@
    "country": "United Kingdom",
    "gdp": 34233.05,
    "temperature": 9.348249999999998,
-   "variation": 0.5368333333333322,
+   "variation": 0.7290833333333318,
    "population": 62076.221
   },
   "Switzerland": {
@@ -43614,7 +43614,7 @@
    "country": "France",
    "gdp": 31331.34,
    "temperature": 13.581499999999998,
-   "variation": 2.6596666666666664,
+   "variation": 0.3482499999999984,
    "population": 62329.567
   },
   "Lithuania": {
@@ -43705,7 +43705,7 @@
    "country": "Denmark",
    "gdp": 34844.98,
    "temperature": -16.843333333333334,
-   "variation": 25.1785,
+   "variation": 0.7498333333333314,
    "population": 5497.795
   },
   "Dominican Republic": {
@@ -43854,7 +43854,7 @@
    "country": "Congo",
    "gdp": 1275.48,
    "temperature": 24.677999999999997,
-   "variation": 0.9204166666666644,
+   "variation": 0.019416666666668192,
    "population": 861.706
   },
   "Guinea-Bissau": {
@@ -44281,7 +44281,7 @@
    "country": "Netherlands",
    "gdp": 9745.96,
    "temperature": 9.343083333333333,
-   "variation": 0.13258333333333283,
+   "variation": 0.5102500000000028,
    "population": 10297.984
   },
   "Virgin Islands British": {
@@ -44729,7 +44729,7 @@
    "country": "United Kingdom",
    "gdp": 10457.11,
    "temperature": 8.371250000000002,
-   "variation": 0.4401666666666646,
+   "variation": 0.247916666666665,
    "population": 50686.055
   },
   "Switzerland": {
@@ -44981,7 +44981,7 @@
    "country": "France",
    "gdp": 8175.61,
    "temperature": 13.088916666666664,
-   "variation": 2.1670833333333324,
+   "variation": 0.14433333333333564,
    "population": 42365.579
   },
   "Lithuania": {
@@ -45072,7 +45072,7 @@
    "country": "Denmark",
    "gdp": 9655.59,
    "temperature": -17.365666666666666,
-   "variation": 25.700833333333335,
+   "variation": 0.22749999999999915,
    "population": 4346.182
   },
   "Dominican Republic": {
@@ -45221,7 +45221,7 @@
    "country": "Congo",
    "gdp": 2968.41,
    "temperature": 24.668000000000003,
-   "variation": 0.91041666666667,
+   "variation": 0.02941666666666265,
    "population": 2879.222
   },
   "Guinea-Bissau": {
@@ -45648,7 +45648,7 @@
    "country": "Netherlands",
    "gdp": 29986.69,
    "temperature": 8.739333333333335,
-   "variation": 0.7363333333333308,
+   "variation": 1.1140000000000008,
    "population": 15563.255
   },
   "Virgin Islands British": {
@@ -46096,7 +46096,7 @@
    "country": "United Kingdom",
    "gdp": 26124.17,
    "temperature": 8.551166666666667,
-   "variation": 0.2602499999999992,
+   "variation": 0.06799999999999962,
    "population": 58156.745
   },
   "Switzerland": {
@@ -46348,7 +46348,7 @@
    "country": "France",
    "gdp": 25950.95,
    "temperature": 13.013916666666667,
-   "variation": 2.092083333333335,
+   "variation": 0.21933333333333316,
    "population": 58499.689
   },
   "Lithuania": {
@@ -46439,7 +46439,7 @@
    "country": "Denmark",
    "gdp": 29136.31,
    "temperature": -16.80566666666667,
-   "variation": 25.14083333333334,
+   "variation": 0.7874999999999943,
    "population": 5254.86
   },
   "Dominican Republic": {
@@ -46588,7 +46588,7 @@
    "country": "Congo",
    "gdp": 2982.69,
    "temperature": 25.22975,
-   "variation": 1.4721666666666664,
+   "variation": 0.5323333333333338,
    "population": 3976.246
   },
   "Guinea-Bissau": {
@@ -47015,7 +47015,7 @@
    "country": "Netherlands",
    "gdp": 38548.39,
    "temperature": 11.388416666666666,
-   "variation": 1.9127500000000008,
+   "variation": 1.535083333333331,
    "population": 16507.056
   },
   "Virgin Islands British": {
@@ -47463,7 +47463,7 @@
    "country": "United Kingdom",
    "gdp": 34402.61,
    "temperature": 9.7975,
-   "variation": 0.9860833333333332,
+   "variation": 1.1783333333333328,
    "population": 61414.66
   },
   "Switzerland": {
@@ -47715,7 +47715,7 @@
    "country": "France",
    "gdp": 31426.03,
    "temperature": 13.896583333333332,
-   "variation": 2.9747500000000002,
+   "variation": 0.6633333333333322,
    "population": 61960.95
   },
   "Lithuania": {
@@ -47806,7 +47806,7 @@
    "country": "Denmark",
    "gdp": 35329.47,
    "temperature": -16.533083333333334,
-   "variation": 24.868250000000003,
+   "variation": 1.0600833333333313,
    "population": 5469.957
   },
   "Dominican Republic": {
@@ -47955,7 +47955,7 @@
    "country": "Congo",
    "gdp": 1250.28,
    "temperature": 24.675583333333336,
-   "variation": 0.9180000000000028,
+   "variation": 0.02183333333332982,
    "population": 844.004
   },
   "Guinea-Bissau": {
@@ -48382,7 +48382,7 @@
    "country": "Netherlands",
    "gdp": 9761.47,
    "temperature": 9.962083333333332,
-   "variation": 0.48641666666666694,
+   "variation": 0.10874999999999702,
    "population": 10167.534
   },
   "Virgin Islands British": {
@@ -48830,7 +48830,7 @@
    "country": "United Kingdom",
    "gdp": 10435.34,
    "temperature": 8.439,
-   "variation": 0.3724166666666662,
+   "variation": 0.1801666666666666,
    "population": 50621.416
   },
   "Switzerland": {
@@ -49082,7 +49082,7 @@
    "country": "France",
    "gdp": 7900.89,
    "temperature": 12.947083333333332,
-   "variation": 2.0252499999999998,
+   "variation": 0.28616666666666823,
    "population": 42070.919
   },
   "Lithuania": {
@@ -49173,7 +49173,7 @@
    "country": "Denmark",
    "gdp": 9546.77,
    "temperature": -18.414083333333334,
-   "variation": 26.749250000000004,
+   "variation": 0.820916666666669,
    "population": 4308.921
   },
   "Dominican Republic": {
@@ -49322,7 +49322,7 @@
    "country": "Congo",
    "gdp": 2885.81,
    "temperature": 25.09691666666667,
-   "variation": 1.339333333333336,
+   "variation": 0.3995000000000033,
    "population": 2799.255
   },
   "Guinea-Bissau": {
@@ -49749,7 +49749,7 @@
    "country": "Netherlands",
    "gdp": 29162.6,
    "temperature": 10.594666666666667,
-   "variation": 1.1190000000000015,
+   "variation": 0.7413333333333316,
    "population": 15467.851
   },
   "Virgin Islands British": {
@@ -50197,7 +50197,7 @@
    "country": "United Kingdom",
    "gdp": 25455.7,
    "temperature": 9.419583333333332,
-   "variation": 0.6081666666666656,
+   "variation": 0.8004166666666652,
    "population": 57978.321
   },
   "Switzerland": {
@@ -50449,7 +50449,7 @@
    "country": "France",
    "gdp": 25771.31,
    "temperature": 13.899749999999997,
-   "variation": 2.9779166666666654,
+   "variation": 0.6664999999999974,
    "population": 58241.791
   },
   "Lithuania": {
@@ -50540,7 +50540,7 @@
    "country": "Denmark",
    "gdp": 28515.01,
    "temperature": -17.69783333333333,
-   "variation": 26.033,
+   "variation": 0.10466666666666669,
    "population": 5232.704
   },
   "Dominican Republic": {
@@ -50689,7 +50689,7 @@
    "country": "Congo",
    "gdp": 3170.12,
    "temperature": 25.282666666666668,
-   "variation": 1.5250833333333347,
+   "variation": 0.585250000000002,
    "population": 3842.365
   },
   "Guinea-Bissau": {
@@ -51116,7 +51116,7 @@
    "country": "Netherlands",
    "gdp": 37338.98,
    "temperature": 11.291333333333334,
-   "variation": 1.8156666666666688,
+   "variation": 1.4379999999999988,
    "population": 16440.222
   },
   "Virgin Islands British": {
@@ -51564,7 +51564,7 @@
    "country": "United Kingdom",
    "gdp": 33733.54,
    "temperature": 9.943416666666666,
-   "variation": 1.1319999999999997,
+   "variation": 1.3242499999999993,
    "population": 60802.801
   },
   "Switzerland": {
@@ -51816,7 +51816,7 @@
    "country": "France",
    "gdp": 30893.92,
    "temperature": 14.143833333333333,
-   "variation": 3.2220000000000013,
+   "variation": 0.9105833333333333,
    "population": 61592.884
   },
   "Lithuania": {
@@ -51907,7 +51907,7 @@
    "country": "Denmark",
    "gdp": 34881.49,
    "temperature": -16.574333333333332,
-   "variation": 24.9095,
+   "variation": 1.0188333333333333,
    "population": 5444.303
   },
   "Dominican Republic": {
@@ -52056,7 +52056,7 @@
    "country": "Congo",
    "gdp": 1224.6,
    "temperature": 24.697416666666665,
-   "variation": 0.9398333333333326,
+   "variation": 0,
    "population": 827.252
   },
   "Guinea-Bissau": {
@@ -52483,7 +52483,7 @@
    "country": "Netherlands",
    "gdp": 9815.19,
    "temperature": 9.853333333333335,
-   "variation": 0.3776666666666699,
+   "variation": 0,
    "population": 10042.043
   },
   "Virgin Islands British": {
@@ -52931,7 +52931,7 @@
    "country": "United Kingdom",
    "gdp": 10106.78,
    "temperature": 8.619166666666667,
-   "variation": 0.1922499999999996,
+   "variation": 0,
    "population": 50616.014
   },
   "Switzerland": {
@@ -53183,7 +53183,7 @@
    "country": "France",
    "gdp": 7547.98,
    "temperature": 13.23325,
-   "variation": 2.311416666666668,
+   "variation": 0,
    "population": 41879.605
   },
   "Lithuania": {
@@ -53274,7 +53274,7 @@
    "country": "Denmark",
    "gdp": 9692.54,
    "temperature": -17.593166666666665,
-   "variation": 25.928333333333335,
+   "variation": 0,
    "population": 4268.271
   },
   "Dominican Republic": {
@@ -53423,7 +53423,7 @@
    "country": "Congo",
    "gdp": 2785.88,
    "temperature": 24.842916666666664,
-   "variation": 1.085333333333331,
+   "variation": 0.1454999999999984,
    "population": 2722.497
   },
   "Guinea-Bissau": {
@@ -53850,7 +53850,7 @@
    "country": "Netherlands",
    "gdp": 28438.41,
    "temperature": 10.842,
-   "variation": 1.3663333333333352,
+   "variation": 0.9886666666666653,
    "population": 15369.12
   },
   "Virgin Islands British": {
@@ -54298,7 +54298,7 @@
    "country": "United Kingdom",
    "gdp": 24771.22,
    "temperature": 9.15075,
-   "variation": 0.33933333333333415,
+   "variation": 0.5315833333333337,
    "population": 57810.771
   },
   "Switzerland": {
@@ -54550,7 +54550,7 @@
    "country": "France",
    "gdp": 25324.91,
    "temperature": 14.15616666666667,
-   "variation": 3.2343333333333373,
+   "variation": 0.9229166666666693,
    "population": 57990.661
   },
   "Lithuania": {
@@ -54641,7 +54641,7 @@
    "country": "Denmark",
    "gdp": 27758.53,
    "temperature": -18.08541666666667,
-   "variation": 26.42058333333334,
+   "variation": 0.4922500000000056,
    "population": 5211.334
   },
   "Dominican Republic": {
@@ -54790,7 +54790,7 @@
    "country": "Congo",
    "gdp": 3083.64,
    "temperature": 25.268916666666666,
-   "variation": 1.511333333333333,
+   "variation": 0.5715000000000003,
    "population": 3718.243
   },
   "Guinea-Bissau": {
@@ -55217,7 +55217,7 @@
    "country": "Netherlands",
    "gdp": 36136.56,
    "temperature": 10.823666666666666,
-   "variation": 1.3480000000000008,
+   "variation": 0.9703333333333308,
    "population": 16367.158
   },
   "Virgin Islands British": {
@@ -55665,7 +55665,7 @@
    "country": "United Kingdom",
    "gdp": 32999.13,
    "temperature": 9.655249999999999,
-   "variation": 0.8438333333333325,
+   "variation": 1.0360833333333321,
    "population": 60286.754
   },
   "Switzerland": {
@@ -55917,7 +55917,7 @@
    "country": "France",
    "gdp": 30442.83,
    "temperature": 13.694250000000002,
-   "variation": 2.77241666666667,
+   "variation": 0.4610000000000021,
    "population": 61233.9
   },
   "Lithuania": {
@@ -56008,7 +56008,7 @@
    "country": "Denmark",
    "gdp": 33814.06,
    "temperature": -15.643,
-   "variation": 23.978166666666667,
+   "variation": 1.9501666666666644,
    "population": 5421.702
   },
   "Dominican Republic": {
@@ -56157,7 +56157,7 @@
    "country": "Congo",
    "gdp": 3027.37,
    "temperature": 24.679833333333335,
-   "variation": 0.9222500000000018,
+   "variation": 0.01758333333333084,
    "population": 2648.507
   },
   "Guinea-Bissau": {
@@ -56584,7 +56584,7 @@
    "country": "Netherlands",
    "gdp": 27830.34,
    "temperature": 9.8475,
-   "variation": 0.3718333333333348,
+   "variation": 0.005833333333335133,
    "population": 15268.006
   },
   "Virgin Islands British": {
@@ -57032,7 +57032,7 @@
    "country": "United Kingdom",
    "gdp": 23840.03,
    "temperature": 8.66975,
-   "variation": 0.14166666666666572,
+   "variation": 0.05058333333333387,
    "population": 57650.473
   },
   "Switzerland": {
@@ -57284,7 +57284,7 @@
    "country": "France",
    "gdp": 24875.41,
    "temperature": 13.150166666666669,
-   "variation": 2.228333333333337,
+   "variation": 0.08308333333333096,
    "population": 57744.82
   },
   "Lithuania": {
@@ -57375,7 +57375,7 @@
    "country": "Denmark",
    "gdp": 26359.47,
    "temperature": -18.716166666666666,
-   "variation": 27.051333333333332,
+   "variation": 1.123000000000001,
    "population": 5190.742
   },
   "Dominican Republic": {
@@ -57524,7 +57524,7 @@
    "country": "Congo",
    "gdp": 2936.94,
    "temperature": 25.12816666666667,
-   "variation": 1.370583333333336,
+   "variation": 0.4307500000000033,
    "population": 3605.439
   },
   "Guinea-Bissau": {
@@ -57951,7 +57951,7 @@
    "country": "Netherlands",
    "gdp": 35490.23,
    "temperature": 10.627500000000001,
-   "variation": 1.151833333333336,
+   "variation": 0.774166666666666,
    "population": 16287.182
   },
   "Virgin Islands British": {
@@ -58399,7 +58399,7 @@
    "country": "United Kingdom",
    "gdp": 32349.74,
    "temperature": 9.737333333333332,
-   "variation": 0.9259166666666658,
+   "variation": 1.1181666666666654,
    "population": 59884.128
   },
   "Switzerland": {
@@ -58651,7 +58651,7 @@
    "country": "France",
    "gdp": 30034.18,
    "temperature": 13.66408333333333,
-   "variation": 2.7422499999999985,
+   "variation": 0.4308333333333305,
    "population": 60886.607
   },
   "Lithuania": {
@@ -58742,7 +58742,7 @@
    "country": "Denmark",
    "gdp": 33060.96,
    "temperature": -16.770583333333335,
-   "variation": 25.10575,
+   "variation": 0.8225833333333306,
    "population": 5402.761
   },
   "Dominican Republic": {
@@ -58891,7 +58891,7 @@
    "country": "Congo",
    "gdp": 3153.4,
    "temperature": 24.549833333333336,
-   "variation": 0.7922500000000028,
+   "variation": 0.14758333333332985,
    "population": 2577.035
   },
   "Guinea-Bissau": {
@@ -59318,7 +59318,7 @@
    "country": "Netherlands",
    "gdp": 27741.2,
    "temperature": 10.752166666666668,
-   "variation": 1.2765000000000022,
+   "variation": 0.8988333333333323,
    "population": 15165.862
   },
   "Virgin Islands British": {
@@ -59766,7 +59766,7 @@
    "country": "United Kingdom",
    "gdp": 23381.94,
    "temperature": 9.025,
-   "variation": 0.21358333333333412,
+   "variation": 0.4058333333333337,
    "population": 57494.538
   },
   "Switzerland": {
@@ -60018,7 +60018,7 @@
    "country": "France",
    "gdp": 25217.15,
    "temperature": 13.462916666666667,
-   "variation": 2.5410833333333347,
+   "variation": 0.22966666666666669,
    "population": 57496.974
   },
   "Lithuania": {
@@ -60109,7 +60109,7 @@
    "country": "Denmark",
    "gdp": 26498.81,
    "temperature": -19.000416666666666,
-   "variation": 27.335583333333332,
+   "variation": 1.4072500000000012,
    "population": 5171.65
   },
   "Dominican Republic": {
@@ -60258,7 +60258,7 @@
    "country": "Congo",
    "gdp": 2913.27,
    "temperature": 25.056749999999997,
-   "variation": 1.2991666666666646,
+   "variation": 0.35933333333333195,
    "population": 3502.519
   },
   "Guinea-Bissau": {
@@ -60685,7 +60685,7 @@
    "country": "Netherlands",
    "gdp": 34858.05,
    "temperature": 10.699833333333332,
-   "variation": 1.224166666666667,
+   "variation": 0.8464999999999971,
    "population": 16200.951
   },
   "Virgin Islands British": {
@@ -61133,7 +61133,7 @@
    "country": "United Kingdom",
    "gdp": 31548.52,
    "temperature": 9.742083333333335,
-   "variation": 0.930666666666669,
+   "variation": 1.1229166666666686,
    "population": 59580.222
   },
   "Switzerland": {
@@ -61385,7 +61385,7 @@
    "country": "France",
    "gdp": 29520.1,
    "temperature": 14.337916666666667,
-   "variation": 3.4160833333333347,
+   "variation": 1.1046666666666667,
    "population": 60550.097
   },
   "Lithuania": {
@@ -61476,7 +61476,7 @@
    "country": "Denmark",
    "gdp": 32427.66,
    "temperature": -15.747083333333336,
-   "variation": 24.082250000000002,
+   "variation": 1.846083333333329,
    "population": 5386.968
   },
   "Dominican Republic": {
@@ -61625,7 +61625,7 @@
    "country": "Congo",
    "gdp": 3150.43,
    "temperature": 24.8215,
-   "variation": 1.0639166666666675,
+   "variation": 0.12408333333333488,
    "population": 2507.772
   },
   "Guinea-Bissau": {
@@ -62052,7 +62052,7 @@
    "country": "Netherlands",
    "gdp": 27419.97,
    "temperature": 9.75125,
-   "variation": 0.2755833333333353,
+   "variation": 0.10208333333333464,
    "population": 15064.519
   },
   "Virgin Islands British": {
@@ -62500,7 +62500,7 @@
    "country": "United Kingdom",
    "gdp": 23397.17,
    "temperature": 8.828333333333333,
-   "variation": 0.016916666666666913,
+   "variation": 0.2091666666666665,
    "population": 57339.447
   },
   "Switzerland": {
@@ -62752,7 +62752,7 @@
    "country": "France",
    "gdp": 25032.06,
    "temperature": 13.139499999999998,
-   "variation": 2.2176666666666662,
+   "variation": 0.09375000000000178,
    "population": 57237.702
   },
   "Lithuania": {
@@ -62843,7 +62843,7 @@
    "country": "Denmark",
    "gdp": 26072.35,
    "temperature": -17.827916666666663,
-   "variation": 26.163083333333333,
+   "variation": 0.23474999999999824,
    "population": 5154.908
   },
   "Dominican Republic": {
@@ -62992,7 +62992,7 @@
    "country": "Congo",
    "gdp": 2985.07,
    "temperature": 25.04766666666667,
-   "variation": 1.2900833333333388,
+   "variation": 0.35025000000000617,
    "population": 3407.18
   },
   "Guinea-Bissau": {
@@ -63419,7 +63419,7 @@
    "country": "Netherlands",
    "gdp": 34888.44,
    "temperature": 11.015499999999998,
-   "variation": 1.5398333333333323,
+   "variation": 1.1621666666666624,
    "population": 16110.355
   },
   "Virgin Islands British": {
@@ -63867,7 +63867,7 @@
    "country": "United Kingdom",
    "gdp": 30744.03,
    "temperature": 9.679666666666668,
-   "variation": 0.8682500000000015,
+   "variation": 1.060500000000001,
    "population": 59348.953
   },
   "Switzerland": {
@@ -64119,7 +64119,7 @@
    "country": "France",
    "gdp": 29414.45,
    "temperature": 14.048166666666667,
-   "variation": 3.126333333333335,
+   "variation": 0.814916666666667,
    "population": 60225.076
   },
   "Lithuania": {
@@ -64210,7 +64210,7 @@
    "country": "Denmark",
    "gdp": 32406.64,
    "temperature": -16.291083333333336,
-   "variation": 24.626250000000006,
+   "variation": 1.3020833333333286,
    "population": 5372.801
   },
   "Dominican Republic": {
@@ -64359,7 +64359,7 @@
    "country": "Congo",
    "gdp": 1449.12,
    "temperature": 24.64333333333333,
-   "variation": 0.885749999999998,
+   "variation": 0.05408333333333459,
    "population": 1011.584
   },
   "Guinea-Bissau": {
@@ -64786,7 +64786,7 @@
    "country": "Netherlands",
    "gdp": 12107.78,
    "temperature": 10.56525,
-   "variation": 1.0895833333333353,
+   "variation": 0.7119166666666654,
    "population": 11294.689
   },
   "Virgin Islands British": {
@@ -65234,7 +65234,7 @@
    "country": "United Kingdom",
    "gdp": 12036.31,
    "temperature": 9.511833333333334,
-   "variation": 0.7004166666666674,
+   "variation": 0.8926666666666669,
    "population": 52108.972
   },
   "Switzerland": {
@@ -65486,7 +65486,7 @@
    "country": "France",
    "gdp": 9961.55,
    "temperature": 13.675249999999998,
-   "variation": 2.7534166666666664,
+   "variation": 0.4419999999999984,
    "population": 45319.11
   },
   "Lithuania": {
@@ -65577,7 +65577,7 @@
    "country": "Denmark",
    "gdp": 11877.37,
    "temperature": -17.864,
-   "variation": 26.19916666666667,
+   "variation": 0.2708333333333357,
    "population": 4550.682
   },
   "Dominican Republic": {
@@ -65726,7 +65726,7 @@
    "country": "Congo",
    "gdp": 1424.33,
    "temperature": 24.656666666666666,
-   "variation": 0.8990833333333335,
+   "variation": 0.040749999999999176,
    "population": 987.142
   },
   "Guinea-Bissau": {
@@ -66153,7 +66153,7 @@
    "country": "Netherlands",
    "gdp": 11769.24,
    "temperature": 9.763083333333332,
-   "variation": 0.2874166666666671,
+   "variation": 0.09025000000000283,
    "population": 11144.07
   },
   "Virgin Islands British": {
@@ -66601,7 +66601,7 @@
    "country": "United Kingdom",
    "gdp": 11716.2,
    "temperature": 8.606416666666668,
-   "variation": 0.2049999999999983,
+   "variation": 0.012749999999998707,
    "population": 51818.623
   },
   "Switzerland": {
@@ -66853,7 +66853,7 @@
    "country": "France",
    "gdp": 9717.35,
    "temperature": 13.083166666666665,
-   "variation": 2.1613333333333333,
+   "variation": 0.15008333333333468,
    "population": 44827.61
   },
   "Lithuania": {
@@ -66944,7 +66944,7 @@
    "country": "Denmark",
    "gdp": 11137.09,
    "temperature": -17.44033333333333,
-   "variation": 25.7755,
+   "variation": 0.1528333333333336,
    "population": 4522.334
   },
   "Dominican Republic": {
@@ -67093,7 +67093,7 @@
    "country": "Congo",
    "gdp": 1399.55,
    "temperature": 24.58175,
-   "variation": 0.8241666666666667,
+   "variation": 0.11566666666666592,
    "population": 963.824
   },
   "Guinea-Bissau": {
@@ -67520,7 +67520,7 @@
    "country": "Netherlands",
    "gdp": 12138.27,
    "temperature": 10.210499999999998,
-   "variation": 0.7348333333333326,
+   "variation": 0.35716666666666264,
    "population": 10996.635
   },
   "Virgin Islands British": {
@@ -67968,7 +67968,7 @@
    "country": "United Kingdom",
    "gdp": 11702.88,
    "temperature": 9.177833333333334,
-   "variation": 0.3664166666666677,
+   "variation": 0.5586666666666673,
    "population": 51559.67
   },
   "Switzerland": {
@@ -68220,7 +68220,7 @@
    "country": "France",
    "gdp": 9628.22,
    "temperature": 13.101999999999999,
-   "variation": 2.1801666666666666,
+   "variation": 0.13125000000000142,
    "population": 44375.735
   },
   "Lithuania": {
@@ -68311,7 +68311,7 @@
    "country": "Denmark",
    "gdp": 10969.01,
    "temperature": -17.240833333333338,
-   "variation": 25.576000000000008,
+   "variation": 0.35233333333332695,
    "population": 4495.221
   },
   "Dominican Republic": {
@@ -68460,7 +68460,7 @@
    "country": "Congo",
    "gdp": 1374.86,
    "temperature": 24.32708333333333,
-   "variation": 0.5694999999999979,
+   "variation": 0.37033333333333474,
    "population": 941.536
   },
   "Guinea-Bissau": {
@@ -68887,7 +68887,7 @@
    "country": "Netherlands",
    "gdp": 12020.63,
    "temperature": 8.5425,
-   "variation": 0.9331666666666649,
+   "variation": 1.3108333333333348,
    "population": 10851.92
   },
   "Virgin Islands British": {
@@ -69335,7 +69335,7 @@
    "country": "United Kingdom",
    "gdp": 11573.99,
    "temperature": 8.266083333333334,
-   "variation": 0.5453333333333319,
+   "variation": 0.3530833333333323,
    "population": 51328.662
   },
   "Switzerland": {
@@ -69587,7 +69587,7 @@
    "country": "France",
    "gdp": 9264,
    "temperature": 12.063749999999999,
-   "variation": 1.141916666666667,
+   "variation": 1.169500000000001,
    "population": 43946.212
   },
   "Lithuania": {
@@ -69678,7 +69678,7 @@
    "country": "Denmark",
    "gdp": 10520.42,
    "temperature": -17.950750000000003,
-   "variation": 26.285916666666672,
+   "variation": 0.3575833333333378,
    "population": 4468.346
   },
   "Dominican Republic": {
@@ -69827,7 +69827,7 @@
    "country": "Congo",
    "gdp": 1350.39,
    "temperature": 24.274083333333333,
-   "variation": 0.5165000000000006,
+   "variation": 0.423333333333332,
    "population": 920.218
   },
   "Guinea-Bissau": {
@@ -70254,7 +70254,7 @@
    "country": "Netherlands",
    "gdp": 11588.5,
    "temperature": 9.217999999999998,
-   "variation": 0.25766666666666715,
+   "variation": 0.6353333333333371,
    "population": 10709.63
   },
   "Virgin Islands British": {
@@ -70702,7 +70702,7 @@
    "country": "United Kingdom",
    "gdp": 11475.43,
    "temperature": 8.569583333333332,
-   "variation": 0.241833333333334,
+   "variation": 0.04958333333333442,
    "population": 51123.707
   },
   "Switzerland": {
@@ -70954,7 +70954,7 @@
    "country": "France",
    "gdp": 8786.07,
    "temperature": 13.038333333333334,
-   "variation": 2.116500000000002,
+   "variation": 0.19491666666666596,
    "population": 43527.762
   },
   "Lithuania": {
@@ -71045,7 +71045,7 @@
    "country": "Denmark",
    "gdp": 10372.99,
    "temperature": -17.818416666666668,
-   "variation": 26.153583333333337,
+   "variation": 0.22525000000000261,
    "population": 4440.778
   },
   "Dominican Republic": {
@@ -71194,7 +71194,7 @@
    "country": "Congo",
    "gdp": 2848.33,
    "temperature": 24.8125,
-   "variation": 1.0549166666666672,
+   "variation": 0.11508333333333454,
    "population": 3136.344
   },
   "Guinea-Bissau": {
@@ -71621,7 +71621,7 @@
    "country": "Netherlands",
    "gdp": 33495.37,
    "temperature": 11.086166666666669,
-   "variation": 1.6105000000000036,
+   "variation": 1.2328333333333337,
    "population": 15835.523
   },
   "Virgin Islands British": {
@@ -72069,7 +72069,7 @@
    "country": "United Kingdom",
    "gdp": 28609.25,
    "temperature": 9.663333333333334,
-   "variation": 0.8519166666666678,
+   "variation": 1.0441666666666674,
    "population": 58746.728
   },
   "Switzerland": {
@@ -72321,7 +72321,7 @@
    "country": "France",
    "gdp": 28007.12,
    "temperature": 13.904916666666667,
-   "variation": 2.983083333333335,
+   "variation": 0.6716666666666669,
    "population": 59316.107
   },
   "Lithuania": {
@@ -72412,7 +72412,7 @@
    "country": "Denmark",
    "gdp": 31207.92,
    "temperature": -17.699083333333334,
-   "variation": 26.03425,
+   "variation": 0.1059166666666691,
    "population": 5321.774
   },
   "Dominican Republic": {
@@ -72561,7 +72561,7 @@
    "country": "Congo",
    "gdp": 1588.16,
    "temperature": 24.452166666666667,
-   "variation": 0.694583333333334,
+   "variation": 0.24524999999999864,
    "population": 1184.316
   },
   "Guinea-Bissau": {
@@ -72988,7 +72988,7 @@
    "country": "Netherlands",
    "gdp": 15262.07,
    "temperature": 9.111583333333334,
-   "variation": 0.36408333333333154,
+   "variation": 0.7417500000000015,
    "population": 12248.344
   },
   "Virgin Islands British": {
@@ -73436,7 +73436,7 @@
    "country": "United Kingdom",
    "gdp": 13955.55,
    "temperature": 8.1545,
-   "variation": 0.6569166666666657,
+   "variation": 0.4646666666666661,
    "population": 54303.107
   },
   "Switzerland": {
@@ -73688,7 +73688,7 @@
    "country": "France",
    "gdp": 12761.73,
    "temperature": 12.501833333333332,
-   "variation": 1.58,
+   "variation": 0.7314166666666679,
    "population": 48952.255
   },
   "Lithuania": {
@@ -73779,7 +73779,7 @@
    "country": "Denmark",
    "gdp": 15145.58,
    "temperature": -17.029416666666666,
-   "variation": 25.364583333333336,
+   "variation": 0.5637499999999989,
    "population": 4760.46
   },
   "Dominican Republic": {
@@ -73928,7 +73928,7 @@
    "country": "Congo",
    "gdp": 1570.2,
    "temperature": 24.45141666666667,
-   "variation": 0.6938333333333375,
+   "variation": 0.2459999999999951,
    "population": 1152.412
   },
   "Guinea-Bissau": {
@@ -74355,7 +74355,7 @@
    "country": "Netherlands",
    "gdp": 14660.7,
    "temperature": 9.553166666666668,
-   "variation": 0.07750000000000234,
+   "variation": 0.3001666666666676,
    "population": 12089.385
   },
   "Virgin Islands British": {
@@ -74803,7 +74803,7 @@
    "country": "United Kingdom",
    "gdp": 13682.83,
    "temperature": 8.679166666666665,
-   "variation": 0.13225000000000087,
+   "variation": 0.05999999999999872,
    "population": 53945.019
   },
   "Switzerland": {
@@ -75055,7 +75055,7 @@
    "country": "France",
    "gdp": 12340.7,
    "temperature": 12.990416666666668,
-   "variation": 2.0685833333333363,
+   "variation": 0.24283333333333168,
    "population": 48402.837
   },
   "Lithuania": {
@@ -75146,7 +75146,7 @@
    "country": "Denmark",
    "gdp": 14653.6,
    "temperature": -18.04225,
-   "variation": 26.37741666666667,
+   "variation": 0.44908333333333417,
    "population": 4723.629
   },
   "Dominican Republic": {
@@ -75295,7 +75295,7 @@
    "country": "Congo",
    "gdp": 1548.17,
    "temperature": 24.6915,
-   "variation": 0.9339166666666685,
+   "variation": 0.005916666666664128,
    "population": 1121.735
   },
   "Guinea-Bissau": {
@@ -75722,7 +75722,7 @@
    "country": "Netherlands",
    "gdp": 13840.02,
    "temperature": 8.263166666666667,
-   "variation": 1.2124999999999986,
+   "variation": 1.5901666666666685,
    "population": 11928.361
   },
   "Virgin Islands British": {
@@ -76170,7 +76170,7 @@
    "country": "United Kingdom",
    "gdp": 13167.97,
    "temperature": 7.790749999999999,
-   "variation": 1.020666666666667,
+   "variation": 0.8284166666666675,
    "population": 53562.805
   },
   "Switzerland": {
@@ -76422,7 +76422,7 @@
    "country": "France",
    "gdp": 11736.8,
    "temperature": 12.072833333333334,
-   "variation": 1.1510000000000016,
+   "variation": 1.1604166666666664,
    "population": 47781.402
   },
   "Lithuania": {
@@ -76513,7 +76513,7 @@
    "country": "Denmark",
    "gdp": 13625.99,
    "temperature": -17.228666666666665,
-   "variation": 25.563833333333335,
+   "variation": 0.3644999999999996,
    "population": 4686.279
   },
   "Dominican Republic": {
@@ -76662,7 +76662,7 @@
    "country": "Congo",
    "gdp": 1586.79,
    "temperature": 24.56925,
-   "variation": 0.8116666666666674,
+   "variation": 0.1281666666666652,
    "population": 1092.292
   },
   "Guinea-Bissau": {
@@ -77089,7 +77089,7 @@
    "country": "Netherlands",
    "gdp": 13517,
    "temperature": 8.564,
-   "variation": 0.9116666666666653,
+   "variation": 1.2893333333333352,
    "population": 11766.726
   },
   "Virgin Islands British": {
@@ -77537,7 +77537,7 @@
    "country": "United Kingdom",
    "gdp": 12774.91,
    "temperature": 7.994,
-   "variation": 0.8174166666666665,
+   "variation": 0.6251666666666669,
    "population": 53171.326
   },
   "Switzerland": {
@@ -77789,7 +77789,7 @@
    "country": "France",
    "gdp": 11337.96,
    "temperature": 12.414333333333333,
-   "variation": 1.4925000000000015,
+   "variation": 0.8189166666666665,
    "population": 47121.382
   },
   "Lithuania": {
@@ -77880,7 +77880,7 @@
    "country": "Denmark",
    "gdp": 13602.61,
    "temperature": -16.929416666666665,
-   "variation": 25.264583333333334,
+   "variation": 0.6637500000000003,
    "population": 4649.346
   },
   "Dominican Republic": {
@@ -78029,7 +78029,7 @@
    "country": "Congo",
    "gdp": 1550.86,
    "temperature": 24.36533333333333,
-   "variation": 0.6077499999999958,
+   "variation": 0.33208333333333684,
    "population": 1064.111
   },
   "Guinea-Bissau": {
@@ -78456,7 +78456,7 @@
    "country": "Netherlands",
    "gdp": 12907.35,
    "temperature": 10.326833333333335,
-   "variation": 0.8511666666666695,
+   "variation": 0.4734999999999996,
    "population": 11606.402
   },
   "Virgin Islands British": {
@@ -78904,7 +78904,7 @@
    "country": "United Kingdom",
    "gdp": 12683.2,
    "temperature": 9.001666666666667,
-   "variation": 0.1902500000000007,
+   "variation": 0.3825000000000003,
    "population": 52789.816
   },
   "Switzerland": {
@@ -79156,7 +79156,7 @@
    "country": "France",
    "gdp": 10864.07,
    "temperature": 13.701833333333333,
-   "variation": 2.780000000000001,
+   "variation": 0.46858333333333313,
    "population": 46470.824
   },
   "Lithuania": {
@@ -79247,7 +79247,7 @@
    "country": "Denmark",
    "gdp": 12993.42,
    "temperature": -18.430666666666664,
-   "variation": 26.765833333333333,
+   "variation": 0.8374999999999986,
    "population": 4614.027
   },
   "Dominican Republic": {
@@ -79396,7 +79396,7 @@
    "country": "Congo",
    "gdp": 1469.43,
    "temperature": 24.59025,
-   "variation": 0.8326666666666682,
+   "variation": 0.10716666666666441,
    "population": 1037.22
   },
   "Guinea-Bissau": {
@@ -79823,7 +79823,7 @@
    "country": "Netherlands",
    "gdp": 12953.02,
    "temperature": 10.024666666666667,
-   "variation": 0.5490000000000013,
+   "variation": 0.17133333333333134,
    "population": 11448.817
   },
   "Virgin Islands British": {
@@ -80271,7 +80271,7 @@
    "country": "United Kingdom",
    "gdp": 12473.92,
    "temperature": 8.91975,
-   "variation": 0.10833333333333428,
+   "variation": 0.30058333333333387,
    "population": 52433.157
   },
   "Switzerland": {
@@ -80523,7 +80523,7 @@
    "country": "France",
    "gdp": 10444.64,
    "temperature": 13.027666666666667,
-   "variation": 2.105833333333335,
+   "variation": 0.20558333333333323,
    "population": 45865.396
   },
   "Lithuania": {
@@ -80614,7 +80614,7 @@
    "country": "Denmark",
    "gdp": 12345.74,
    "temperature": -16.951083333333333,
-   "variation": 25.286250000000003,
+   "variation": 0.642083333333332,
    "population": 4581.101
   },
   "Dominican Republic": {
@@ -82883,7 +82883,7 @@
    "country": "Djibouti",
    "gdp": 2402.72,
    "temperature": -14.927249999999999,
-   "variation": 23.262416666666667,
+   "variation": 2.665916666666666,
    "population": 896.688
   },
   "Lebanon": {
@@ -83476,7 +83476,7 @@
    "country": "Costa Rica",
    "gdp": 11302.63,
    "temperature": 25.139374999999998,
-   "variation": 1.3817916666666648,
+   "variation": 0.4419583333333321,
    "population": 4706.401
   },
   "Macedonia the Former Yugoslav Republic of": {
@@ -83984,7 +83984,7 @@
    "country": "Congo",
    "gdp": 1817.09,
    "temperature": 24.696500000000004,
-   "variation": 0.9389166666666711,
+   "variation": 9.166666666615697E-4,
    "population": 1325.147
   },
   "Guinea-Bissau": {
@@ -84411,7 +84411,7 @@
    "country": "Netherlands",
    "gdp": 17572.89,
    "temperature": 9.533583333333334,
-   "variation": 0.05791666666666906,
+   "variation": 0.31975000000000087,
    "population": 12855.007
   },
   "Virgin Islands British": {
@@ -84859,7 +84859,7 @@
    "country": "United Kingdom",
    "gdp": 15085.06,
    "temperature": 8.467916666666666,
-   "variation": 0.3435000000000006,
+   "variation": 0.151250000000001,
    "population": 55429.643
   },
   "Switzerland": {
@@ -85111,7 +85111,7 @@
    "country": "France",
    "gdp": 15030.4,
    "temperature": 12.8335,
-   "variation": 1.9116666666666688,
+   "variation": 0.39974999999999916,
    "population": 50466.394
   },
   "Lithuania": {
@@ -85202,7 +85202,7 @@
    "country": "Denmark",
    "gdp": 17248.9,
    "temperature": -17.867416666666667,
-   "variation": 26.202583333333337,
+   "variation": 0.2742500000000021,
    "population": 4899.291
   },
   "Dominican Republic": {
@@ -85351,7 +85351,7 @@
    "country": "Congo",
    "gdp": 1722.8,
    "temperature": 24.426166666666663,
-   "variation": 0.6685833333333306,
+   "variation": 0.271250000000002,
    "population": 1287.516
   },
   "Guinea-Bissau": {
@@ -85778,7 +85778,7 @@
    "country": "Netherlands",
    "gdp": 16806.81,
    "temperature": 9.549916666666668,
-   "variation": 0.07425000000000281,
+   "variation": 0.3034166666666671,
    "population": 12706.787
   },
   "Virgin Islands British": {
@@ -86226,7 +86226,7 @@
    "country": "United Kingdom",
    "gdp": 14878.41,
    "temperature": 8.565916666666666,
-   "variation": 0.24549999999999983,
+   "variation": 0.05325000000000024,
    "population": 55194.456
   },
   "Switzerland": {
@@ -86478,7 +86478,7 @@
    "country": "France",
    "gdp": 14230.01,
    "temperature": 12.79775,
-   "variation": 1.8759166666666687,
+   "variation": 0.43549999999999933,
    "population": 50127.143
   },
   "Lithuania": {
@@ -86569,7 +86569,7 @@
    "country": "Denmark",
    "gdp": 16368.62,
    "temperature": -18.275833333333335,
-   "variation": 26.611000000000004,
+   "variation": 0.6826666666666696,
    "population": 4866.068
   },
   "Dominican Republic": {
@@ -86718,7 +86718,7 @@
    "country": "Congo",
    "gdp": 1637.69,
    "temperature": 24.437749999999998,
-   "variation": 0.6801666666666648,
+   "variation": 0.2596666666666678,
    "population": 1251.703
   },
   "Guinea-Bissau": {
@@ -87145,7 +87145,7 @@
    "country": "Netherlands",
    "gdp": 16035.1,
    "temperature": 10.293666666666667,
-   "variation": 0.8180000000000014,
+   "variation": 0.44033333333333147,
    "population": 12556.839
   },
   "Virgin Islands British": {
@@ -87593,7 +87593,7 @@
    "country": "United Kingdom",
    "gdp": 14442.89,
    "temperature": 8.833166666666667,
-   "variation": 0.021750000000000824,
+   "variation": 0.2140000000000004,
    "population": 54928.528
   },
   "Switzerland": {
@@ -87845,7 +87845,7 @@
    "country": "France",
    "gdp": 13751.7,
    "temperature": 13.0875,
-   "variation": 2.1656666666666684,
+   "variation": 0.1457499999999996,
    "population": 49791.935
   },
   "Lithuania": {
@@ -87936,7 +87936,7 @@
    "country": "Denmark",
    "gdp": 15884.22,
    "temperature": -18.03291666666667,
-   "variation": 26.368083333333338,
+   "variation": 0.43975000000000364,
    "population": 4831.752
   },
   "Dominican Republic": {
@@ -88085,7 +88085,7 @@
    "country": "Congo",
    "gdp": 1594.3,
    "temperature": 24.698249999999998,
-   "variation": 0.9406666666666652,
+   "variation": 8.333333333325754E-4,
    "population": 1217.391
   },
   "Guinea-Bissau": {
@@ -88512,7 +88512,7 @@
    "country": "Netherlands",
    "gdp": 15459.67,
    "temperature": 9.827833333333333,
-   "variation": 0.3521666666666672,
+   "variation": 0.025500000000002743,
    "population": 12404.193
   },
   "Virgin Islands British": {
@@ -88960,7 +88960,7 @@
    "country": "United Kingdom",
    "gdp": 14163.45,
    "temperature": 8.559916666666668,
-   "variation": 0.2514999999999983,
+   "variation": 0.05924999999999869,
    "population": 54630.989
   },
   "Switzerland": {
@@ -89212,7 +89212,7 @@
    "country": "France",
    "gdp": 13271.68,
    "temperature": 13.215166666666669,
-   "variation": 2.2933333333333366,
+   "variation": 0.018083333333331453,
    "population": 49411.387
   },
   "Lithuania": {
@@ -89303,7 +89303,7 @@
    "country": "Denmark",
    "gdp": 15474.05,
    "temperature": -18.311833333333333,
-   "variation": 26.647,
+   "variation": 0.7186666666666675,
    "population": 4796.487
   },
   "Dominican Republic": {
