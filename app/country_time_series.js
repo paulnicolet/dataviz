@@ -21,6 +21,7 @@ class CountryTimeSeries {
         this.zeroMeanButton = document.getElementById('zeroMean');
         this.resetCountryButton = document.getElementById('resetCountry');
         this.autocompleteID = "time-series-input";
+        this.autocompleteInput = document.getElementById(this.autocompleteID);
 
         this.initChart();
 
@@ -36,6 +37,7 @@ class CountryTimeSeries {
 
             this.zeroMeanButton.disabled = true;
             this.resetCountryButton.disabled = true;
+            this.autocompleteInput.disabled = true;
 
             this.chart.unload({
                 ids: this.displayedData,
@@ -47,9 +49,9 @@ class CountryTimeSeries {
 
                     this.zeroMeanButton.disabled = false;
                     this.resetCountryButton.disabled = false;
+                    this.autocompleteInput.disabled = false;
                 }
             });
-
         });
     }
 
@@ -58,6 +60,7 @@ class CountryTimeSeries {
 
             this.zeroMeanButton.disabled = true;
             this.resetCountryButton.disabled = true;
+            this.autocompleteInput.disabled = true;
 
             var toUnload = this.displayedData.slice();
 
@@ -69,7 +72,7 @@ class CountryTimeSeries {
             var colors = {};
 
 
-            var endWord = '';//' 0mean';
+            var endWord = ''; //' 0mean';
             for (var i = 0; i < this.displayedCountry.length; i++) {
 
                 var countryName = this.displayedCountry[i] + endWord;
@@ -104,9 +107,10 @@ class CountryTimeSeries {
                 colors: colors,
                 columns: columns,
                 unload: toUnload,
+                done: () => {
+                    this.resetCountryButton.disabled = false;
+                }
             });
-
-            this.resetCountryButton.disabled = false;
         });
     }
 
@@ -123,7 +127,7 @@ class CountryTimeSeries {
             dates.push(1850 + i);
             val.push(countryData[i]);
 
-            if(countryData[i] != null) {
+            if (countryData[i] != null) {
                 mean += countryData[i];
                 notNull++;
             }
@@ -132,7 +136,7 @@ class CountryTimeSeries {
         mean /= notNull;
 
         for (var i = 0; i < countryData.length; i++) {
-            if(val[i] != null) {
+            if (val[i] != null) {
                 result.push(val[i] - mean);
             } else {
                 result.push(null);
@@ -179,7 +183,6 @@ class CountryTimeSeries {
                 colors: {
                     "World": worldColor,
                     "Regression World": worldColor,
-
                 },
             },
             point: {
@@ -245,6 +248,10 @@ class CountryTimeSeries {
     }
 
     addCountryTemp(countryName) {
+
+        this.zeroMeanButton.disabled = true;
+        this.resetCountryButton.disabled = true;
+        this.autocompleteInput.disabled = true;
 
         var countryData = null;
         countryData = this.dataCountry[countryName];
@@ -316,6 +323,11 @@ class CountryTimeSeries {
             ],
             types: types,
             colors: colors,
+            done: () => {
+                this.zeroMeanButton.disabled = false;
+                this.resetCountryButton.disabled = false;
+                this.autocompleteInput.disabled = false;
+            }
         });
 
         this.displayedCountry.push(countryName);
