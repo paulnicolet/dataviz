@@ -7,17 +7,17 @@ require('./country_time_series.scss');
 require('./css/c3.css');
 
 class CountryTimeSeries {
-    constructor(id, dataCountry, width, height) {
+    constructor(id, dataCountry) {
 
         this.id = id;
         this.dataCountry = dataCountry;
-        this.width = width;
-        this.height = height;
 
+        // current state of the time series
         this.displayedCountry = [];
         this.displayedData = []
         this.chart = null;
 
+        // html object linked to this javascript class
         this.zeroMeanButton = document.getElementById('zeroMean');
         this.resetCountryButton = document.getElementById('resetCountry');
         this.autocompleteID = "time-series-input";
@@ -35,21 +35,21 @@ class CountryTimeSeries {
     linkResetButton() {
         this.resetCountryButton.addEventListener('click', () => {
 
+            // block interaction until work is done
             this.zeroMeanButton.disabled = true;
             this.resetCountryButton.disabled = true;
             this.autocompleteInput.disabled = true;
 
             this.chart.unload({
+                // unload current displayed data
                 ids: this.displayedData,
                 done: () => {
+
+                    // reset the time series
                     this.displayedCountry = [];
                     this.displayedData = [];
 
                     this.addCountryTemp('World');
-
-                    this.zeroMeanButton.disabled = false;
-                    this.resetCountryButton.disabled = false;
-                    this.autocompleteInput.disabled = false;
                 }
             });
         });
@@ -58,24 +58,27 @@ class CountryTimeSeries {
     linkZeroMeanButton() {
         this.zeroMeanButton.addEventListener('click', () => {
 
+            // block interaction until work is done
             this.zeroMeanButton.disabled = true;
             this.resetCountryButton.disabled = true;
             this.autocompleteInput.disabled = true;
 
+            // copy the data to unload
             var toUnload = this.displayedData.slice();
 
+            // reset the graph data to show
             this.displayedData = [];
             var columns = [];
 
+            // the parameter we will link to the new data
             var xs = {};
             var types = {};
             var colors = {};
 
-
-            var endWord = ''; //' 0mean';
+            // for each displayed country, do its 0-mean
             for (var i = 0; i < this.displayedCountry.length; i++) {
 
-                var countryName = this.displayedCountry[i] + endWord;
+                var countryName = this.displayedCountry[i];
                 var countryDatesName = 'dates ' + countryName;
                 var regCountryName = 'Regression ' + countryName;
 
@@ -94,10 +97,13 @@ class CountryTimeSeries {
                 columns.push(val);
                 columns.push(fin);
 
+                // zero mean the data
                 var countryData = this.zeroMeansData(this.dataCountry[this.displayedCountry[i]]);
 
+                // prepare the data for the graph
                 this.computeCountryPointsAndAxisAndReg(countryData, val, dates, fin);
 
+                // prepare the attribute for the data for the graph
                 this.prepareDataAttributes(countryName, countryDatesName, regCountryName, xs, types, colors);
             }
 
@@ -106,8 +112,10 @@ class CountryTimeSeries {
                 types: types,
                 colors: colors,
                 columns: columns,
+                // don't forget to unload current data
                 unload: toUnload,
                 done: () => {
+                    // when work is done, only allow a reset interaction
                     this.resetCountryButton.disabled = false;
                 }
             });
@@ -123,10 +131,12 @@ class CountryTimeSeries {
 
         var mean = 0.0;
         var notNull = 0;
+        // gather data to compute the mean
         for (var i = 0; i < countryData.length; i++) {
             dates.push(1850 + i);
             val.push(countryData[i]);
 
+            // obvioulsy, we only want correct data
             if (countryData[i] != null) {
                 mean += countryData[i];
                 notNull++;
@@ -135,6 +145,7 @@ class CountryTimeSeries {
 
         mean /= notNull;
 
+        // minus the mean for every data
         for (var i = 0; i < countryData.length; i++) {
             if (val[i] != null) {
                 result.push(val[i] - mean);
@@ -148,6 +159,7 @@ class CountryTimeSeries {
 
     resetGraphData() {
 
+        // at reset state, only world data are displayed
         var worldData = this.dataCountry.World;
 
         var dates = [];
@@ -171,11 +183,13 @@ class CountryTimeSeries {
 
         var worldColor = this.getRandomColor('World');
 
+        // creation of the object chart
         this.chart = c3.generate({
             bindto: `#${this.id}`,
             data: {
                 x: 'dates World',
                 columns: this.resetGraphData(),
+                // scatter for the data point, spline for the regression
                 types: {
                     World: 'scatter',
                     Reg_World: 'spline'
@@ -185,6 +199,7 @@ class CountryTimeSeries {
                     "Regression World": worldColor,
                 },
             },
+            // don't display point for the spline
             point: {
                 show: false,
             },
@@ -215,6 +230,7 @@ class CountryTimeSeries {
 
                 }
             },
+            // 1 sec transition for every animation
             transition: {
                 duration: 1000
             }
@@ -228,27 +244,30 @@ class CountryTimeSeries {
 
     initAutocomplete() {
 
+        // creation of the data to autocomplete
         var countries = {}
         Object.keys(this.dataCountry).forEach((entry) => {
             countries[entry] = null;
         })
         countries['World'] = null;
 
+        // initialization of the autocomplete process
         $("#" + this.autocompleteID).autocomplete({
             data: countries,
-            limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+            limit: 20,
             onAutocomplete: (val) => {
                 if ($.inArray(val, this.displayedCountry) == -1) {
                     this.addCountryTemp(val);
                     $("#" + this.autocompleteID).val('');
                 }
             },
-            minLength: 2, // The minimum length of the input for the autocomplete to start. Default: 1.
+            minLength: 2,
         });
     }
 
     addCountryTemp(countryName) {
 
+        // desactivate interaction during the process of adding a country to the time series
         this.zeroMeanButton.disabled = true;
         this.resetCountryButton.disabled = true;
         this.autocompleteInput.disabled = true;
@@ -266,14 +285,17 @@ class CountryTimeSeries {
         var fin = [];
         fin.push(regCountryName);
 
+        // compute the data we want to the graphic (the points + the regression)
         this.computeCountryPointsAndAxisAndReg(countryData, val, dates, fin);
 
         var xs = {};
         var types = {};
         var colors = {};
 
+        // prepare the attribute for this data
         this.prepareDataAttributes(countryName, countryDatesName, regCountryName, xs, types, colors);
 
+        // load the data
         this.loadData(countryName, countryDatesName, regCountryName, val, dates, fin, xs, types, colors);
     }
 
@@ -281,6 +303,7 @@ class CountryTimeSeries {
 
         var datas = [];
 
+        // take every correct point to compute a nice linear regression
         for (var i = 0; i < countryData.length; i++) {
             countryDates.push(1850 + i);
             countryPoints.push(countryData[i]);
@@ -288,13 +311,15 @@ class CountryTimeSeries {
             if (countryData[i] != null) {
                 datas.push([(1850 + i), countryData[i]]);
             }
-        }
+        }  
 
+        // regression of order 2 
         var cc = reg.polynomial(datas, {
             order: 2,
             precision: 10
         });
 
+        // compute the point for each year with the regression
         for (var i = 0; i < countryData.length; i++) {
             regCountryLine.push(cc.predict(1850 + i)[1]);
         }
@@ -302,6 +327,7 @@ class CountryTimeSeries {
 
     prepareDataAttributes(countryName, countryDatesName, regCountryName, xs, types, colors) {
 
+        // tell who is scatter who is spline and which color to give
         xs[countryName] = countryDatesName;
 
         types[countryName] = 'scatter';
@@ -314,6 +340,7 @@ class CountryTimeSeries {
 
     loadData(countryName, countryDatesName, regCountryName, countryPoints, countryDates, regCountryLine, xs, types, colors) {
 
+        // load new data
         this.chart.load({
             xs: xs,
             columns: [
@@ -324,12 +351,14 @@ class CountryTimeSeries {
             types: types,
             colors: colors,
             done: () => {
+                // allow interaction again when work is done
                 this.zeroMeanButton.disabled = false;
                 this.resetCountryButton.disabled = false;
                 this.autocompleteInput.disabled = false;
             }
         });
 
+        // add the country to the currently displayed one
         this.displayedCountry.push(countryName);
         this.displayedData.push(countryName);
         this.displayedData.push(countryDatesName);
@@ -338,7 +367,9 @@ class CountryTimeSeries {
 
     getRandomColor(countryName) {
 
-        var tmp = countryName.split('_')
+        // generate a fix 'random' color for each country
+        // using the country name
+        var tmp = countryName.split('_');
 
         var seed = 0;
         for (var i = 0, len = tmp[0].length; i < len; i++) {
@@ -355,12 +386,12 @@ class CountryTimeSeries {
     }
 }
 
-export default function(id, dataCountryPath, width, height) {
+export default function(id, dataCountryPath) {
     d3.json(dataCountryPath, (errorCountry, dataCountry) => {
         if (errorCountry) {
             window.alert('Could not load country_temperature data: ' + errorCountry);
         }
 
-        return new CountryTimeSeries(id, dataCountry, width, height);
+        return new CountryTimeSeries(id, dataCountry);
     })
 }

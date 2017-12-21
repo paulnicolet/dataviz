@@ -20,7 +20,7 @@ public class Merge {
 
 		JSONObject metaData = new JSONObject();
 
-		// GDP
+		// GDP data extraction
 		BufferedReader br = new BufferedReader(new FileReader("data/population-gdp-data/gdp.csv"));
 		String line = "";
 		br.readLine();
@@ -36,6 +36,7 @@ public class Merge {
 
 			countryToYear.put(country, new HashMap<>());
 
+			// we add every year we have
 			for (int i = 1; i < tmp.length; i++) {
 
 				Double gdp = Double.parseDouble(tmp[i]);
@@ -65,6 +66,7 @@ public class Merge {
 
 		HashMap<String, HashMap<Integer, JSONObject>> tmpCountryToYear = new HashMap<>();
 
+		// unfortunately, the country names don't always match, hence the 'by hand' matching
 		HashMap<String, String> firstLevelMapping = new HashMap<>();
 		firstLevelMapping.put("Democratic Republic of the Congo", "Congo the Democratic Republic of the");
 		firstLevelMapping.put("Iran", "Iran Islamic Republic of");
@@ -90,14 +92,17 @@ public class Merge {
 
 			String[] tmp = line.split(",");
 
+			// remove all parantheses in name and their content
 			String country = tmp[0].replaceAll("\\(.*?\\) ?", "").trim();
 
+			// check if you need to pick from the 'by hand' matching
 			if (firstLevelMapping.containsKey(country)) {
 				country = firstLevelMapping.get(country);
 			}
 
 			if (countryToYear.containsKey(country)) {
 
+				// now we are sure that this country is encounter
 				tmpCountryToYear.put(country, countryToYear.get(country));
 
 				for (int i = 1; i < tmp.length; i++) {
@@ -115,6 +120,7 @@ public class Merge {
 		metaData.put("minPop", minPop);
 		metaData.put("maxPop", maxPop);
 
+		// this is our new map from country to data
 		countryToYear = tmpCountryToYear;
 		System.out.println("After pop, # = " + countryToYear.size());
 
@@ -129,6 +135,7 @@ public class Merge {
 
 		tmpCountryToYear = new HashMap<>();
 
+		// same as above
 		HashMap<String, String> secondLevelMapping = new HashMap<>();
 		secondLevelMapping.put("Syria", "Syrian Arab Republic");
 		secondLevelMapping.put("Bosnia And Herzegovina", "Bosnia and Herzegovina");
@@ -157,6 +164,7 @@ public class Merge {
 		Double sumTempOneYear = 0.0;
 		int numDayDataAvailable = 0;
 
+		// to be honest, temperature data are a mess, nothing is consistent, hence the save of the last state
 		int currentYear = 1950;
 		String currentCountry = "Åland";
 		boolean firstForCountry = true;
@@ -173,28 +181,28 @@ public class Merge {
 			int year = Integer.parseInt(date[0]);
 			int month = Integer.parseInt(date[1]);
 
+			// remove all parantheses in name and their content
 			String country = tmp[3].replaceAll("\\(.*?\\) ?", "").trim();
+			// check the 'by hand' mapping again
 			if (secondLevelMapping.containsKey(country)) {
 				country = secondLevelMapping.get(country);
 			}
 			
+			// the current mean (maybe not used)
 			double res = 0.0;
 			if(numDayDataAvailable > 0) {
 				res = sumTempOneYear / numDayDataAvailable;
 			}
 			
+			// with inconsistency of data, we need this firewall to prevent
+			// carrying data from year to year or country to country
 			if(lastMonth > month || currentYear != year || !country.equals(currentCountry)) {
 				numDayDataAvailable = 0;
 				sumTempOneYear = 0.0;
 			}
-			
-			if(country.equals("Denmark") && year >= 1949) {
-				System.out.println("date:" + tmp[0] + " cur sum : " + sumTempOneYear + " day avai : " + numDayDataAvailable + " this year : " + tmp[1]);
-			}
 
+			// we need to save a mean temperature
 			if (lastMonth > month) {
-				
-
 				
 				maxTemp = Double.max(maxTemp, res);
 				minTemp = Double.min(minTemp, res);
@@ -202,37 +210,32 @@ public class Merge {
 				numDayDataAvailable = 0;
 				sumTempOneYear = 0.0;
 				
+				// we don't use data before 1950
 				if(currentYear >= 1950 && countryToYear.containsKey(country)) {
-					
-					if(country.equals("Denmark")) {
-						System.out.println("add a year");
-					}
 					
 					tmpCountryToYear.put(country, countryToYear.get(country));
 					
 					countryToYear.get(country).get(currentYear).put("temperature", res);
 					
+					// the variation is used with the first time we encounter data for
+					// a country, thus we need a 'first' time
 					if(firstForCountry) {
-						if(country.equals("Denmark")) {
-							System.out.println("First one with temp : " + res);
-						}	
 						firstForCountry = false;
 						valFirstForCountry = res;
 						countryToYear.get(country).get(currentYear).put("variation", 0.0);
 					} else {
-						if(country.equals("Denmark")) {
-							System.out.println("second or mor one with var : " + Math.abs(valFirstForCountry - res));
-						}
 						countryToYear.get(country).get(currentYear).put("variation", Math.abs(valFirstForCountry - res));
 					}
 				}
 			}
 			
+			// to compute the mean 
 			if(!tmp[1].equals("")) {
 				numDayDataAvailable++;
 				sumTempOneYear += Double.parseDouble(tmp[1]);
 			}
 			
+			// we the current state change the country, we need a new 'first' time
 			if(!currentCountry.equals(country) || currentYear > year) {
 				firstForCountry = true;
 			}
@@ -263,10 +266,10 @@ public class Merge {
 				jsonYear[ee.getKey() - 1950].put(country, ee.getValue());
 
 			}
-
 		}
 
 		JSONObject result = new JSONObject();
+		// save metadata useful for color/size
 		result.put("metadata", metaData);
 
 		for (int i = 0; i < 66; i++) {
@@ -279,10 +282,12 @@ public class Merge {
 		fileWriter.flush();
 		fileWriter.close();
 
+		// readable json
+/*
 		fileWriter = new FileWriter("final.json");
 		fileWriter.write(result.toString(1));
 		fileWriter.flush();
 		fileWriter.close();
-
+*/
 	}
 }
