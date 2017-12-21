@@ -45,7 +45,8 @@ document.getElementById(MAP_STOP_ID).addEventListener('click', (e) => {
 // Build time series
 const COUNTRY_TIME_SERIES_ID = 'country_time_series';
 const COUNTRY_TIME_SERIES_PATH = './data/temp_time_series.json';
-buildCountryTimeSeries(COUNTRY_TIME_SERIES_ID, COUNTRY_TIME_SERIES_PATH);
+const COUNTRY_TIME_SERIES_START_DATE = 1850;
+buildCountryTimeSeries(COUNTRY_TIME_SERIES_ID, COUNTRY_TIME_SERIES_PATH, COUNTRY_TIME_SERIES_START_DATE);
 
 
 // Build bubble chart

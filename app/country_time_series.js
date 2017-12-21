@@ -7,10 +7,11 @@ require('./country_time_series.scss');
 require('./css/c3.css');
 
 class CountryTimeSeries {
-    constructor(id, dataCountry) {
+    constructor(id, dataCountry, startDate) {
 
         this.id = id;
         this.dataCountry = dataCountry;
+        this.startDate = startDate;
 
         // current state of the time series
         this.displayedCountry = [];
@@ -133,7 +134,7 @@ class CountryTimeSeries {
         var notNull = 0;
         // gather data to compute the mean
         for (var i = 0; i < countryData.length; i++) {
-            dates.push(1850 + i);
+            dates.push(this.startDate + i);
             val.push(countryData[i]);
 
             // obvioulsy, we only want correct data
@@ -305,11 +306,11 @@ class CountryTimeSeries {
 
         // take every correct point to compute a nice linear regression
         for (var i = 0; i < countryData.length; i++) {
-            countryDates.push(1850 + i);
+            countryDates.push(this.startDate + i);
             countryPoints.push(countryData[i]);
 
             if (countryData[i] != null) {
-                datas.push([(1850 + i), countryData[i]]);
+                datas.push([(this.startDate + i), countryData[i]]);
             }
         }  
 
@@ -321,7 +322,7 @@ class CountryTimeSeries {
 
         // compute the point for each year with the regression
         for (var i = 0; i < countryData.length; i++) {
-            regCountryLine.push(cc.predict(1850 + i)[1]);
+            regCountryLine.push(cc.predict(this.startDate + i)[1]);
         }
     }
 
@@ -386,12 +387,12 @@ class CountryTimeSeries {
     }
 }
 
-export default function(id, dataCountryPath) {
+export default function(id, dataCountryPath, startDate) {
     d3.json(dataCountryPath, (errorCountry, dataCountry) => {
         if (errorCountry) {
             window.alert('Could not load country_temperature data: ' + errorCountry);
         }
 
-        return new CountryTimeSeries(id, dataCountry);
+        return new CountryTimeSeries(id, dataCountry, startDate);
     })
 }
