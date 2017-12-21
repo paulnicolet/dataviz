@@ -13,191 +13,143 @@
 </head>
 
 <body>
-    
-        <main>
-            <img src="./img/map.svg" alt="" id="header-map">
-            <div class="container">
-                <div id="intro-section" class="block">
-                    <h1>Visualising world temperatures</h1>
-
-                    <p class="description">
-                        It is not new that the climate system is warming as multiple scientific evidences have proved. But can we leverage the new growing branch of science known as <i>data science</i> to demonstrate the same phenomena ?
-                    </p>
-
-                    <blockquote>
-                        Climate change does not respect border; it does not respect who you are - rich and poor, small and big. Therefore, this is what we call “global challenges“, which require global solidarity. – Ban Ki-moon
-                    </blockquote>
-                    
-                    <h4>Goal</h4>
-                    <p class="description">
-                        We aim at providing a simple and user-friendly tool in order to visually explore climate change data. Ideally, the goal is to give insights about how temperatures are evolving on Earth to anyone curious about global warming, using data visualisation techniques.
-                        One should note that this work is a tentative to extract meaningful insights, but results are obviously not guaranteed.
-                    </p>
-
-                    <div class="row">
-                        <div class="col s6">
-                            <h4>Data</h4>
-                            
-                            <ul>
-                                <li>
-                                    Temperatures <a href="https://www.kaggle.com/berkeleyearth/climate-change-earth-surface-temperature-data">dataset</a>
-                                </li>
-        
-                                <li>
-                                    Population <a href="https://esa.un.org/unpd/wpp/Download/Standard/Population/">dataset</a>
-                                </li>
-        
-                                <li>
-                                    Growth domestic product <a href="http://ghdx.healthdata.org/record/gross-domestic-product-gdp-estimates-country-1950-2015">dataset</a>
-                                </li>
-        
-                            </ul>
-                        </div>
-
-                        <div class="col s6">
-                            <h4>Libraries</h4>
-                            
-                            <ul>
-                                <li>
-                                    Visualisation: <a href="https://d3js.org/">d3.js</a>, <a href="http://c3js.org/">c3.js</a>
-                                </li>
-        
-                                <li>
-                                    Preprocessing: <a href="https://pandas.pydata.org/">pandas</a>
-                                </li>
-        
-                                <li>
-                                    Web: <a href="http://materializecss.com/">materialize</a>
-                                </li>
-        
-                            </ul>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <hr>
-
-                <div id="time-series-section" class="">
-                    <h3>Temperatures time series</h3>
-        
-                    <p class="description">
-                        This chart presents the temperature evolution for multiple country or continent from 1950 to 2013 with regression to help guessing the tendency. Since temperatures depend on geography, it is possible to normalize the chart in order to compare several entities. 
-                    </p>
-
-                    <div class="row">
-                        
-                        <div class="col s2 offset-s3">
-                            <button id="zeroMean" class="waves-effect waves-light btn">0-mean</button>    
-                        </div> 
-
-                        <div class="col s2">
-                            <button id="resetCountry" class="waves-effect waves-light btn">Reset</button>
-                        </div>
-
-                        <div class="col s3">
-                                <div>
-                                    <input id="time-series-input" type="text" class="autocomplete" placeholder="Display specific countries">
-                                </div>  
-                        </div> 
-                    </div>
-                    
-                    <div id="country_time_series"></div>
-        
-                </div>
-
-                <hr>
-        
-                <div id="map-section" class="">
-                    <h3>Temperatures map</h3>
-        
-                    <p class="description">
-                        With the world map, it is possible to look at world temperatures in function of geographical coordinates. It is possible to explore data from 1750 even if a few points are available. One can hover the points to get more details.
-                    </p>
-
-                    <div class="row">
-                        <div class="col s2 offset-s1">
-                            <button class="waves-effect waves-light btn animate-btn" id="play-map-btn">Play</button>
-                        </div>
-                        <div class="col s2">
-                            <button class="waves-effect waves-light btn animate-btn" id="stop-map-btn">Stop</button>
-                        </div>
-                        <div id="map-slider" class="col s6"></div>
-                    </div>
-                    <div id="map"></div>
-                </div>
-        
-                
-                <hr>
-        
-        
-                <div id="bubble-section" class="">
-                    <h3>Evolution speed</h3>
-        
-                    <p class="description">
-                        The bubble chart aims at looking at speed of temperature evolution between countries, correlated with two other variables: population and Growth Domestic Product. Motion of bubbles give insights about the amount and speed of change of each variable. 
-                    </p>
-                    
-                    <div class="row">
-                        <div class="col s2 offset-s1">
-                            <button class="waves-effect waves-light btn animate-btn" id="play-bubbles-btn">Play</button>
-                        </div>
-                        <div class="col s2">
-                            <button class="waves-effect waves-light btn animate-btn" id="stop-bubbles-btn">Stop</button>
-                        </div>
-                        <div id="bubble-slider" class="col s6"></div>
-                    </div>
-
-                    <div id="bubbles"></div>
-
-                    <div class="row">
-
-                        <div class="col s10 offset-s1">
-                            <table class="centered" id="bubble-details" style="table-layout:fixed;">
-                                <thead>
-                                    <tr>
-                                        <th>Country</th>
-                                        <th>Temperature (°C)</th>
-                                        <th>GDP ($)</th>
-                                        <th>Population</th>
-                                        <th>Variation (°C)</th>
-                                    </tr>
-                                </thead>
-                        
-                                <tbody>
-                                    <tr>
-                                        <td><span id="country"></span></td>
-                                        <td><span id="temp"></span></td>
-                                        <td><span id="gdp"></span> x10<sup>3</sup></td>
-                                        <td><span id="pop"></span> x10</span><sup>3</sup></td>
-                                        <td><span id="var"></span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <hr>
-
-                <div id="conclusion-section">
-                    <h3>Conclusion</h3>
-    
-                    <p class="description">
-                        Et eodem impetu Domitianum praecipitem per scalas itidem funibus constrinxerunt, eosque coniunctos per ampla spatia civitatis acri raptavere discursu. iamque artuum et membrorum divulsa conpage superscandentes corpora mortuorum ad ultimam truncata deformitatem velut exsaturati mox abiecerunt in flumen.
-                    </p>
-                </div>
-        
-            </div>
-
-        </main>
-
-        <footer class="page-footer">
-            <div class="container">
+    <main>
+        <img src="./img/map.svg" alt="" id="header-map">
+        <div class="container">
+            <div id="intro-section" class="block">
+                <h1>Visualising world temperatures</h1>
+                <p class="description">
+                    It is not new that the climate system is warming as multiple scientific evidences have proved. But can we leverage the new growing branch of science known as <i>data science</i> to demonstrate the same phenomena ?
+                </p>
+                <blockquote>
+                    Climate change does not respect border; it does not respect who you are - rich and poor, small and big. Therefore, this is what we call “global challenges“, which require global solidarity. – Ban Ki-moon
+                </blockquote>
+                <h4>Goal</h4>
+                <p class="description">
+                    We aim at providing a simple and user-friendly tool in order to visually explore climate change data. Ideally, the goal is to give insights about how temperatures are evolving on Earth to anyone curious about global warming, using data visualisation techniques. One should note that this work is a tentative to extract meaningful insights, but results are obviously not guaranteed.
+                </p>
                 <div class="row">
+                    <div class="col s6">
+                        <h4>Data</h4>
+                        <ul>
+                            <li>
+                                Temperatures <a href="https://www.kaggle.com/berkeleyearth/climate-change-earth-surface-temperature-data">dataset</a>
+                            </li>
+                            <li>
+                                Population <a href="https://esa.un.org/unpd/wpp/Download/Standard/Population/">dataset</a>
+                            </li>
+                            <li>
+                                Growth domestic product <a href="http://ghdx.healthdata.org/record/gross-domestic-product-gdp-estimates-country-1950-2015">dataset</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col s6">
+                        <h4>Libraries</h4>
+                        <ul>
+                            <li>
+                                Visualisation: <a href="https://d3js.org/">d3.js</a>, <a href="http://c3js.org/">c3.js</a>
+                            </li>
+                            <li>
+                                Preprocessing: <a href="https://pandas.pydata.org/">pandas</a>
+                            </li>
+                            <li>
+                                Web: <a href="http://materializecss.com/">materialize</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div id="time-series-section" class="">
+                <h3>Temperatures time series</h3>
+                <p class="description">
+                    This chart presents the temperature evolution for multiple country or continent from 1950 to 2013 with regression to help guessing the tendency. Since temperatures depend on geography, it is possible to normalize the chart in order to compare several entities.
+                </p>
+                <div class="row">
+                    <div class="col s2 offset-s3">
+                        <button id="zeroMean" class="waves-effect waves-light btn">0-mean</button>
+                    </div>
+                    <div class="col s2">
+                        <button id="resetCountry" class="waves-effect waves-light btn">Reset</button>
+                    </div>
+                    <div class="col s3">
+                        <div>
+                            <input id="time-series-input" type="text" class="autocomplete" placeholder="Display specific countries">
+                        </div>
+                    </div>
+                </div>
+                <div id="country_time_series"></div>
+            </div>
+            <hr>
+            <div id="map-section" class="">
+                <h3>Temperatures map</h3>
+                <p class="description">
+                    With the world map, it is possible to look at world temperatures in function of geographical coordinates. It is possible to explore data from 1750 even if a few points are available. One can hover the points to get more details.
+                </p>
+                <div class="row">
+                    <div class="col s2 offset-s1">
+                        <button class="waves-effect waves-light btn animate-btn" id="play-map-btn">Play</button>
+                    </div>
+                    <div class="col s2">
+                        <button class="waves-effect waves-light btn animate-btn" id="stop-map-btn">Stop</button>
+                    </div>
+                    <div id="map-slider" class="col s6"></div>
+                </div>
+                <div id="map"></div>
+            </div>
+            <hr>
+            <div id="bubble-section" class="">
+                <h3>Evolution speed</h3>
+                <p class="description">
+                    The bubble chart aims at looking at speed of temperature evolution between countries, correlated with two other variables: population and Growth Domestic Product. Motion of bubbles give insights about the amount and speed of change of each variable.
+                </p>
+                <div class="row">
+                    <div class="col s2 offset-s1">
+                        <button class="waves-effect waves-light btn animate-btn" id="play-bubbles-btn">Play</button>
+                    </div>
+                    <div class="col s2">
+                        <button class="waves-effect waves-light btn animate-btn" id="stop-bubbles-btn">Stop</button>
+                    </div>
+                    <div id="bubble-slider" class="col s6"></div>
+                </div>
+                <div id="bubbles"></div>
+                <div class="row">
+                    <div class="col s10 offset-s1">
+                        <table class="centered" id="bubble-details" style="table-layout:fixed;">
+                            <thead>
+                                <tr>
+                                    <th>Country</th>
+                                    <th>Temperature (°C)</th>
+                                    <th>GDP ($)</th>
+                                    <th>Population</th>
+                                    <th>Variation (°C)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span id="country"></span></td>
+                                    <td><span id="temp"></span></td>
+                                    <td><span id="gdp"></span> x10<sup>3</sup></td>
+                                    <td><span id="pop"></span> x10</span><sup>3</sup></td>
+                                    <td><span id="var"></span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div id="conclusion-section">
+                <h3>Conclusion</h3>
+                <p class="description">
+                    Et eodem impetu Domitianum praecipitem per scalas itidem funibus constrinxerunt, eosque coniunctos per ampla spatia civitatis acri raptavere discursu. iamque artuum et membrorum divulsa conpage superscandentes corpora mortuorum ad ultimam truncata deformitatem velut exsaturati mox abiecerunt in flumen.
+                </p>
+            </div>
+        </div>
+    </main>
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
                 <div class="col l6 s12">
                     <h5 class="white-text">Data visualisation project</h5>
                     <p class="grey-text text-lighten-4">
@@ -207,20 +159,19 @@
                 <div class="col l4 offset-l2 s12">
                     <h5 class="white-text">Links</h5>
                     <ul>
-                    <li><a class="grey-text text-lighten-3" href="https://github.com/paulnicolet/dataviz">GitHub</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Process book</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Screencast</a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://github.com/paulnicolet/dataviz">GitHub</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Process book</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Screencast</a></li>
                     </ul>
                 </div>
-                </div>
             </div>
-            <div class="footer-copyright">
-                <div class="container">
-                    Quentin Laville - Paul Nicolet
-                </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                Quentin Laville - Paul Nicolet
             </div>
-        </footer>
-
+        </div>
+    </footer>
     <script type="text/javascript" src="bundle.js"></script>
 </body>
 
