@@ -1,13 +1,17 @@
 import * as d3 from 'd3';
 import * as chrom from  'd3-scale-chromatic';
 
-const MIN_RADIUS_WIDTH_RATIO = 1/200;
-const MAX_RADIUS_WIDTH_RATIO = 1/25;
+// Define margins
 const MARGIN = {top: 20, right: 20, bottom: 70, left: 70};
 
+// Bubble constants
+const MIN_RADIUS_WIDTH_RATIO = 1/200;
+const MAX_RADIUS_WIDTH_RATIO = 1/25;
 const BUBBLE_OPACITY = 0.7;
 const MOTION_DURATION = 1000;
 const LARGE_VARIATION = 2.5;
+const X_AXIS_LABEL = 'GDP (x10³ $)';
+const Y_AXIS_LABEL = 'Temperature (°C)';
 
 class BubbleChart {
 	constructor(id, detailsId, dataPath, outerWidth, outerHeight) {
@@ -20,31 +24,40 @@ class BubbleChart {
 	}
 
 	init(outerWidth, outerHeight) {
-		// TODO temperature variation scale for color
-		// Convert to color using chromatic (see map.js)
-
+		// Load temperature data
 		d3.json(this.dataPath, (error, data) => {
 			if (error) window.alert('Could not load bubble data');
 
 			this.data = data;
 			this.metadata = data.metadata;
 
+			// Initialize size dependent attributes
 			this.initSizable(outerWidth, outerHeight);
+
+			// Get minimum year
+			this.minYear = Math.min(...Object.keys(this.data).filter(e => e !== 'metadata'));
 
 			// Render chart
 			this.renderAxis();
-			this.renderBubbles(1950);
+			this.renderBubbles(this.minYear);
 		});
 	}
 
 	animateBubbles(year) {
+		// Get year data
 		this.currentYear = year;
 		let data = this.data[year];
 
+		// Update details if a country is selected
 		if (this.currentCountry != null) {
-			this.updateDetails(this.currentCountry, data[this.currentCountry].temperature, data[this.currentCountry].gdp, data[this.currentCountry].population, data[this.currentCountry].variation);			
+			this.updateDetails(this.currentCountry, 
+								data[this.currentCountry].temperature, 
+								data[this.currentCountry].gdp, 
+								data[this.currentCountry].population, 
+								data[this.currentCountry].variation);			
 		}
 
+		// Move each bubble with new year data
 		d3.selectAll('.bubble')
 			.transition()
 			.duration(MOTION_DURATION)
@@ -55,9 +68,11 @@ class BubbleChart {
 	}
 
 	renderBubbles(year) {
+		// Get year data
 		this.currentYear = year;
 		let data = Object.values(this.data[year]);
 
+		// Append circles
 		let newCircle = this.svg.append('g')
 							.attr('id', 'bubbles')
 							.selectAll('bubble')
@@ -71,6 +86,7 @@ class BubbleChart {
 							.style("fill-opacity", BUBBLE_OPACITY)
 							.style("fill", d => d3.color(chrom.interpolateRdYlGn(this.variationScale(d.variation))));
 
+		// Display details on mouseover
 		newCircle.on('mouseover', (d, i) => {
 			let data = this.data[this.currentYear];
 
@@ -85,10 +101,11 @@ class BubbleChart {
 		d3.select(`#${this.detailsId} #temp`).html(temperature.toFixed(1));
 		d3.select(`#${this.detailsId} #gdp`).html(gdp.toFixed(3));
 		d3.select(`#${this.detailsId} #pop`).html(population.toFixed(3));
-		d3.select(`#${this.detailsId} #var`).html(variation);
+		d3.select(`#${this.detailsId} #var`).html(variation.toFixed(2));
 	}
 
 	renderAxis() {
+		// Define x axis
 		let xAxis = d3.axisBottom()
 						.scale(this.xScale);
 
@@ -97,7 +114,7 @@ class BubbleChart {
 					.attr('transform', `translate(0, ${this.height})`)
 					.call(xAxis);
 
-
+		// Define y axis
 		let yAxis = d3.axisLeft()
 						.scale(this.yScale);
 
@@ -105,29 +122,22 @@ class BubbleChart {
 					.attr('class', 'y axis')
 					.call(yAxis);
 
-
+		// Label axis
 		this.svg.append('text')
 				.attr('text-anchor', 'end')
 				.attr('transform', `translate(${this.width}, ${this.height + MARGIN.bottom/2})`)
 				.attr('class', 'label')
-				.text('GDP (x10³ $)');
+				.text(X_AXIS_LABEL);
 
 		this.svg.append('text')
 				.attr('text-anchor', 'end')
 				.attr('transform', `translate(${-MARGIN.left/2}, 0)rotate(-90)`)
 				.attr('class', 'label')
-				.text('Temperature (°C)');
-	}
-
-	resize(outerWidth, outerHeight) {
-		this.initSizable(outerWidth, outerHeight);
-
-		// Render chart
-		this.renderAxis();
-		this.renderBubbles(this.currentYear);
+				.text(Y_AXIS_LABEL);
 	}
 
 	initSizable(outerWidth, outerHeight) {
+		// Define width and height
 		this.width = outerWidth - MARGIN.left - MARGIN.right;
 		this.height = outerHeight - MARGIN.top - MARGIN.bottom;
 
@@ -153,9 +163,19 @@ class BubbleChart {
 								.domain([this.metadata.minPop, this.metadata.maxPop])
 								.range([MIN_RADIUS_WIDTH_RATIO * this.width, MAX_RADIUS_WIDTH_RATIO * this.width]);
 
+		// Color scale for variation
 		this.variationScale = d3.scaleLinear()
 								.domain([0, LARGE_VARIATION])
 								.range([1, 0]);
+	}
+
+	resize(outerWidth, outerHeight) {
+		// Reinit size-dependend attributes
+		this.initSizable(outerWidth, outerHeight);
+
+		// Render chart
+		this.renderAxis();
+		this.renderBubbles(this.currentYear);
 	}
 }
 

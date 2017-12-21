@@ -5,15 +5,16 @@ require('./slider.scss');
 const MARGIN = {top: 20, bottom: 20, left: 30, right: 30};
 
 class Slider {
-	constructor(id, minDate, maxDate, outerWidth, outerHeight) {
+	constructor(id, minValue, maxValue, outerWidth, outerHeight) {
 		this.id = id;
-		this.minDate = minDate;
-		this.maxDate = maxDate;
+		this.minValue = minValue;
+		this.maxValue = maxValue;
 		this.lastLeft = null;
 		this.lastRight = null;
-		this.currentYear = minDate;
+		this.currentValue = minValue;
 		this.handlers = [];
 
+		// Initialize size dependent attributes
 		this.initSizable(outerWidth, outerHeight);
 
 		// Render elements
@@ -27,12 +28,14 @@ class Slider {
 						.handleSize(1)
 						.on('brush', () => this.brushed(this));
 
+		// Define slider
 		let slider = this.svg.append('g')
 							.attr('class', 'slider')
 							.call(brush);
 
 		slider.selectAll('.selection,.handle').remove();
 
+		// Append slider handle
 		let handle = slider.append('g')
 							.attr('id', 'slider-handle');
 
@@ -50,6 +53,7 @@ class Slider {
 						.scale(this.scale)
 						.tickSize(0)
 						.tickPadding(20)
+						.tickFormat(d3.format(""))
 						.tickValues([this.scale.domain()[0], this.scale.domain()[1]]);
 
 		this.svg.append('g')
@@ -70,6 +74,7 @@ class Slider {
 			return;
 		}
 
+		// Infer with point of selection to take into account from last move
 		let pos = 0;
 		if (this.lastLeft == d3.event.selection[0]) {
 			pos = d3.event.selection[1];
@@ -77,24 +82,26 @@ class Slider {
 			pos = d3.event.selection[0];
 		}
 
-		// Scale to get corresponding year
-		let year = parseInt(this.scale.invert(pos));
+		// Scale to get corresponding value
+		let value = parseInt(this.scale.invert(pos));
 
 		// Do not update anything if handle did not move enough
-		if (year == this.currentYear) {
+		if (value == this.currentValue) {
 			return;
 		}
-		this.currentYear = year;
+
+		// Set new current value
+		this.currentValue = value;
 
 		// Clamp handle and translate
-		pos = this.scale(year);
+		pos = this.scale(value);
 		handle.attr('transform', `translate(${pos}, 0)`);
 
 		// Update text
-		d3.select(`#${this.id} #current-value`).text(year);
+		d3.select(`#${this.id} #current-value`).text(value);
 
 		// Call handlers
-		this.handlers.forEach(f => f(year));
+		this.handlers.forEach(f => f(value));
 
 		// Update current selection
 		this.lastLeft = d3.event.selection[0];
@@ -102,22 +109,24 @@ class Slider {
 	}
 
 	inc() {
-		if (this.currentYear >= this.maxDate) {
+		// Do not increment if already max value
+		if (this.currentValue >= this.maxValue) {
 			return;
 		}
 
-		this.currentYear++;
+		// Increment slider value
+		this.currentValue++;
 
 		// Clamp handle and translate
-		let pos = this.scale(new Date(this.currentYear));
+		let pos = this.scale(this.currentValue);
 		let handle = d3.select(`#${this.id} #slider-handle`);
 		handle.attr('transform', `translate(${pos}, 0)`);
 
 		// Update text
-		d3.select(`#${this.id} #current-value`).text(this.currentYear);
+		d3.select(`#${this.id} #current-value`).text(this.currentValue);
 
 		// Call handlers
-		this.handlers.forEach(f => f(this.currentYear));
+		this.handlers.forEach(f => f(this.currentValue));
 	}
 
 	// Register handlers
@@ -134,6 +143,7 @@ class Slider {
 	}
 
 	initSizable(outerWidth, outerHeight) {
+		// Define width and height
 		this.width = outerWidth - MARGIN.left - MARGIN.right;
 		this.height = outerHeight - MARGIN.top - MARGIN.bottom;
 
@@ -146,12 +156,12 @@ class Slider {
 
 		// Define timescale
 		this.scale = d3.scaleLinear()
-						.domain([this.minDate, this.maxDate])
+						.domain([this.minValue, this.maxValue])
 						.range([0, this.width])
 						.clamp(true);
 	}
 }
 
-export default function(id, minDate, maxDate, width, height) {
-	return new Slider(id, minDate, maxDate, width, height);
+export default function(id, minValue, maxValue, width, height) {
+	return new Slider(id, minValue, maxValue, width, height);
 }

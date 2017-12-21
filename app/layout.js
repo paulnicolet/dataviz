@@ -4,6 +4,7 @@ const APPARITION_DURATION = 2000;
 const APPARITION_HEIGHT_RATIO = 1/4;
 
 $(document).ready(function(){
+    // Scrollfire to make section appearing as scrolling
     var options = [
         {
             selector: '#time-series-section', 

@@ -12,11 +12,11 @@ const MAP_ID = 'map';
 const MAP_WIDTH = document.getElementById(MAP_ID).clientWidth;
 const MAP_RATIO = 2/3;
 const MAP_HEIGHT = MAP_RATIO * MAP_WIDTH;
-const WORLD_TOPOJSON_PATH = './data/110m.json';
-const TEMPERATURES_PATH = './data/temp_city_all.json';
+const WORLD_TOPOJSON_PATH = './data/topology.json';
+const TEMPERATURES_PATH = './data/temp_city.json';
 let map = buildMap(MAP_ID, TEMPERATURES_PATH, WORLD_TOPOJSON_PATH, MAP_WIDTH, MAP_HEIGHT);
 
-// Build time slider
+// Build map slider
 const MAP_SLIDER_ID = 'map-slider';
 const MAP_PLAY_ID = 'play-map-btn';
 const MAP_STOP_ID = 'stop-map-btn';
@@ -29,6 +29,7 @@ const MAP_END_DATE = 2013;
 let mapSlider = buildSlider(MAP_SLIDER_ID, MAP_START_DATE, MAP_END_DATE, MAP_SLIDER_WIDTH, MAP_SLIDER_HEIGHT);
 mapSlider.moved(year => map.renderTemperatures(year));
 
+// Automatic slider progress
 let mapIntervalID;
 document.getElementById(MAP_PLAY_ID).addEventListener('click', (e) => {
 	e.target.classList.add("disabled");
@@ -54,13 +55,13 @@ buildCountryTimeSeries(COUNTRY_TIME_SERIES_ID, COUNTRY_TIME_SERIES_PATH, COUNTRY
 // Build bubble chart
 const BUBBLE_CHART_ID = 'bubbles';
 const BUBBLE_DETAILS_ID = 'bubble-details';
-const BUBBLE_DATA_PATH = './data/final.min.json';
+const BUBBLE_DATA_PATH = './data/temp_bubbles.min.json';
 const BUBBLE_CHART_WIDTH = document.getElementById(BUBBLE_CHART_ID).clientWidth;
 const BUBBLE_CHART_RATIO = 1/3;
 const BUBBLE_CHART_HEIGHT = BUBBLE_CHART_RATIO * BUBBLE_CHART_WIDTH;
 let bubbles = buildBubbleChart(BUBBLE_CHART_ID, BUBBLE_DETAILS_ID, BUBBLE_DATA_PATH, BUBBLE_CHART_WIDTH, BUBBLE_CHART_HEIGHT);
 
-
+// Build bubble slider
 const BUBBLE_SLIDER_ID = 'bubble-slider';
 const BUBBLE_PLAY_ID = 'play-bubbles-btn';
 const BUBBLE_STOP_ID = 'stop-bubbles-btn';
@@ -69,10 +70,11 @@ const BUBBLE_SLIDER_WIDTH = document.getElementById(BUBBLE_SLIDER_ID).clientWidt
 const BUBBLE_SLIDER_RATIO = 1/6;
 const BUBBLE_SLIDER_HEIGHT = MAP_SLIDER_RATIO * MAP_SLIDER_WIDTH;
 const BUBBLE_START_DATE = 1950;
-const BUBBLE_END_DATE = 2013;
+const BUBBLE_END_DATE = 2012;
 let bubbleSlider = buildSlider(BUBBLE_SLIDER_ID, BUBBLE_START_DATE, BUBBLE_END_DATE, BUBBLE_SLIDER_WIDTH, BUBBLE_SLIDER_HEIGHT);
 bubbleSlider.moved(year => bubbles.animateBubbles(year));
 
+// Automatic slider progress
 let bubbleIntervalID;
 document.getElementById(BUBBLE_PLAY_ID).addEventListener('click', (e) => {
 	e.target.classList.add("disabled");
@@ -86,7 +88,7 @@ document.getElementById(BUBBLE_STOP_ID).addEventListener('click', (e) => {
 	document.getElementById(BUBBLE_PLAY_ID).classList.remove("disabled");
 });
 
-// Resize charts
+// Add resize listeners
 window.addEventListener('resize', () => {
 	// Resize map
 	let newWidth = document.getElementById(MAP_ID).clientWidth;
@@ -100,12 +102,13 @@ window.addEventListener('resize', () => {
 	document.getElementById(BUBBLE_CHART_ID).innerHTML = '';
 	bubbles.resize(newWidth, newHeight);
 
-	// Resize sliders
+	// Resize map slider
 	newWidth = document.getElementById(MAP_SLIDER_ID).clientWidth;
 	newHeight = MAP_SLIDER_RATIO * newWidth;
 	document.getElementById(MAP_SLIDER_ID).innerHTML = '';
 	mapSlider.resize(newWidth, newHeight);
 
+	// Resize bubble slider
 	newWidth = document.getElementById(BUBBLE_SLIDER_ID).clientWidth;
 	newHeight = BUBBLE_SLIDER_RATIO * newWidth;
 	document.getElementById(BUBBLE_SLIDER_ID).innerHTML = '';

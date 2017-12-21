@@ -4,6 +4,7 @@ import * as topojson from 'topojson';
 
 require('./map.scss');
 
+// Define margins
 const MARGIN = {top: 20, bottom: 20, left: 20, right: 20};
 
 // Circle constants
@@ -24,7 +25,10 @@ class TemperaturesMap {
 	constructor(id, dataPath, topologyPath, outerWidth, outerHeight) {
 		this.id = id;
 
+		// Initiliaze size dependent attributes
 		this.initSizable(outerWidth, outerHeight);
+
+		// Initialize viz
 		this.init(dataPath, topologyPath);
 	}
 
@@ -32,8 +36,10 @@ class TemperaturesMap {
 		// Clean everything up
 		d3.selectAll('.temperature-group').remove();
 
+		// Get temperatures for given year
 		let temperatures = this.data[year];
 
+		// Append new circles
 		let newCircle = this.svg.append('g')
 							.attr('id', 'temperatures')
 							.selectAll('g .temperature-group')
@@ -51,7 +57,8 @@ class TemperaturesMap {
 								color.opacity = OPACITY;
 								return color;
 							});
-
+		
+		// Add circles animations
 		this.animateCircle(newCircle);
 
 	}
@@ -62,10 +69,12 @@ class TemperaturesMap {
 			let circle = d3.select(this);
 			let parent = d3.select(group);
 
+			// Enlarge circle
 			circle.transition()
 					.duration(CIRCLE_ANIM_DURATION)
 					.attr('r', LARGE_CIRCLE);
 
+			// Append text description
 			parent.append('text')
 					.attr('class', 'map-popup')
 					.attr('x', circle.attr('cx'))
@@ -80,10 +89,12 @@ class TemperaturesMap {
 			let circle = d3.select(this);
 			let parent = d3.select(this.parentNode);
 
+			// Shrink circle
 			circle.transition()
 					.duration(CIRCLE_ANIM_DURATION)
 					.attr('r', SMALL_CIRCLE);
 
+			// Remove text
 			parent.selectAll('text').remove();
 		});
 	}
@@ -110,7 +121,7 @@ class TemperaturesMap {
 		low.opacity = OPACITY;
 		high.opacity = OPACITY;
 
-
+		// Render legend rectangles
 		legend.append('rect')
 				.attr('width', LEGEND_WIDTH)
 				.attr('height', LEGEND_HEIGHT)
@@ -126,6 +137,7 @@ class TemperaturesMap {
 				.attr('transform', `translate(0, ${(3/2) * LEGEND_HEIGHT})`)
 				.style('fill', high);
 
+		// Render legend text
 		legend.append('text')
 				.text(`${this.minTemp.toFixed(1)}°`)
 				.attr('class', 'map-legend-text')
@@ -139,14 +151,14 @@ class TemperaturesMap {
 	}
 
 	init(dataPath, topologyPath) {
-		// Load data
+		// Load topology
 		d3.json(topologyPath, (error, world) => {
 			if (error) window.alert('Could not load topology');
 
+			// Load temperature data
 			d3.json(dataPath, (error, data) => {
 				if (error) window.alert('Could not load temperatures');
-
-				// Get data
+				
 				this.topology = world;
 				this.data = data.data;
 				this.minTemp = data.min;
@@ -157,9 +169,10 @@ class TemperaturesMap {
 									.domain([this.minTemp, this.maxTemp])
 						      		.range([1, 0]);
 
-				// Render elements
+				// Get minimum year
 				this.minYear = Math.min(...Object.keys(this.data));
 
+				// Render viz
 				this.renderTopology();
 				this.renderLegend();
 				this.renderTemperatures(this.minYear);
@@ -168,14 +181,17 @@ class TemperaturesMap {
 	}
 
 	resize(outerWidth, outerHeight) {
+		// Reinitialize size dependent attributes
 		this.initSizable(outerWidth, outerHeight);
-
+		
+		// Re-render viz
 		this.renderTopology();
 		this.renderLegend();
 		this.renderTemperatures(this.minYear);
 	}
 
 	initSizable(outerWidth, outerHeight) {
+		// Define dimension 
 		this.width = outerWidth - MARGIN.left - MARGIN.right;
 		this.height = outerHeight - MARGIN.top - MARGIN.bottom;
 
@@ -186,11 +202,12 @@ class TemperaturesMap {
 						.append('g')
 						.attr('transform', `translate(${MARGIN.left}, ${MARGIN.top})`);
 
-		// Define projection and path
+		// Define projection
 		this.projection = d3.geoNaturalEarth1()
 							.scale(this.width * TOPOLOGY_SCALING_RATIO)
 							.translate([this.width/2, this.height/2]);
 
+		// Define topology path
 		this.path = d3.geoPath(this.projection);
 	}
 }
